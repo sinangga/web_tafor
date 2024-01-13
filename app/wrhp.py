@@ -1,4 +1,9 @@
 import streamlit as st
+from datetime import datetime
+import datetime as dttime
+
+tl1 = datetime.utcnow()
+
 tab1, tab2, tab3 = st.tabs(["Analisis Streamline", "SIGWX MED", "SIGWX HIGH"])
 
 with tab1:
