@@ -8,7 +8,11 @@ tab1, tab2, tab3 = st.tabs(["Analisis Streamline", "SIGWX MED", "SIGWX HIGH"])
 
 with tab1:
    st.header("Analisis Streamline")
-   st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/streamline//T_PGXA15_C_WIIX_20240111120000.STREAMLINES925.png", width=None)
+   st1, st2 = st.tabs(["00", "12"])
+   with st1:
+      st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/streamline//T_PGXA15_C_WIIX_"+str(tl1.strftime('%Y'))+str(tl1.strftime('%m'))+str(tl1.strftime('%d'))+"120000.STREAMLINES925.png", width=None)      
+   with st2:
+      st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/streamline//T_PGXA15_C_WIIX_"+str(tl1.strftime('%Y'))+str(tl1.strftime('%m'))+str(tl1.strftime('%d'))+"000000.STREAMLINES925.png", width=None)
 
 with tab2:
    st.header("SIGWX MED")
