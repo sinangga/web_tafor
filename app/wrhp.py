@@ -1,14 +1,16 @@
 import streamlit as st
 from datetime import datetime
 import datetime as dttime
+import streamlit.components.v1 as components
+
 
 tl1 = datetime.utcnow()
 
-tab1, tab2, tab3 = st.tabs(["Analisis Streamline", "SIGWX MED", "SIGWX HIGH"])
+tab1, tab2, tab3 = st.tabs(["Analisis Streamline", "SIGWX MED", "RASON"])
 
 with tab1:
    st.header("Analisis Streamline")
-   stm, st1, st2, st3= st.tabs(["H-12","H-00", "H+12", "H+24"])
+   stm, st1, st2, st3= st.tabs(["H1", "H2", "H3", "H4"])
    with st1:
       st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/streamline//T_PGXA15_C_WIIX_"+str(tl1.strftime('%Y'))+str(tl1.strftime('%m'))+str(int(tl1.strftime('%d'))-1)+"000000.STREAMLINES925.png", width=None)      
    with st2:
@@ -27,5 +29,11 @@ with tab2:
       st.image("https://aviation.bmkg.go.id/shared/sigwx/"+str(tl1.strftime('%Y'))+"/"+str(tl1.strftime('%m'))+"/sigwx_"+str(tl1.strftime('%Y'))+str(tl1.strftime('%m'))+str(tl1.strftime('%d'))+"0600.jpeg", width=None)
 
 with tab3:
-   st.header("Isobar")
-   st.image("https://static.streamlit.io/examples/owl.jpg", width=None)
+   st.header("RASON")
+   def run():
+      iframe_src = "https://aviation.bmkg.go.id/monitoring_rason/index"
+      components.iframe(iframe_src)
+   # You can add height and width to the component of course.
+
+   if __name__ == "__main__":
+      run()
