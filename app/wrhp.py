@@ -1,4 +1,4 @@
-import streamlit as st
+timport streamlit as st
 from datetime import datetime
 import datetime as dttime
 import streamlit.components.v1 as components
@@ -32,7 +32,7 @@ with tab3:
    st.header("RASON")
    def run():
       iframe_src = "https://aviation.bmkg.go.id/monitoring_rason/index"
-      components.iframe(iframe_src)
+      components.iframe(iframe_src, height=True)
    # You can add height and width to the component of course.
 
    if __name__ == "__main__":
