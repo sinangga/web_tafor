@@ -1,3 +1,4 @@
 streamlit
 st_pages
 datetime
+pandas
