@@ -11,8 +11,8 @@ with tab2:
     
 with tab3:
    st.header("SST NINO 3.4")
-   st.image("http://www.bom.gov.au/climate/enso/wrap-up/archive/20240109.sstOutlooks_nino34.png", width=None)
+   st.image("https://www.bom.gov.au/climate/enso/wrap-up/archive/20240109.sstOutlooks_nino34.png", width=None)
 
 with tab4:
    st.header("IOD")
-   st.image("http://www.bom.gov.au/clim_data/IDCK000072/iod1.png", width=None)
+   st.image("https://www.bom.gov.au/clim_data/IDCK000072/iod1.png", width=None)
