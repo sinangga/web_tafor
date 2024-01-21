@@ -8,3 +8,4 @@ imagedominantcolor
 matplotlib
 io
 PIL
+pyplot
