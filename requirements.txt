@@ -7,6 +7,6 @@ requests
 imagedominantcolor
 matplotlib
 Python-IO
-PIL
+Pillow
 pyplot
 matplotlib.pyplot
