@@ -178,28 +178,28 @@ with tab2:
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t4.strftime('%Y'))+str(t4.strftime('%m'))+str(t4.strftime('%d'))+str(t4.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu = kategori_hujan(url)
-        st.write("Hujan diprakirakan = ",hujan_psu
+        st.write("Hujan diprakirakan = ",hujan_psu)
     with tab15:
         #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t5.strftime('%Y'))+str(t5.strftime('%m'))+str(t5.strftime('%d'))+str(t5.strftime('%H'))+"0000.png", width=None)
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t5.strftime('%Y'))+str(t5.strftime('%m'))+str(t5.strftime('%d'))+str(t5.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu = kategori_hujan(url)
-        st.write("Hujan diprakirakan = ",hujan_psu
+        st.write("Hujan diprakirakan = ",hujan_psu)
     with tab16:
         #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t6.strftime('%Y'))+str(t6.strftime('%m'))+str(t6.strftime('%d'))+str(t6.strftime('%H'))+"0000.png", width=None)
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t6.strftime('%Y'))+str(t6.strftime('%m'))+str(t6.strftime('%d'))+str(t6.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu = kategori_hujan(url)
-        st.write("Hujan diprakirakan = ",hujan_psu
+        st.write("Hujan diprakirakan = ",hujan_psu)
     with tab17:
         #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t7.strftime('%Y'))+str(t7.strftime('%m'))+str(t7.strftime('%d'))+str(t7.strftime('%H'))+"0000.png", width=None)
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t7.strftime('%Y'))+str(t7.strftime('%m'))+str(t7.strftime('%d'))+str(t7.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu = kategori_hujan(url)
-        st.write("Hujan diprakirakan = ",hujan_psu
+        st.write("Hujan diprakirakan = ",hujan_psu)
     with tab18:
         #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t8.strftime('%Y'))+str(t8.strftime('%m'))+str(t8.strftime('%d'))+str(t8.strftime('%H'))+"0000.png", width=None)
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t8.strftime('%Y'))+str(t8.strftime('%m'))+str(t8.strftime('%d'))+str(t8.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu = kategori_hujan(url)
-        st.write("Hujan diprakirakan = ",hujan_psu
+        st.write("Hujan diprakirakan = ",hujan_psu)
