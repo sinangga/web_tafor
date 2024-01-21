@@ -1,7 +1,75 @@
 import streamlit as st
 from datetime import datetime
 import datetime as dttime
+import numpy as np
+import requests
+from io import BytesIO
+from PIL import Image
+import matplotlib.pyplot as plt
+%matplotlib inline
+from imagedominantcolor import DominantColor
 
+# INDEX RGB HUJAN
+hujan_50 = (230,  24, 180)
+hujan_20 = (237,  36,  29)
+hujan_17 = (233, 101,  30)
+hujan_14 = (236, 141,  28)
+hujan_10 = (234, 168,  27)
+hujan_7 = (238, 209,  21)
+hujan_5 = (241, 241,  31)
+hujan_3 = (163, 237,  26)
+hujan_1 = (103, 243,  33)
+hujan_03 = (135, 243, 134)
+hujan_01 = (171, 177, 186)
+hujan_001 = (231, 231, 230)
+
+# BOX Putussibau
+putussibau = (580,235,600,255)
+
+# FUNGSI DOMINAN
+def kategori_hujan(url):
+    response = requests.get(url)
+    img = Image.open(BytesIO(response.content))
+    
+    if img.mode == 'RGBA':
+        rgb_image = img.convert('RGB')
+    if img.mode == 'CMYK':
+        rgb_image = img.convert('RGB')
+    if img.mode == 'RGB':
+        rgb_image = img
+    if img.mode == 'HSV':
+        rgb_image = img.convert('RGB')
+    psu = rgb_image.crop(putussibau)#img_arr = np.asarray(psu)
+    psu = sorted(psu.getcolors(2 ** 24), reverse=True)[0][1]
+    if psu == hujan_50:
+        hujan_psu = "50 mm/jam"
+    if psu == hujan_20:
+        hujan_psu = "20 mm/jam"
+    if psu == hujan_17:
+        hujan_psu = "17 mm/jam"
+    if psu == hujan_14:
+        hujan_psu = "14 mm/jam"
+    if psu == hujan_10:
+        hujan_psu = "10 mm/jam"
+    if psu == hujan_7:
+        hujan_psu = "7 mm/jam"
+    if psu == hujan_5:
+        hujan_psu = "5 mm/jam"
+    if psu == hujan_3:
+        hujan_psu = "3 mm/jam"
+    if psu == hujan_1:
+        hujan_psu = "1 mm/jam"
+    if psu == hujan_03:
+        hujan_psu = "0.3 mm/jam"
+    if psu == hujan_01:
+        hujan_psu = "0.1 mm/jam"
+    if psu == hujan_001:
+        hujan_psu = "0.01 mm/jam"
+    return hujan_psu
+    return dom_color
+
+
+# MAIN PAGE
 tab1, tab2 = st.tabs(["IFS", "WRF"])
 
 now = datetime.utcnow()
@@ -41,9 +109,13 @@ with tab1:
     with tab3:
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl1.strftime('%Y'))+str(tl1.strftime('%m'))+str(tl1.strftime('%d'))+str(tl1.strftime('%H'))+"0000.png"
         st.image(url, width=None)
+        kategori_hujan(url)
+        st.write(("Hujan diprakirakan = ",hujan_psu,"| warna dominan = ",dom_color)
     with tab4:
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl2.strftime('%Y'))+str(tl2.strftime('%m'))+str(tl2.strftime('%d'))+str(tl2.strftime('%H'))+"0000.png"
         st.image(url, width=None)
+        kategori_hujan(url)
+        st.write(("Hujan diprakirakan = ",hujan_psu,"| warna dominan = ",dom_color)
     with tab5:
         st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl3.strftime('%Y'))+str(tl3.strftime('%m'))+str(tl3.strftime('%d'))+str(tl3.strftime('%H'))+"0000.png", width=None)
     with tab6:
