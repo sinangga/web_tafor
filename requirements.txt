@@ -2,3 +2,9 @@ streamlit
 st_pages
 datetime
 pandas
+numpy
+requests
+imagedominantcolor
+matplotlib
+io
+PIL
