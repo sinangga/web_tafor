@@ -6,7 +6,7 @@ import requests
 from io import BytesIO
 from PIL import Image
 import matplotlib.pyplot as plt
-%matplotlib inline
+#%matplotlib inline
 from imagedominantcolor import DominantColor
 
 # INDEX RGB HUJAN
