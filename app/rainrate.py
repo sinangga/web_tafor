@@ -66,7 +66,6 @@ def kategori_hujan(url):
     if psu == hujan_001:
         hujan_psu = "0.01 mm/jam"
     return hujan_psu
-    return dom_color
 
 
 # MAIN PAGE
@@ -109,13 +108,13 @@ with tab1:
     with tab3:
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl1.strftime('%Y'))+str(tl1.strftime('%m'))+str(tl1.strftime('%d'))+str(tl1.strftime('%H'))+"0000.png"
         st.image(url, width=None)
-        kategori_hujan(url)
-        st.write("Hujan diprakirakan = ",hujan_psu,"| warna dominan = ",dom_color)
+        hujan_psu = kategori_hujan(url)
+        st.write("Hujan diprakirakan = ",hujan_psu)
     with tab4:
         url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl2.strftime('%Y'))+str(tl2.strftime('%m'))+str(tl2.strftime('%d'))+str(tl2.strftime('%H'))+"0000.png"
         st.image(url, width=None)
-        kategori_hujan(url)
-        st.write("Hujan diprakirakan = ",hujan_psu,"| warna dominan = ",dom_color)
+        hujan_psu = kategori_hujan(url)
+        st.write("Hujan diprakirakan = ",hujan_psu)
     with tab5:
         st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl3.strftime('%Y'))+str(tl3.strftime('%m'))+str(tl3.strftime('%d'))+str(tl3.strftime('%H'))+"0000.png", width=None)
     with tab6:
