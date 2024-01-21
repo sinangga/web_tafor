@@ -8,5 +8,3 @@ imagedominantcolor
 matplotlib
 Python-IO
 Pillow
-pyplot
-matplotlib.pyplot
