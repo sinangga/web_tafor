@@ -5,7 +5,7 @@ import numpy as np
 import requests
 from io import BytesIO
 from PIL import Image
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 #%matplotlib inline
 from imagedominantcolor import DominantColor
 
