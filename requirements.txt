@@ -6,7 +6,7 @@ numpy
 requests
 imagedominantcolor
 matplotlib
-io
+Python-IO
 PIL
 pyplot
 matplotlib.pyplot
