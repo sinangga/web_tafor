@@ -22,6 +22,7 @@ hujan_1 = (103, 243,  33)
 hujan_03 = (135, 243, 134)
 hujan_01 = (171, 177, 186)
 hujan_001 = (231, 231, 230)
+tidak_hujan = (255, 255, 255)
 
 # BOX Putussibau
 putussibau = (580,235,600,255)
@@ -66,6 +67,8 @@ def kategori_hujan(url):
         hujan_psu = "0.1 mm/jam"
     if psu == hujan_001:
         hujan_psu = "0.01 mm/jam"
+    if psu == tidak_hujan:
+        hujan_psu = "Tidak Hujan"
     return hujan_psu
 
 
