@@ -4,7 +4,7 @@ from st_pages import Page, add_page_title, get_nav_from_toml
 
 st.set_page_config(layout="wide")
 
-nav = get_nav_from_toml(".streamlit/pages_sections.toml")
+nav = get_nav_from_toml(".streamlit/pages.toml")
 
 st.logo("logo.png")
 
