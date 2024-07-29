@@ -1,13 +1,24 @@
-show_pages(
-    [
-        Page("app/aktual.py", "Aktual", "🏠"),
-        Page("app/prakiraan.py", "XML", ":books:"),
-        Page("app/wrhp.py", "Angin dan RASON", "📖"),
-        Page("app/regional.py", "Parameter Regional", "✏️"),
-        Page("app/rainrate.py", "Rainrate", "🧰"),
-    ]
-)
+[[pages]]
+path = "app/aktual.py"
+name = "Aktual"
+icon = "🏠"
 
-add_page_title()  # Optional method to add title and icon to current page
+[[pages]]
+path = "app/prakiraan.py"
+name = "XML"
+icon = ":books:"
 
+[[pages]]
+path = "app/wrhp.py"
+name = "Angin dan RASON"
+icon = "🏠"
 
+[[pages]]
+path = "app/regional.py"
+name = "Parameter Regional"
+icon = ":books:"
+
+[[pages]]
+path = "app/rainrate.py"
+name = "Rainrate"
+icon = "🏠"
