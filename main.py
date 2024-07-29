@@ -1,17 +1,15 @@
 import streamlit as st
-from st_pages import Page, add_page_title, show_pages
+from st_pages import Page, add_page_title, get_nav_from_toml
 
 
-show_pages(
-    [
-        Page("app/aktual.py", "Aktual", "🏠"),
-        Page("app/prakiraan.py", "XML", ":books:"),
-        Page("app/wrhp.py", "Angin dan RASON", "📖"),
-        Page("app/regional.py", "Parameter Regional", "✏️"),
-        Page("app/rainrate.py", "Rainrate", "🧰"),
-    ]
-)
+st.set_page_config(layout="wide")
 
-add_page_title()  # Optional method to add title and icon to current page
+nav = get_nav_from_toml(".streamlit/pages_sections.toml")
 
+st.logo("logo.png")
 
+pg = st.navigation(nav)
+
+add_page_title(pg)
+
+pg.run()
