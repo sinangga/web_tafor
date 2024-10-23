@@ -9,3 +9,4 @@ matplotlib
 Python-IO
 Pillow
 requests
+prettytable
