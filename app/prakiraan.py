@@ -47,7 +47,7 @@ with tab1:
         n = n+1
 
 
-   printcuaca(3)
+   st.write(printcuaca(3))
    #df = pandas.read_xml("https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-KalimantanBarat.xml")
    #st.write(df)
    #st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
