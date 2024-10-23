@@ -2,7 +2,8 @@ import streamlit as st
 import pandas
 import urllib.request, json
 import requests
-import prettytable
+import prettytable import PrettyTable
+
 
 ###
 # Bypass Forbidden Status Code
