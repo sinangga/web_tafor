@@ -49,7 +49,7 @@ tab1, tab2 = st.tabs(["Prakicu","Test"])
 
 with tab1:
     st.header("Prakicu")
-    st.write(printcuaca(3))
+    st.write(nesting("Bika"))
 with tab2:
     st.header("Test")
     st.image("https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png", width=None)
