@@ -48,8 +48,8 @@ def printcuaca(x):
 tab1 = st.tabs(["Prakicu"])
 
 with tab1:
-   st.header("Prakicu")
-   st.write(printcuaca(3))
+    st.header("Prakicu")
+    st.write(printcuaca(3))
    #df = pandas.read_xml("https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-KalimantanBarat.xml")
    #st.write(df)
    #st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
