@@ -8,3 +8,5 @@ imagedominantcolor
 matplotlib
 Python-IO
 Pillow
+requests
+json
