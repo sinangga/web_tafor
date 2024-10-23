@@ -5,8 +5,8 @@ icon = "🏠"
 
 [[pages]]
 path = "app/prakiraan.py"
-name = "XML"
-icon = ":books:"
+name = "Prakicu"
+icon = ":cloud:"
 
 [[pages]]
 path = "app/wrhp.py"
