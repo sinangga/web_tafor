@@ -2,7 +2,7 @@ import streamlit as st
 import pandas
 import urllib.request, json
 import requests
-import prettytable import PrettyTable
+from prettytable import PrettyTable
 
 
 ###
