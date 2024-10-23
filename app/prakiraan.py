@@ -45,11 +45,14 @@ def printcuaca(x):
 
 ###
 
-tab1 = st.tabs(["Prakicu"])
+tab1, tab2 = st.tabs(["Prakicu","Test"])
 
 with tab1:
     st.header("Prakicu")
     st.write(printcuaca(3))
+with tab2:
+    st.header("Test")
+    st.image("https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png", width=None)
    #df = pandas.read_xml("https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-KalimantanBarat.xml")
    #st.write(df)
    #st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
