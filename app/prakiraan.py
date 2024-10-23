@@ -5,7 +5,9 @@ import requests
 from prettytable import PrettyTable
 
 
-###
+### Main Code Down Here ###
+###########################
+
 # Bypass Forbidden Status Code
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 
@@ -35,22 +37,21 @@ def nesting(nama_kecamatan):
     nesting = [element for nestedlist in nesting_list for element in nestedlist]
     return nesting
 
-# 
+# Function to Create Data inside Prettytable 
 def printcuaca(x):
     n = 0
-    t = PrettyTable(['Kecamatan', 'Tanggal', 'Cuaca'])
+    t = PrettyTable(['Kecamatan', 'Tanggal', 'Cuaca', 'Angin', 'Suhu', 'Kelembapan'])
     for i in list_kecamatan:
-        #print(list_kecamatan[n])
         data = nesting(i)
         for a in range(x):
-            #print(list_kecamatan[n])
-            #print(list_kecamatan[n],data[a]["utc_datetime"], data[a]["weather_desc"])
-            t.add_row([list_kecamatan[n],data[a]["utc_datetime"], data[a]["weather_desc"]])
-            #append()
+            angin = str(data[a]["wd"])+" "+str(round(data[a]["ws"]))+"KT"
+            t.add_row([list_kecamatan[n],data[a]["utc_datetime"], data[a]["weather_desc"],angin, data[a]["t"], data[a]["hu"]])
         n = n+1
     return t
+    
+### End of Main Code ###
+########################
 
-###
 
 tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 
@@ -60,9 +61,4 @@ with tab1:
 
 with tab2:
     st.header("Kecamatan")
-    
-    st.image("https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png", width=None)
-   #df = pandas.read_xml("https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-KalimantanBarat.xml")
-   #st.write(df)
-   #st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
 
