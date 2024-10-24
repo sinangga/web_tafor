@@ -48,6 +48,47 @@ def printcuaca(x):
             t.add_row([list_kecamatan[n],data[a]["utc_datetime"], data[a]["weather_desc"],angin, data[a]["t"], data[a]["hu"]])
         n = n+1
     return t
+
+#psu = ['c1 - cn', 'suhu(min-max)', 'RH (min-max)']
+def cuaca_gabungan_pagi(n):
+    suhu = []
+    angin = []
+    arah = []
+    rh = []
+    list_cuaca = []
+    list_tgl = []
+    for i in range(8):
+        suhu.append(nesting(n)[i]["t"])
+        angin.append(nesting(n)[i]["ws"])
+        arah.append(nesting(n)[i]["wd"])
+        rh.append(nesting(n)[i]["hu"])
+        list_cuaca.append(nesting(n)[i]["weather_desc"])
+        list_tgl.append(nesting(n)[i]["utc_datetime"])
+    maxsuhu = max(suhu)
+    minsuhu = min(suhu)
+    maxrh = max(rh)
+    minrh = min(rh)
+    suhu_akhir = str(maxsuhu) + "-" + str(minsuhu)
+    rh_akhir = str(maxrh) + "-" + str(minrh)
+    angin = statistics.mode(angin)
+    arah = statistics.mode(arah)
+    return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah, angin
+
+## Calling Data Kecamatan Daily
+def harian_kecamatan(nama):
+    (a, b, c, d, e, f, g) = cuaca_gabungan_pagi(nama)
+    nama = []
+    for x in (a, c, d, e, f, g):
+        if x in (a,d,e,f,g):
+            nama.append(x)
+    for i in range(len(c)):
+        nama.append(c[i])
+    return nama
+
+## Printing to Web
+t = PrettyTable(['Kecamatan', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan', '00','03','06','09','12','15','18','21'])
+for i in list_kecamatan:
+    t.add_row(harian_kecamatan(i))
     
 ### End of Main Code ###
 ########################
@@ -57,7 +98,7 @@ tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 
 with tab1:
     st.header("Kabupaten")
-    st.write(printcuaca(3))
+    st.write(t)
 
 with tab2:
     st.header("Kecamatan")
