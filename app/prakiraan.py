@@ -115,7 +115,7 @@ for i in list_kecamatan:
 tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 
 with tab1:
-    st.header("Kabupaten | Tanggal "+tangal)
+    st.header("Kabupaten | Tanggal "+tanggal)
     st.write(table)
 
 with tab2:
