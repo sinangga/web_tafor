@@ -104,7 +104,7 @@ for i in jamm:
         jammm.append(i)
 
 table = PrettyTable(jammm)
-table.title = "CUACA KABUPATEN KAPUAS HULU TANGGAL "+tanggal
+#table.title = "CUACA KABUPATEN KAPUAS HULU TANGGAL "+tanggal
 for i in list_kecamatan:
     table.add_row(harian_kecamatan(i))
     
@@ -115,7 +115,7 @@ for i in list_kecamatan:
 tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 
 with tab1:
-    st.header("Kabupaten")
+    st.header("Kabupaten | Tanggal "+tangal)
     st.write(table)
 
 with tab2:
