@@ -89,6 +89,7 @@ def harian_kecamatan(nama):
 
 ## Printing to Web
 (a, b, c, d, e, f, g) = cuaca_gabungan_pagi("Bika")
+tanggal = b[0][8]+b[0][9]+str("/")+b[0][5]+b[0][6]+str("/")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
 jam = []
 for i in range(len(b)):
     jam.append(b[i][11]+b[i][12])
@@ -103,6 +104,7 @@ for i in jamm:
         jammm.append(i)
 
 table = PrettyTable(jammm)
+table.title = "CUACA KABUPATEN KAPUAS HULU TANGGAL "+tanggal
 for i in list_kecamatan:
     table.add_row(harian_kecamatan(i))
     
