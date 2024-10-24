@@ -10,3 +10,4 @@ Python-IO
 Pillow
 requests
 prettytable
+statistics
