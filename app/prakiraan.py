@@ -124,6 +124,9 @@ table = PrettyTable(jammm)
 #table.title = "CUACA KABUPATEN KAPUAS HULU TANGGAL "+tanggal
 for i in list_kecamatan:
     table.add_row(harian_kecamatan(i))
+table.align["Kecamatan"]="l"
+table.align["Angin"]="l"
+
     
 ### End of Main Code ###
 ########################
