@@ -101,7 +101,7 @@ tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 
 with tab1:
     st.header("Kabupaten")
-    st.write(t)
+    st.write(table)
 
 with tab2:
     st.header("Kecamatan")
