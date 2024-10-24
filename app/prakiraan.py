@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas
 import urllib.request, json
 import requests
 import statistics
@@ -84,12 +83,15 @@ def harian_kecamatan(nama):
             nama.append(x)
     for i in range(len(c)):
         nama.append(c[i])
+    order_list = [0,5,6,7,8,9,10,11,12,1,2,3,4]
+    nama = [nama[i] for i in order_list]
     return nama
 
 ## Printing to Web
-t = PrettyTable(['Kecamatan', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan', '00','03','06','09','12','15','18','21'])
+table = PrettyTable(['Kecamatan', '00', '03', '06', '09', '12', '15', '18', '21', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan'])
 for i in list_kecamatan:
-    t.add_row(harian_kecamatan(i))
+    table.add_row(harian_kecamatan(i))
+table
     
 ### End of Main Code ###
 ########################
