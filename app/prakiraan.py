@@ -91,7 +91,6 @@ def harian_kecamatan(nama):
 table = PrettyTable(['Kecamatan', '00', '03', '06', '09', '12', '15', '18', '21', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan'])
 for i in list_kecamatan:
     table.add_row(harian_kecamatan(i))
-table
     
 ### End of Main Code ###
 ########################
