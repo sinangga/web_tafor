@@ -78,13 +78,31 @@ def cuaca_gabungan_pagi(n):
 def harian_kecamatan(nama):
     (a, b, c, d, e, f, g) = cuaca_gabungan_pagi(nama)
     nama = []
-    for x in (a, c, d, e, f, g):
+    for x in (a, d, e, f, g):
         if x in (a,d,e,f,g):
             nama.append(x)
     for i in range(len(c)):
         nama.append(c[i])
     order_list = [0,5,6,7,8,9,10,11,12,1,2,3,4]
     nama = [nama[i] for i in order_list]
+    
+    if nama[11] == "SE":
+        nama[11] = 'Tenggara'
+    if nama[11] == "N":
+        nama[11] = 'Utara'
+    if nama[11] == "E":
+        nama[11] = 'Timur'
+    if nama[11] == "W":
+        nama[11] = 'Barat'
+    if nama[11] == "S":
+        nama[11] = 'Selatan'
+    if nama[11] == "NW":
+        nama[11] = 'Barat Laut'
+    if nama[11] == "NE":
+        nama[11] = 'Timur Laut'
+    if nama[11] == "SW":
+        nama[11] = 'Barat Daya'
+
     return nama
 
 ## Printing to Web
