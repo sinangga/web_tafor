@@ -70,7 +70,7 @@ def cuaca_gabungan_pagi(n):
     minrh = min(rh)
     suhu_akhir = str(maxsuhu) + "-" + str(minsuhu)
     rh_akhir = str(maxrh) + "-" + str(minrh)
-    angin = statistics.mode(angin)
+    angin = max(angin)
     arah = statistics.mode(arah)
     return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah, angin
 
@@ -85,7 +85,6 @@ def harian_kecamatan(nama):
         nama.append(c[i])
     order_list = [0,5,6,7,8,9,10,11,12,1,2,3,4]
     nama = [nama[i] for i in order_list]
-    
     if nama[11] == "SE":
         nama[11] = 'Tenggara'
     if nama[11] == "N":
@@ -102,7 +101,7 @@ def harian_kecamatan(nama):
         nama[11] = 'Timur Laut'
     if nama[11] == "SW":
         nama[11] = 'Barat Daya'
-
+    nama[12] = round(nama[12])
     return nama
 
 ## Printing to Web
