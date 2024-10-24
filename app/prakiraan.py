@@ -88,7 +88,21 @@ def harian_kecamatan(nama):
     return nama
 
 ## Printing to Web
-table = PrettyTable(['Kecamatan', '00', '03', '06', '09', '12', '15', '18', '21', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan'])
+(a, b, c, d, e, f, g) = cuaca_gabungan_pagi("Bika")
+jam = []
+for i in range(len(b)):
+    jam.append(b[i][11]+b[i][12])
+
+jamm = ['Kecamatan', jam, 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan']
+jammm = []
+for i in jamm:
+    if type(i) == list:
+        for a in range(len(jam)):
+            jammm.append(jam[a])
+    else:
+        jammm.append(i)
+
+table = PrettyTable(jammm)
 for i in list_kecamatan:
     table.add_row(harian_kecamatan(i))
     
