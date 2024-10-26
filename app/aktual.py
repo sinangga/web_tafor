@@ -9,10 +9,11 @@ with tab1:
    r=requests.get(URL, headers={"X-API-KEY": "}Af*4TG=ZGp99sT",
                                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'})
    data = r.json()
-   print("Bandar Udara Pangsuma Kapuas Hulu")
-   print("Last METAR : ", data["last_observation"])
-   print("Last TAFOR : ", data["last_forecast"])
-   print("Produced by: BMKG")
+   st.write("Bandar Udara Pangsuma Kapuas Hulu")
+   st.write("Last METAR : ", data["last_observation"])
+   st.write("Last TAFOR : ", data["last_forecast"])
+   st.divider()
+   st.write("Produced by: BMKG Pangsuma Kapuas Hulu")
 
 with tab2:
    st.header("SATELIT")
