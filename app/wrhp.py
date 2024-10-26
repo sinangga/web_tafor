@@ -35,5 +35,5 @@ with tab3:
       components.iframe(iframe_src, height=750)
    # You can add height and width to the component of course.
 
-   if __name__ == "__main__":
-      run()
+   #if __name__ == "__main__":
+   run()
