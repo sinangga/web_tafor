@@ -30,4 +30,7 @@ with tab2:
 
 with tab3:
    st.header("RASON")
-   components.iframe("https://aviation.bmkg.go.id/monitoring_rason/index", height=500)
+   # embed streamlit docs in a streamlit app
+   components.iframe("https://example.com", height=500)
+   
+#components.iframe("https://aviation.bmkg.go.id/monitoring_rason/index", height=500)
