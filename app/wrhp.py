@@ -30,10 +30,4 @@ with tab2:
 
 with tab3:
    st.header("RASON")
-   def run():
-      iframe_src = "https://aviation.bmkg.go.id/monitoring_rason/index"
-      components.iframe(iframe_src, height=750)
-   # You can add height and width to the component of course.
-
-   #if __name__ == "__main__":
-   run()
+   components.iframe("https://aviation.bmkg.go.id/monitoring_rason/index", height=500)
