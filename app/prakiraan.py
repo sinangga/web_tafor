@@ -68,8 +68,8 @@ def cuaca_gabungan_pagi(n):
     minsuhu = min(suhu)
     maxrh = max(rh)
     minrh = min(rh)
-    suhu_akhir = str(maxsuhu) + "-" + str(minsuhu)
-    rh_akhir = str(maxrh) + "-" + str(minrh)
+    suhu_akhir = str(minsuhu) + "-" + str(maxsuhu)
+    rh_akhir = str(minrh) + "-" + str(maxrh)
     angin = max(angin)
     arah = statistics.mode(arah)
     return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah, angin
