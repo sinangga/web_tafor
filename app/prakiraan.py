@@ -150,7 +150,7 @@ headers = jammm #['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', '
 result_dicts = [dict(zip(headers, values)) for values in datacoba]
 
 # Define the local path for the icons
-base_path = "../../icon/"
+#base_path = "../../icon/"
 
 # Define the mapping of statuses to icons
 status_to_icon = {
@@ -168,7 +168,7 @@ for i in range(1,9):
 for entry in result_dicts:
     for key in time:
         if entry[key] in status_to_icon:
-            entry[key] = f'<img src="{base_path}{status_to_icon[entry[key]]}" width="20"/>'
+            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="20"/>'
 
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
