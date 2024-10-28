@@ -14,6 +14,7 @@ from branca.element import Figure
 import folium
 import folium.plugins as plugins
 from IPython.display import IFrame
+import altair as alt
 
 
 ### Main Code Down Here ###
@@ -140,7 +141,9 @@ table.align["Angin"]="l"
 
 
 # Load SHP data
-BorderAZ = gpd.read_file('Kapuas_Hulu.shp')
+KH_map = gpd.read_file('Kapuas_Hulu.shp')
+chart = alt.Chart(KH_map).mark_geoshape()
+
 
     
 ### End of Main Code ###
@@ -155,6 +158,7 @@ with tab1:
 
 with tab2:
     st.header("Kecamatan")
+    st.altair_chart(chart)
     # Display Map
-    BorderAZ.plot()
+    #BorderAZ.plot()
 
