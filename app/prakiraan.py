@@ -150,7 +150,7 @@ headers = jammm #['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', '
 result_dicts = [dict(zip(headers, values)) for values in datacoba]
 
 # Define the local path for the icons
-base_path = "../icon/"
+base_path = "../../icon/"
 
 # Define the mapping of statuses to icons
 status_to_icon = {
