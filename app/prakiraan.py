@@ -72,7 +72,7 @@ def cuaca_gabungan_pagi(n):
 datacoba = []
 for i in list_kecamatan:
     datacoba.append(cuaca_gabungan_pagi(i))
-headers = ['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan']
+headers = jammm #['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan']
 result_dicts = [dict(zip(headers, values)) for values in datacoba]
 
 # Define the local path for the icons
@@ -87,8 +87,11 @@ status_to_icon = {
 }
 
 # Loop through each dictionary and replace values in columns 2-9
+time = []
+for i in range(1,9):
+    time.append(jammm[i])
 for entry in result_dicts:
-    for key in ['12', '15', '18', '21', '00', '03', '06', '09']:
+    for key in time:
         if entry[key] in status_to_icon:
             entry[key] = f'<img src="{base_path}{status_to_icon[entry[key]]}" width="20"/>'
 
