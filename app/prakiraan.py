@@ -141,7 +141,7 @@ table.align["Angin"]="l"
 
 
 # Load SHP data
-KH_map = gpd.read_file('Kapuas_Hulu.shp')
+KH_map = gpd.read_file('https://github.com/sinangga/shp/raw/refs/heads/main/Kapuas_Hulu.shp')
 chart = alt.Chart(KH_map).mark_geoshape()
 
 
