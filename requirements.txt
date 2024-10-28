@@ -16,3 +16,4 @@ shapely
 branca
 folium
 IPython
+altair
