@@ -1,24 +1,9 @@
-import streamlit as st
 import urllib.request, json
 import requests
+import pandas as pd
 import statistics
 from prettytable import PrettyTable
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-#%matplotlib inline
-import geopandas as gpd
-from shapely.geometry import Polygon, Point, shape, mapping
-from shapely.ops import transform
-from branca.element import Figure
-import folium
-import folium.plugins as plugins
-from IPython.display import IFrame
-import altair as alt
-
-
-### Main Code Down Here ###
-###########################
+from IPython.core.display import display, HTML
 
 # Bypass Forbidden Status Code
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
@@ -80,8 +65,8 @@ def cuaca_gabungan_pagi(n):
     minsuhu = min(suhu)
     maxrh = max(rh)
     minrh = min(rh)
-    suhu_akhir = str(minsuhu) + "-" + str(maxsuhu)
-    rh_akhir = str(minrh) + "-" + str(maxrh)
+    suhu_akhir = str(maxsuhu) + "-" + str(minsuhu)
+    rh_akhir = str(maxrh) + "-" + str(minrh)
     angin = max(angin)
     arah = statistics.mode(arah)
     return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah, angin
@@ -136,29 +121,40 @@ table = PrettyTable(jammm)
 #table.title = "CUACA KABUPATEN KAPUAS HULU TANGGAL "+tanggal
 for i in list_kecamatan:
     table.add_row(harian_kecamatan(i))
-table.align["Kecamatan"]="l"
-table.align["Angin"]="l"
+table.align["Kecamatan"] = "l"
+#print(table)
 
 
-# Load SHP data
-KH_map = gpd.read_file('https://github.com/sinangga/shp/raw/refs/heads/main/Kapuas_Hulu.shp')
-chart = alt.Chart(KH_map).mark_geoshape()
+################################################################
+################################################################
+################################################################
 
+datacoba = []
+for i in list_kecamatan:
+    datacoba.append(harian_kecamatan(i))
+headers = ['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan']
+result_dicts = [dict(zip(headers, values)) for values in datacoba]
 
-    
-### End of Main Code ###
-########################
+# Define the local path for the icons
+base_path = "DATA/icon/"
 
+# Define the mapping of statuses to icons
+status_to_icon = {
+    'Cerah': 'cerah-am.ico',
+    'Hujan Ringan': 'hujan ringan-am.ico',
+    'Hujan Petir': 'hujan ringan-am.ico',
+    'Cerah Berawan': 'cerah berawan-am.ico',
+    # Add more mappings as necessary
+}
 
-tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
+# Loop through each dictionary and replace values in columns 2-9
+for entry in result_dicts:
+    for key in ['12', '15', '18', '21', '00', '03', '06', '09']:
+        if entry[key] in status_to_icon:
+            entry[key] = f'<img src="{base_path}{status_to_icon[entry[key]]}" width="20"/>'
 
-with tab1:
-    st.header("Kabupaten | Tanggal "+tanggal)
-    st.write(table)
+# Convert the updated results to a Pandas DataFrame
+df = pd.DataFrame(result_dicts)
 
-with tab2:
-    st.header("Kecamatan")
-    st.altair_chart(chart)
-    # Display Map
-    #BorderAZ.plot()
-
+# Display the DataFrame as HTML
+HTML(df.to_html(escape=False))
