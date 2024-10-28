@@ -11,3 +11,7 @@ Pillow
 requests
 prettytable
 statistics
+geopandas
+shapely
+branca
+folium
