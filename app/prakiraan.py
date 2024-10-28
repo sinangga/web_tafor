@@ -150,7 +150,7 @@ headers = jammm #['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', '
 result_dicts = [dict(zip(headers, values)) for values in datacoba]
 
 # Define the local path for the icons
-#base_path = "../../icon/"
+base_path = "..\icon\"
 
 # Define the mapping of statuses to icons
 status_to_icon = {
@@ -193,16 +193,7 @@ tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 with tab1:
     st.header("Kabupaten | Tanggal "+tanggal)
     #st.write(table)
-    # Display the DataFrame
-    for index, row in df.iterrows():
-        st.write(row['Kecamatan'])
-        st.image(row['12'], width=20)  # Show the icon for the weather status
-        st.image(row['15'], width=20)  # Show the icon for the weather status
-        st.write("Suhu:", row['Suhu'])
-        st.write("Kelembapan:", row['Kelembapan'])
-        st.write("Angin:", row['Angin'])
-        st.write("Kecepatan:", row['Kecepatan'])
-        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+    st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
 
 with tab2:
     st.header("Kecamatan")
