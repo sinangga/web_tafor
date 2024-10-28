@@ -140,7 +140,7 @@ table.align["Angin"]="l"
 
 
 # Load SHP data
-BorderAZ = gpd.read_file('DATA/shp/Kapuas_Hulu.shp')
+BorderAZ = gpd.read_file('../Kapuas_Hulu.shp')
 
     
 ### End of Main Code ###
