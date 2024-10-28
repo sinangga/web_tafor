@@ -154,10 +154,10 @@ result_dicts = [dict(zip(headers, values)) for values in datacoba]
 
 # Define the mapping of statuses to icons
 status_to_icon = {
-    'Cerah': 'cerah-am.ico',
-    'Hujan Ringan': 'hujan ringan-am.ico',
-    'Hujan Petir': 'hujan ringan-am.ico',
-    'Cerah Berawan': 'cerah berawan-am.ico',
+    'Cerah': 'cerah-am.png',
+    'Hujan Ringan': 'hujan ringan-am.png',
+    'Hujan Petir': 'hujan ringan-am.png',
+    'Cerah Berawan': 'cerah berawan-am.png',
     # Add more mappings as necessary
 }
 
