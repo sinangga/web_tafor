@@ -3,6 +3,17 @@ import urllib.request, json
 import requests
 import statistics
 from prettytable import PrettyTable
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+import geopandas as gpd
+from shapely.geometry import Polygon, Point, shape, mapping
+from shapely.ops import transform
+from branca.element import Figure
+import folium
+import folium.plugins as plugins
+from IPython.display import IFrame
 
 
 ### Main Code Down Here ###
@@ -127,6 +138,10 @@ for i in list_kecamatan:
 table.align["Kecamatan"]="l"
 table.align["Angin"]="l"
 
+
+# Load SHP data
+BorderAZ = gpd.read_file('DATA/shp/Kapuas_Hulu.shp')
+
     
 ### End of Main Code ###
 ########################
@@ -140,4 +155,6 @@ with tab1:
 
 with tab2:
     st.header("Kecamatan")
+    # Display Map
+    BorderAZ.plot()
 
