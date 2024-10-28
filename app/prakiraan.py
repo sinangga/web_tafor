@@ -6,7 +6,7 @@ from prettytable import PrettyTable
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-%matplotlib inline
+#%matplotlib inline
 import geopandas as gpd
 from shapely.geometry import Polygon, Point, shape, mapping
 from shapely.ops import transform
