@@ -194,9 +194,9 @@ chart = alt.Chart(KH_map).mark_geoshape()
 tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 
 with tab1:
-    tab3, tab4 = st.tabs(['Hari Pertama','Hari Kedua'])
+    tab3, tab4 = st.tabs([tanggal,'Hari Kedua'])
     with tab3:
-        st.header("Kabupaten | Tanggal "+tanggal)
+        #st.header("Kabupaten | Tanggal "+tanggal)
         st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
 
 with tab2:
