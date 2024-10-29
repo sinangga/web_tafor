@@ -162,6 +162,7 @@ status_to_icon = {
     'Hujan Sedang': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20sedang-am.png',
     'Kabut': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20kabut-am.png',
     'Udara Kabur': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur-am.png',
+    'Berawan': 'https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg'
 }
 
 # Loop through each dictionary and replace values in columns 2-9
