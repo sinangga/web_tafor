@@ -217,7 +217,7 @@ with tab1:
     tab3, tab4 = st.tabs([tanggal,'Hari Kedua'])
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        st.markdown(disp, unsafe_allow_html=True)
+        display(HTML(df.to_html(escape=False ,formatters=format_dict)))
 
 with tab2:
     st.header("Kecamatan")
