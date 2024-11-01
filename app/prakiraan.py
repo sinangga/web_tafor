@@ -14,6 +14,7 @@ from branca.element import Figure
 import folium
 import folium.plugins as plugins
 from IPython.display import IFrame
+from IPython.core.display import display, HTML
 import altair as alt
 
 
