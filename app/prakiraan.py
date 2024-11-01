@@ -166,6 +166,12 @@ status_to_icon = {
     'Berawan': 'https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg'
 }
 
+
+# convert your links to html tags 
+def path_to_image_html(path):
+    return '<img src="'+ path + '" width="20" >'
+
+
 # Loop through each dictionary and replace values in columns 2-9
 time = []
 for i in range(1,9):
@@ -173,13 +179,25 @@ for i in range(1,9):
 for entry in result_dicts:
     for key in time:
         if entry[key] in status_to_icon:
-            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="20"/>'
+            entry[key] = status_to_icon[entry[key]]
+
+
+image_cols = jam  #<- define which columns will be used to convert to html
+
+# Create the dictionariy to be passed as formatters
+format_dict = {}
+for image_col in image_cols:
+    format_dict[image_col] = path_to_image_html
 
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
 
+disp = display(HTML(df.to_html(escape=False ,formatters=format_dict)))
+
 # Display the DataFrame as HTML
-#display = HTML(df.to_html(escape=False))
+#displayy = HTML(df.style.hide().to_html(escape=False))
+#print('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
+#displayy
 
 #########################
 #########################
@@ -199,7 +217,7 @@ with tab1:
     tab3, tab4 = st.tabs([tanggal,'Hari Kedua'])
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        st.markdown(df.style.hide().to_html(escape=False), unsafe_allow_html=True)
+        st.markdown(disp, unsafe_allow_html=True)
 
 with tab2:
     st.header("Kecamatan")
