@@ -199,7 +199,7 @@ with tab1:
     tab3, tab4 = st.tabs([tanggal,'Hari Kedua'])
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+        st.markdown(df.style.hide().to_html(escape=False), unsafe_allow_html=True)
         st.download_button(
             label="Download data as HTML",
             data=display,
