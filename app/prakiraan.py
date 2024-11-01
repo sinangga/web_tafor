@@ -199,6 +199,12 @@ with tab1:
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
         st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
+        st.download_button(
+            label="Download data as HTML",
+            data=display,
+            file_name='output.html',
+            mime='text/html',
+        )
 
 with tab2:
     st.header("Kecamatan")
