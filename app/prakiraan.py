@@ -192,7 +192,7 @@ for image_col in image_cols:
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
 
-disp = display(HTML(df.to_html(escape=False ,formatters=format_dict)))
+#disp = display(HTML(df.to_html(escape=False ,formatters=format_dict)))
 
 # Display the DataFrame as HTML
 #displayy = HTML(df.style.hide().to_html(escape=False))
@@ -217,7 +217,7 @@ with tab1:
     tab3, tab4 = st.tabs([tanggal,'Hari Kedua'])
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        display(HTML(df.to_html(escape=False ,formatters=format_dict)))
+        st.markdown(display(HTML(df.to_html(escape=False ,formatters=format_dict))))
 
 with tab2:
     st.header("Kecamatan")
