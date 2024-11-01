@@ -178,7 +178,7 @@ for entry in result_dicts:
 df = pd.DataFrame(result_dicts)
 
 # Display the DataFrame as HTML
-#HTML(df.to_html(escape=False))
+display = HTML(df.to_html(escape=False))
 
 #########################
 #########################
@@ -199,7 +199,6 @@ with tab1:
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
         st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
-        display = df.to_html(escape=False), unsafe_allow_html=True
         st.download_button(
             label="Download data as HTML",
             data=display,
