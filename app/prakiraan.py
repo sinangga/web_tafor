@@ -204,7 +204,7 @@ with tab1:
             data=display,
             file_name='output.html',
             mime='text/html',
-        )
+            )
 
 with tab2:
     st.header("Kecamatan")
