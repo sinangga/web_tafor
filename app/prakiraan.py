@@ -196,10 +196,45 @@ chart = alt.Chart(KH_map).mark_geoshape()
 tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 
 with tab1:
-    tab3, tab4 = st.tabs([tanggal,'Hari Kedua'])
+    tab3, tab4, tab5 = st.tabs([tanggal,'Hari Kedua', 'Unduh Tabel'])
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
         st.markdown(df.style.hide().to_html(escape=False), unsafe_allow_html=True)
+    with tab5:
+                
+        # convert your links to html tags 
+        def path_to_image_html(path):
+            return '<img src="'+ path + '" width="20" >'
+        
+        
+        # Loop through each dictionary and replace values in columns 2-9
+        time = []
+        for i in range(1,9):
+            time.append(jammm[i])
+        for entry in result_dicts:
+            for key in time:
+                if entry[key] in status_to_icon:
+                    entry[key] = status_to_icon[entry[key]]
+        
+        
+        image_cols = jam  #<- define which columns will be used to convert to html
+        
+        # Create the dictionariy to be passed as formatters
+        format_dict = {}
+        for image_col in image_cols:
+            format_dict[image_col] = path_to_image_html
+        
+        # Convert the updated results to a Pandas DataFrame
+        df = pd.DataFrame(result_dicts)
+        
+        display(HTML(df.to_html(escape=False ,formatters=format_dict)))
+        
+        # Display the DataFrame as HTML
+        #displayy = HTML(df.style.hide().to_html(escape=False))
+        #print('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
+        #displayy
+        
+        #df.to_html('test_html.html', escape=False, formatters=format_dict)
 
 with tab2:
     st.header("Kecamatan")
