@@ -205,7 +205,7 @@ with tab1:
     with tab5:
         # convert your links to html tags 
         def path_to_image_html(path):
-            return '<img src="'+ path
+            return '<img src="'+ path + '" width="40" >'
         
         
         # Loop through each dictionary and replace values in columns 2-9
@@ -213,22 +213,22 @@ with tab1:
         for i in range(1,9):
             time.append(jammm[i])
         result_dicts2 = [dict(zip(headers, values)) for values in datacoba]
-        for entry in result_dicts2:
+        for entry2 in result_dicts2:
             for key in time:
-                if entry[key] in status_to_icon:
-                    entry[key] = status_to_icon[entry[key]]
+                if entry2[key] in status_to_icon:
+                    entry2[key] = status_to_icon[entry2[key]]
         
         
         image_cols = jam  #<- define which columns will be used to convert to html
         
         # Create the dictionariy to be passed as formatters
-        format_dict = {}
+        format_dict2 = {}
         for image_col in image_cols:
             format_dict[image_col] = path_to_image_html
         
         # Convert the updated results to a Pandas DataFrame
         df = pd.DataFrame(result_dicts)
-        dff = df.to_html(index = False, escape=False ,formatters=format_dict)
+        dff = df.to_html(index = False, escape=False ,formatters=format_dict2)
         disp = HTML(dff)
         
         
