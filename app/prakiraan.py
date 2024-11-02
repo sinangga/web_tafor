@@ -224,11 +224,11 @@ with tab1:
         # Create the dictionariy to be passed as formatters
         format_dict2 = {}
         for image_col in image_cols:
-            format_dict[image_col] = path_to_image_html
+            format_dict2[image_col] = path_to_image_html
         
         # Convert the updated results to a Pandas DataFrame
-        df = pd.DataFrame(result_dicts)
-        dff = df.to_html(index = False, escape=False ,formatters=format_dict2)
+        df2 = pd.DataFrame(result_dicts2)
+        dff = df2.to_html(index = False, escape=False ,formatters=format_dict2)
         disp = HTML(dff)
         
         
