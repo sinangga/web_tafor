@@ -230,7 +230,7 @@ with tab1:
         dff = df.to_html(index = False, escape=False ,formatters=format_dict)
         disp = HTML(dff)
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
-        st.markdown(df.to_html(index=False, escape=False ,formatters=format_dict), unsafe_allow_html=True)
+        st.markdown(df.to_html(index=False, escape=False ,formatters=format_dict), unsafe_allow_html=False)
         
         #df.to_html(escape=False ,formatters=format_dict)
         # Display the DataFrame as HTML
