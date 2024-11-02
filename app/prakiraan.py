@@ -174,7 +174,7 @@ for i in range(1,9):
 for entry in result_dicts:
     for key in time:
         if entry[key] in status_to_icon:
-            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="20"/>'
+            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="40"/>'
 
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
@@ -200,7 +200,7 @@ with tab1:
     tab3, tab4, tab5 = st.tabs([tanggal,'Hari Kedua', 'Unduh Tabel'])
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        st.markdown(df.style.hide().to_html(escape=False), unsafe_allow_html=True)
+        st.markdown(df.to_html(index = False, escape=False, unsafe_allow_html=True)
     with tab5:
                 
         # convert your links to html tags 
@@ -228,7 +228,8 @@ with tab1:
         # Convert the updated results to a Pandas DataFrame
         df = pd.DataFrame(result_dicts)
         
-        st.markdown(df.to_html(escape=False ,formatters=format_dict))
+        html = st.markdown(df.to_html(escape=False ,formatters=format_dict))
+        
         
         # Display the DataFrame as HTML
         #displayy = HTML(df.style.hide().to_html(escape=False))
