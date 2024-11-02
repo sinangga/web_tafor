@@ -226,8 +226,25 @@ with tab1:
             format_dict[image_col] = path_to_image_html
         
         # Convert the updated results to a Pandas DataFrame
+        df = pd.DataFrame(result_dicts)
+        dff = df.to_html(index = False, escape=False ,formatters=format_dict)
+        disp = HTML(dff)
+        
+        
+        #df.to_html(escape=False ,formatters=format_dict)
+        # Display the DataFrame as HTML
+        #displayy = HTML(df.style.hide().to_html(escape=False))
+        #print('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
+        #displayy
+        
+        #df.to_html('test_html.html', escape=False, formatters=format_dict)
+        
+        #HTML(df.to_html(index=False, escape=False ,formatters=format_dict))
+        #disp
+        
+        # Convert the updated results to a Pandas DataFrame
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
-        st.markdown(df.to_html(index=False, escape=False ,formatters=format_dict), unsafe_allow_html=True)
+        st.markdown(dff, unsafe_allow_html=True)
         
         #df.to_html(escape=False ,formatters=format_dict)
         # Display the DataFrame as HTML
