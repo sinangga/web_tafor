@@ -244,7 +244,7 @@ with tab1:
         
         # Convert the updated results to a Pandas DataFrame
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
-        st.markdown(dff, unsafe_allow_html=True)
+        st.html(dff, unsafe_allow_html=True)
         
         #df.to_html(escape=False ,formatters=format_dict)
         # Display the DataFrame as HTML
