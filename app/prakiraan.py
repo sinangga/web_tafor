@@ -234,65 +234,43 @@ with tab1:
 
         htmlcode = """
             <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>BMKG Logo</title>
-            <style>
-                body {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100vh;
-                    background-color: #f0f0f0;
-                    font-family: Arial, sans-serif;
-                }
-                .logo-container {
-                    display: flex;
-                    align-items: center;
-                    background-color: white;
-                    border-radius: 8px;
-                    padding: 20px;
-                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                }
-                .logo {
-                    width: 60px;
-                    height: 60px;
-                    background-color: #007BFF;
-                    color: white;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 24px;
-                    font-weight: bold;
-                    border-radius: 50%;
-                    margin-right: 15px;
-                }
-                .text {
-                    line-height: 1.2;
-                }
-                .text h1 {
-                    font-size: 24px;
-                    margin: 0;
-                    color: #333;
-                }
-                .text p {
-                    margin: 0;
-                    color: #555;
-                    font-size: 14px;
-                }
-            </style>
-        </head>
-        <body>
-        
-        <div class="logo-container">
-            <div class="logo">BMKG</div>
-            <div class="text">
-                <h1>Stasiun Meteorologi Pangsuma Kapuas Hulu</h1>
-                <p>BMKG - Badan Meteorologi, Klimatologi, dan Geofisika</p>
-            </div>
-        </div>
-        
-        </body>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>BMKG Logo</title>
+                <style>
+                    body {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                        background-color: #f0f0f0;
+                        font-family: Arial, sans-serif;
+                    }
+                    .logo-container {
+                        display: flex;
+                        align-items: center;
+                    }
+                    .logo {
+                        width: 100px; /* Adjust size as needed */
+                        height: auto;
+                    }
+                    .text {
+                        margin-left: 20px;
+                        font-size: 20px;
+                        color: #333;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="logo-container">
+                    <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
+                    <div class="text">
+                        Stasiun Meteorologi Pangsuma Kapuas Hulu
+                    </div>
+                </div>
+            </body>
+            </html>
+
         """
 
         
