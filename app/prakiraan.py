@@ -203,19 +203,6 @@ with tab1:
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
         st.markdown(df.to_html(index = False, escape=False), unsafe_allow_html=True)
     with tab5:
-        # Define the mapping of statuses to icons
-        status_to_icon = {
-            'Cerah': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah-am.png',
-            'Hujan Ringan': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20ringan-am.png',
-            'Hujan Petir': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png',
-            'Petir': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png',
-            'Cerah Berawan': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah%20berawan-am.png',
-            'Hujan Lebat': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20lebat-am.png',
-            'Hujan Sedang': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20sedang-am.png',
-            'Kabut/Asap': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/kabut-am.png',
-            'Udara Kabur': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png',
-            'Berawan': 'https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg'
-        }
         # convert your links to html tags 
         def path_to_image_html(path):
             return '<img src="'+ path + '" width="40" >'
@@ -239,9 +226,6 @@ with tab1:
             format_dict[image_col] = path_to_image_html
         
         # Convert the updated results to a Pandas DataFrame
-        df = pd.DataFrame(result_dicts)
-        dff = df.to_html(index = False, escape=False ,formatters=format_dict)
-        disp = HTML(dff)
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
         st.markdown(df.to_html(index=False, escape=False ,formatters=format_dict), unsafe_allow_html=True)
         
