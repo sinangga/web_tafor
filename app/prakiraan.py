@@ -120,6 +120,7 @@ def harian_kecamatan(nama):
 ## Printing to Web
 (a, b, c, d, e, f, g) = cuaca_gabungan_pagi("Bika")
 tanggal = b[0][8]+b[0][9]+str("/")+b[0][5]+b[0][6]+str("/")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
+tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
 jam = []
 for i in range(len(b)):
     jam.append(b[i][11]+b[i][12])
@@ -230,18 +231,7 @@ with tab1:
         df2 = pd.DataFrame(result_dicts2)
         dff = df2.to_html(index = False, escape=False ,formatters=format_dict2)
         disp = HTML(dff)
-        
-        
-        #df.to_html(escape=False ,formatters=format_dict)
-        # Display the DataFrame as HTML
-        #displayy = HTML(df.style.hide().to_html(escape=False))
-        #print('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
-        #displayy
-        
-        #df.to_html('test_html.html', escape=False, formatters=format_dict)
-        
-        #HTML(df.to_html(index=False, escape=False ,formatters=format_dict))
-        #disp
+
         htmlcode = """
             <head>
             <meta charset="UTF-8">
@@ -307,9 +297,6 @@ with tab1:
 
         
         st.markdown(htmlcode, unsafe_allow_html=True)
-        # Convert the updated results to a Pandas DataFrame
-        st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
-        tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
         st.markdown(dff, unsafe_allow_html=True)
         st.markdown('Tanggal Analisis'+tanalisis)
         #df.to_html(escape=False ,formatters=format_dict)
