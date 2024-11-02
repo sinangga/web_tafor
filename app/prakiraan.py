@@ -174,7 +174,7 @@ for i in range(1,9):
 for entry in result_dicts:
     for key in time:
         if entry[key] in status_to_icon:
-            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="70"/>'
+            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="70">'
 
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
