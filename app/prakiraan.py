@@ -212,7 +212,8 @@ with tab1:
         time = []
         for i in range(1,9):
             time.append(jammm[i])
-        for entry in result_dicts:
+        result_dicts2 = [dict(zip(headers, values)) for values in datacoba]
+        for entry in result_dicts2:
             for key in time:
                 if entry[key] in status_to_icon:
                     entry[key] = status_to_icon[entry[key]]
