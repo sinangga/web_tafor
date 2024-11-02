@@ -242,7 +242,71 @@ with tab1:
         
         #HTML(df.to_html(index=False, escape=False ,formatters=format_dict))
         #disp
+        htmlcode = """
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>BMKG Logo</title>
+            <style>
+                body {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100vh;
+                    background-color: #f0f0f0;
+                    font-family: Arial, sans-serif;
+                }
+                .logo-container {
+                    display: flex;
+                    align-items: center;
+                    background-color: white;
+                    border-radius: 8px;
+                    padding: 20px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                }
+                .logo {
+                    width: 60px;
+                    height: 60px;
+                    background-color: #007BFF;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                    font-weight: bold;
+                    border-radius: 50%;
+                    margin-right: 15px;
+                }
+                .text {
+                    line-height: 1.2;
+                }
+                .text h1 {
+                    font-size: 24px;
+                    margin: 0;
+                    color: #333;
+                }
+                .text p {
+                    margin: 0;
+                    color: #555;
+                    font-size: 14px;
+                }
+            </style>
+        </head>
+        <body>
         
+        <div class="logo-container">
+            <div class="logo">BMKG</div>
+            <div class="text">
+                <h1>Stasiun Meteorologi Pangsuma Kapuas Hulu</h1>
+                <p>BMKG - Badan Meteorologi, Klimatologi, dan Geofisika</p>
+            </div>
+        </div>
+        
+        </body>
+        """
+
+        
+        st.markdown(htmlcode, unsafe_allow_html=True)
         # Convert the updated results to a Pandas DataFrame
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
         tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
