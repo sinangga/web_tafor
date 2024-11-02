@@ -124,7 +124,7 @@ jam = []
 for i in range(len(b)):
     jam.append(b[i][11]+b[i][12])
 
-jamm = ['Kecamatan', jam, 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan']
+jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN', 'KECEPATAN']
 jammm = []
 for i in jamm:
     if type(i) == list:
@@ -228,7 +228,7 @@ with tab1:
         # Convert the updated results to a Pandas DataFrame
         df = pd.DataFrame(result_dicts)
         
-        display(HTML(df.to_html(escape=False ,formatters=format_dict)))
+        st.markdown(df.to_html(escape=False ,formatters=format_dict))
         
         # Display the DataFrame as HTML
         #displayy = HTML(df.style.hide().to_html(escape=False))
