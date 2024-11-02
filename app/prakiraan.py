@@ -233,44 +233,54 @@ with tab1:
         disp = HTML(dff)
 
         htmlcode = """
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>BMKG Logo</title>
-                <style>
-                    body {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100vh;
-                        background-color: #f0f0f0;
-                        font-family: Arial, sans-serif;
-                    }
-                    .logo-container {
-                        display: flex;
-                        align-items: center;
-                    }
-                    .logo {
-                        width: 100px; /* Adjust size as needed */
-                        height: auto;
-                    }
-                    .text {
-                        margin-left: 20px;
-                        font-size: 20px;
-                        color: #333;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="logo-container">
-                    <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
-                    <div class="text">
-                        Stasiun Meteorologi Pangsuma Kapuas Hulu
-                    </div>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>BMKG Logo</title>
+            <style>
+                body {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100vh;
+                    background-color: #f0f0f0;
+                    margin: 0;
+                }
+                .logo-container {
+                    display: flex;
+                    flex-direction: column; /* Stack items vertically */
+                    align-items: center;
+                    background-color: #ffffff; /* White background */
+                    padding: 20px; /* Space around the content */
+                    border-radius: 8px; /* Rounded corners */
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+                }
+                .logo {
+                    width: 100px; /* Adjust size as needed */
+                    height: auto;
+                }
+                .main-text {
+                    font-size: 20px;
+                    color: #333;
+                    margin: 10px 0; /* Space around the text */
+                }
+                .sub-text {
+                    font-size: 16px; /* Slightly smaller font size */
+                    color: #666; /* Darker gray for the subtitle */
+                }
+            </style>
+        </head>
+        <body>
+            <div class="logo-container">
+                <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
+                <div class="main-text">
+                    Stasiun Meteorologi Pangsuma Kapuas Hulu
                 </div>
-            </body>
-            </html>
-
+                <div class="sub-text">
+                    Prakiraan Cuaca Kabupaten Kapuas Hulu
+                </div>
+            </div>
+        </body>
         """
 
         
