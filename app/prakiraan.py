@@ -231,7 +231,8 @@ with tab1:
         df2 = pd.DataFrame(result_dicts2)
         dff = df2.to_html(index = False, escape=False ,formatters=format_dict2)
         disp = HTML(dff)
-
+        htmlcode2 = df.to_html(index=False, escape=False ,formatters=format_dict)
+        htmlcode3 = 'Tanggal Analisis : '+str(df_kh[0]['cuaca'][0][0]['analysis_date'])
         htmlcode = """
         <head>
             <meta charset="UTF-8">
@@ -266,7 +267,7 @@ with tab1:
                 }
                 .sub-text {
                     font-size: 16px; /* Slightly smaller font size */
-                    color: #666; /* Darker gray for the subtitle */
+                    color: #333; /* Darker gray for the subtitle */
                 }
             </style>
         </head>
@@ -278,7 +279,7 @@ with tab1:
                 </div>
                 <div class="sub-text">
                     Prakiraan Cuaca Kabupaten Kapuas Hulu
-                </div>
+                </div>"""+ htmlcode2 + htmlcode3 +"""
             </div>
         </body>
         """
