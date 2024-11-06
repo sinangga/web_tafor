@@ -246,10 +246,8 @@ with tab1:
                     margin: 0;
                 }
                 .logo-container {
-                    display: flex;
-                    flex-direction: column; /* Stack items vertically */
                     align-items: center;
-                    background-color: #ffffff; /* White background */
+                    background-color: blue; /* White background */
                     padding: 20px; /* Space around the content */
                     border-radius: 8px; /* Rounded corners */
                     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -267,6 +265,18 @@ with tab1:
                 .sub-text {
                     font-size: 16px; /* Slightly smaller font size */
                     color: #333; /* Darker gray for the subtitle */
+                }
+                hr.gradient {
+                    height: 6px;
+                    border: none;
+                    border-radius: 6px;
+                    background: linear-gradient(
+                        90deg,
+                        rgba(13, 8, 96, 1) 0%,
+                        rgba(9, 9, 121, 1) 11%,
+                        rgba(6, 84, 170, 1) 31%,
+                        rgba(0, 255, 113, 1) 100%
+                    );
                 }
             </style>
         </head>
