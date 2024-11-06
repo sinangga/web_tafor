@@ -229,9 +229,7 @@ with tab1:
         
         # Convert the updated results to a Pandas DataFrame
         df2 = pd.DataFrame(result_dicts2)
-        dff = df2.to_html(index = False, escape=False ,formatters=format_dict2)
-        disp = HTML(dff)
-        htmlcode2 = df.to_html(index=False, escape=False ,formatters=format_dict)
+        htmlcode2 = df2.to_html(index = False, escape=False ,formatters=format_dict2)
         htmlcode3 = 'Tanggal Analisis : '+str(df_kh[0]['cuaca'][0][0]['analysis_date'])
         htmlcode = """
         <head>
@@ -286,8 +284,8 @@ with tab1:
 
         
         st.markdown(htmlcode, unsafe_allow_html=True)
-        st.markdown(dff, unsafe_allow_html=True)
-        st.markdown('Tanggal Analisis'+tanalisis)
+        #st.markdown(dff, unsafe_allow_html=True)
+        #st.markdown('Tanggal Analisis'+tanalisis)
         #df.to_html(escape=False ,formatters=format_dict)
         # Display the DataFrame as HTML
 
