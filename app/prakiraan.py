@@ -245,13 +245,6 @@ with tab1:
                     background-color: #f0f0f0;
                     margin: 0;
                 }
-                tabel {
-                    display: flex;
-                    align-items: center
-                    justify-content: center;
-                    background-color: #c1efff;
-                    color: black
-                }
                 .logo-container {
                     display: flex;
                     align-items: center;
@@ -297,8 +290,7 @@ with tab1:
                 </div>
                 <div class="sub-text">
                     Prakiraan Cuaca Kabupaten Kapuas Hulu
-                </div>
-                <div class="tabel"> """+ htmlcode2 + """</div>
+                </div>"""+ htmlcode2 +"""
                 <div class="sub-text>"""+htmlcode3 + """</div>
             </div>
         </body>
