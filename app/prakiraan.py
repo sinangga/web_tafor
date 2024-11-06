@@ -253,6 +253,7 @@ with tab1:
                     padding: 20px; /* Space around the content */
                     border-radius: 8px; /* Rounded corners */
                     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+                    color: #333
                 }
                 .logo {
                     width: 100px; /* Adjust size as needed */
