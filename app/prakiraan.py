@@ -286,7 +286,6 @@ with tab1:
                 <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
                 <div class="main-text">
                     Stasiun Meteorologi Pangsuma Kapuas Hulu
-                    <hr class="gradient">
                 </div>
                 <div class="sub-text">
                     Prakiraan Cuaca Kabupaten Kapuas Hulu
