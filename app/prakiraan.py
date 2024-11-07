@@ -246,14 +246,20 @@ with tab1:
                         margin: 0;
                     }
                     tabel {
-                        display: flex;
-                        align-items: center
-                        justify-content: center;
-                        background-color: #c1efff;
-                        color: black;
+                        width: 100%;
+                        /*border-collapse: collapse; /* Merge borders for a cleaner look */
+                        margin: 20px 0; /* Adds space above and below table */
+                        font-family: Arial, sans-serif;
                     }
-                    th, td {
-                        border: 4px solid black;
+                    th {
+                        background-color: blue;
+                        text-align: center;
+                        color: white;
+                        padding: 12px
+                    }
+                    td {
+                        text-align: center;
+                        padding: 12px;
                     }
                     footnote {
                         color: grey;
