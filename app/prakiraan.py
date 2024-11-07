@@ -232,80 +232,82 @@ with tab1:
         htmlcode2 = df2.to_html(index = False, escape=False ,formatters=format_dict2)
         htmlcode3 = 'Tanggal Analisis : '+str(df_kh[0]['cuaca'][0][0]['analysis_date'])
         htmlcode = """
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>BMKG Logo</title>
-                    <style>
-                        body {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            height: 100vh;
-                            background-color: ##c1efff;
-                            margin: 0;
-                        }
-                        tabel {
-                            display: flex;
-                            align-items: center
-                            justify-content: center;
-                            background-color: #c1efff;
-                            color: black
-                        }
-                        .logo-container {
-                            display: flex;
-                            flex-direction: column; /* Stack items vertically */
-                            align-items: center;
-                            background-color: ##c1efff; /* White background */
-                            padding: 20px; /* Space around the content */
-                            border-radius: 8px; /* Rounded corners */
-                            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-                            color: black
-                        }
-                        .logo {
-                            width: 100px; /* Adjust size as needed */
-                            height: auto;
-                        }
-                        .main-text {
-                            font-size: 20px;
-                            color: #333;
-                            margin: 10px 0; /* Space around the text */
-                        }
-                        .sub-text {
-                            font-size: 16px; /* Slightly smaller font size */
-                            color: #333; /* Darker gray for the subtitle */
-                        }
-                        hr.gradient {
-                            height: 3px;
-                            border: none;
-                            border-radius: 6px;
-                            background: linear-gradient(
-                                90deg,
-                                rgba(13, 8, 96, 1) 0%,
-                                rgba(9, 9, 121, 1) 11%,
-                                rgba(6, 84, 170, 1) 31%,
-                                rgba(0, 255, 113, 1) 100%
-                            );
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="logo-container">
-                        <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
-                        <div class="main-text">
-                            Stasiun Meteorologi Pangsuma Kapuas Hulu
-                        </div>
-                        <div class="sub-text">
-                            Prakiraan Cuaca Kabupaten Kapuas Hulu
-                            <hr class="gradient">
-                        </div>
-                        <div class="tabel">
-                            """ + htmlcode2+"""
-                        </div>
-                        """ + htmlcode3+"""
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>BMKG Logo</title>
+                <style>
+                    body {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                        background-color: ##c1efff;
+                        margin: 0;
+                    }
+                    tabel {
+                        display: flex;
+                        align-items: center
+                        justify-content: center;
+                        background-color: #c1efff;
+                        color: black;
+                    }
+                    th, td {
+                        border: 1px solid black;
+                    }
+                    .logo-container {
+                        display: flex;
+                        flex-direction: column; /* Stack items vertically */
+                        align-items: center;
+                        background-color: #c1efff; /* White background */
+                        padding: 20px; /* Space around the content */
+                        border-radius: 8px; /* Rounded corners */
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+                        color: black
+                    }
+                    .logo {
+                        width: 100px; /* Adjust size as needed */
+                        height: auto;
+                    }
+                    .main-text {
+                        font-size: 20px;
+                        color: black;
+                        margin: 10px 0; /* Space around the text */
+                    }
+                    .sub-text {
+                        font-size: 16px; /* Slightly smaller font size */
+                        color: black; /* Darker gray for the subtitle */
+                    }
+                    hr.gradient {
+                        height: 3px;
+                        border: none;
+                        border-radius: 6px;
+                        background: linear-gradient(
+                            90deg,
+                            rgba(13, 8, 96, 1) 0%,
+                            rgba(9, 9, 121, 1) 11%,
+                            rgba(6, 84, 170, 1) 31%,
+                            rgba(0, 255, 113, 1) 100%
+                        );
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="logo-container">
+                    <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
+                    <div class="main-text">
+                        Stasiun Meteorologi Pangsuma Kapuas Hulu
                     </div>
-                </body>
-                """
+                    <div class="sub-text">
+                        Prakiraan Cuaca Kabupaten Kapuas Hulu
+                        <hr class="gradient">
+                    </div>
+                    <tabel>
+                        """ + htmlcode2+"""
+                    </tabel>
+                </div>
+            </body>
+            """
 
         
         st.markdown(htmlcode, unsafe_allow_html=True)
