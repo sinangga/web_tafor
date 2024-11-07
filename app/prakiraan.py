@@ -253,7 +253,11 @@ with tab1:
                         color: black;
                     }
                     th, td {
-                        border: 1px solid black;
+                        border: 4px solid black;
+                    }
+                    footnote {
+                        color: grey;
+                        align-items: left;
                     }
                     .logo-container {
                         display: flex;
@@ -303,8 +307,11 @@ with tab1:
                         <hr class="gradient">
                     </div>
                     <tabel>
-                        """ + htmlcode2+"""
+                        """ + htmlcode2 + """
                     </tabel>
+                    <footnote>
+                        """ + htmlcode3 + """
+                    </footnote>
                 </div>
             </body>
             """
