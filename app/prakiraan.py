@@ -245,25 +245,23 @@ with tab1:
                         background-color: ##c1efff;
                         margin: 0;
                     }
-                    tabel {
-                        width: 100%;
-                        /*border-collapse: collapse; /* Merge borders for a cleaner look */
-                        margin: 20px 0; /* Adds space above and below table */
-                        font-family: Arial, sans-serif;
+                    table {
+                        align-items: center
+                        justify-content: center;
+                        background-color: #c1efff;
+                        color: black;
                     }
                     th {
                         background-color: blue;
-                        text-align: center;
                         color: white;
-                        padding: 12px
+                        pading: 10px;
                     }
                     td {
                         text-align: center;
-                        padding: 12px;
                     }
-                    footnote {
+                    .footnote {
                         color: grey;
-                        align-items: left;
+                        text-align: left;
                     }
                     .logo-container {
                         display: flex;
@@ -312,16 +310,13 @@ with tab1:
                         Prakiraan Cuaca Kabupaten Kapuas Hulu
                         <hr class="gradient">
                     </div>
-                    <tabel>
                         """ + htmlcode2 + """
-                    </tabel>
-                    <footnote>
+                    <div class="footnote">
                         """ + htmlcode3 + """
-                    </footnote>
+                    </div>
                 </div>
             </body>
             """
-
         
         st.markdown(htmlcode, unsafe_allow_html=True)
         #st.markdown(dff, unsafe_allow_html=True)
