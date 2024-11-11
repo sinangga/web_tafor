@@ -16,7 +16,7 @@ import folium.plugins as plugins
 from IPython.display import IFrame
 from IPython.core.display import display, HTML
 import altair as alt
-from html2image import Html2Image
+from html2image import Html2Image as hti
 
 
 ### Main Code Down Here ###
