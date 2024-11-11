@@ -17,3 +17,5 @@ branca
 folium
 IPython
 altair
+html2image
+io
