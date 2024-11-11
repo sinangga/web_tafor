@@ -321,6 +321,21 @@ with tab1:
             """
         
         st.markdown(htmlcode, unsafe_allow_html=True)
+        # Generate the image from HTML content
+        hti.screenshot(html_str=htmlcode, save_as="page_image.png")
+        # Load the generated image for download
+        with open("page_image.png", "rb") as img_file:
+            img_data = img_file.read()
+        
+        # Create a download button for the image in Streamlit
+        st.download_button(
+            label="Download Page as Image",
+            data=img_data,
+            file_name="page_image.png",
+            mime="image/png"
+        )
+        
+        st.image("page_image.png", caption="Captured HTML Page as Image", use_column_width=True)
         #st.markdown(dff, unsafe_allow_html=True)
         #st.markdown('Tanggal Analisis'+tanalisis)
         #df.to_html(escape=False ,formatters=format_dict)
