@@ -338,7 +338,8 @@ with tab1:
         chrome_options.add_argument("--disable-dev-shm-usage")  # To avoid issues in low-memory environments
         
         # Create the WebDriver using the specified path
-        service = Service(chromedriver_path)
+        #service = Service(chromedriver_path)
+        service = Service(ChromeDriverManager(version="114.0.5735.90").install())
         driver = webdriver.Chrome(service=service, options=chrome_options)
 
         # Function to capture HTML as an image and save as a file
