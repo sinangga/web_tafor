@@ -343,7 +343,9 @@ with tab1:
             # Specify path to your ChromeDriver if necessary, e.g., executable_path="/path/to/chromedriver"
             driver = webdriver.Chrome(options=chrome_options)
             return driver
-        
+        # Initialize WebDriver (cached)
+        driver = init_webdriver()
+
         # Function to capture HTML as an image and save as a file
         def capture_html_as_image(html_content, file_name="page_image.png"):
             # Save HTML content to a temporary file
