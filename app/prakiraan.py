@@ -361,7 +361,7 @@ with tab1:
             return file_name
         
         # Capture the HTML content as an image and save it to a file
-        image_file = capture_html_as_image(html_code)
+        image_file = capture_html_as_image(htmlcode)
         
         # Display the image in Streamlit
         #st.image(image_file, caption="Captured HTML Page as Image", use_column_width=True)
