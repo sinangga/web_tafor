@@ -18,5 +18,4 @@ folium
 IPython
 altair
 html2image
-time
 selenium
