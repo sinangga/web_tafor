@@ -18,5 +18,5 @@ folium
 IPython
 altair
 html2image
-selenium
+selenium==4.9.1
 webdriver-manager
