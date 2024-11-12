@@ -16,7 +16,7 @@ import folium.plugins as plugins
 from IPython.display import IFrame
 from IPython.core.display import display, HTML
 import altair as alt
-from html2image import Html2Image as hti
+from html2image import Html2Image
 
 
 ### Main Code Down Here ###
@@ -323,6 +323,7 @@ with tab1:
         
         st.markdown(htmlcode, unsafe_allow_html=True)
         # Generate the image from HTML content
+        hti = Html2Image()
         hti.screenshot(html_str=htmlcode, save_as="page_image.png")
         # Load the generated image for download
         with open("page_image.png", "rb") as img_file:
@@ -330,13 +331,13 @@ with tab1:
         
         # Create a download button for the image in Streamlit
         st.download_button(
-            label="Download Page as Image",
+            label="Download",
             data=img_data,
             file_name="page_image.png",
             mime="image/png"
         )
         
-        st.image("page_image.png", caption="Captured HTML Page as Image", use_column_width=True)
+        #st.image("page_image.png", caption="Captured HTML Page as Image", use_column_width=True)
         #st.markdown(dff, unsafe_allow_html=True)
         #st.markdown('Tanggal Analisis'+tanalisis)
         #df.to_html(escape=False ,formatters=format_dict)
