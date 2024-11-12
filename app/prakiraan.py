@@ -336,7 +336,7 @@ with tab1:
             
             # Specify path to your ChromeDriver if necessary, e.g., executable_path="/path/to/chromedriver"
             #https://github.com/sinangga/web_tafor/raw/refs/heads/main/app/chromedriver
-            driver = webdriver.Chrome(executable_path="/mount/src/web_tafor/app/chromedriver", options=chrome_options)
+            #driver = webdriver.Chrome(executable_path="/mount/src/web_tafor/app/chromedriver", options=chrome_options)
             return driver
         # Initialize WebDriver (cached)
         driver = init_webdriver()
