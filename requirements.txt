@@ -19,3 +19,4 @@ IPython
 altair
 html2image
 selenium
+webdriver-manager
