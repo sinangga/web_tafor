@@ -332,8 +332,17 @@ with tab1:
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         
-        # Initialize WebDriver
-        driver = webdriver.Chrome(options=chrome_options)
+        # Function to initialize WebDriver
+        @st.cache_resource  # Cache the WebDriver to avoid reinitialization
+        def init_webdriver():
+            chrome_options = Options()
+            chrome_options.add_argument("--headless")  # Run Chrome in headless mode
+            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+            
+            # Specify path to your ChromeDriver if necessary, e.g., executable_path="/path/to/chromedriver"
+            driver = webdriver.Chrome(options=chrome_options)
+            return driver
         
         # Function to capture HTML as an image and save as a file
         def capture_html_as_image(html_content, file_name="page_image.png"):
