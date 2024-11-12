@@ -20,6 +20,7 @@ from html2image import Html2Image
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 ### Main Code Down Here ###
@@ -336,6 +337,8 @@ with tab1:
             
             # Specify path to your ChromeDriver if necessary, e.g., executable_path="/path/to/chromedriver"
             #https://github.com/sinangga/web_tafor/raw/refs/heads/main/app/chromedriver
+            # Setup ChromeDriver using WebDriver Manager to handle versioning
+            driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
             #driver = webdriver.Chrome(executable_path="/mount/src/web_tafor/app/chromedriver", options=chrome_options)
             return driver
         # Initialize WebDriver (cached)
