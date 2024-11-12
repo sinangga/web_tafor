@@ -18,6 +18,6 @@ folium
 IPython
 altair
 html2image
-BytesIO
+io
 time
 selenium
