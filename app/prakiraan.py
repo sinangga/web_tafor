@@ -328,21 +328,16 @@ with tab1:
         st.markdown(htmlcode, unsafe_allow_html=True)
         
         # Function to initialize WebDriver
-        @st.cache_resource  # Cache the WebDriver to avoid reinitialization
-        def init_webdriver():
-            chrome_options = Options()
-            chrome_options.add_argument("--headless")  # Run Chrome in headless mode
-            chrome_options.add_argument("--no-sandbox")
-            chrome_options.add_argument("--disable-dev-shm-usage")
-            
-            # Specify path to your ChromeDriver if necessary, e.g., executable_path="/path/to/chromedriver"
-            #https://github.com/sinangga/web_tafor/raw/refs/heads/main/app/chromedriver
-            # Setup ChromeDriver using WebDriver Manager to handle versioning
-            driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-            #driver = webdriver.Chrome(executable_path="/mount/src/web_tafor/app/chromedriver", options=chrome_options)
-            return driver
+        # Set up headless Chrome options for Selenium
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")  # Make it headless
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        
+        # Set up WebDriver
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
         # Initialize WebDriver (cached)
-        driver = init_webdriver()
+        # driver = init_webdriver()
 
         # Function to capture HTML as an image and save as a file
         def capture_html_as_image(html_content, file_name="page_image.png"):
