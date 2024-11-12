@@ -327,17 +327,18 @@ with tab1:
         
         st.markdown(htmlcode, unsafe_allow_html=True)
         
-        # Function to initialize WebDriver
-        # Set up headless Chrome options for Selenium
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")  # Make it headless
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
+        # Set path to chromedriver
+        chromedriver_path = "/mount/src/web_tafor/app/chromedriver"
         
-        # Set up WebDriver
-        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-        # Initialize WebDriver (cached)
-        # driver = init_webdriver()
+        # Set Chrome options for headless browsing
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")  # Runs Chrome in headless mode
+        chrome_options.add_argument("--no-sandbox")  # Useful for running in Docker or cloud environments
+        chrome_options.add_argument("--disable-dev-shm-usage")  # To avoid issues in low-memory environments
+        
+        # Create the WebDriver using the specified path
+        service = Service(chromedriver_path)
+        driver = webdriver.Chrome(service=service, options=chrome_options)
 
         # Function to capture HTML as an image and save as a file
         def capture_html_as_image(html_content, file_name="page_image.png"):
