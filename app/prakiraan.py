@@ -17,6 +17,9 @@ from IPython.display import IFrame
 from IPython.core.display import display, HTML
 import altair as alt
 from html2image import Html2Image
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import time
 
 
 ### Main Code Down Here ###
@@ -322,21 +325,49 @@ with tab1:
             """
         
         st.markdown(htmlcode, unsafe_allow_html=True)
-        # Generate the image from HTML content
-        hti = Html2Image()
-        hti.screenshot(html_str=htmlcode, save_as="page_image.png")
-        # Load the generated image for download
-        with open("page_image.png", "rb") as img_file:
-            img_data = img_file.read()
+
+        # Set up Chrome options for headless mode
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
         
-        # Create a download button for the image in Streamlit
-        st.download_button(
-            label="Download",
-            data=img_data,
-            file_name="page_image.png",
-            mime="image/png"
-        )
+        # Initialize WebDriver
+        driver = webdriver.Chrome(options=chrome_options)
         
+        # Function to capture HTML as an image and save as a file
+        def capture_html_as_image(html_content, file_name="page_image.png"):
+            # Save HTML content to a temporary file
+            with open("temp.html", "w") as f:
+                f.write(html_content)
+            
+            # Open the temporary HTML file in the browser
+            driver.get("file://" + "temp.html")
+            
+            # Allow time for the page to render fully
+            time.sleep(2)
+            
+            # Capture a screenshot and save it as an image file
+            driver.save_screenshot(file_name)
+            return file_name
+        
+        # Capture the HTML content as an image and save it to a file
+        image_file = capture_html_as_image(html_code)
+        
+        # Display the image in Streamlit
+        #st.image(image_file, caption="Captured HTML Page as Image", use_column_width=True)
+        
+        # Create a download button for the image file in Streamlit
+        with open(image_file, "rb") as img_file:
+            st.download_button(
+                label="Download",
+                data=img_file,
+                file_name="page_image.png",
+                mime="image/png"
+            )
+        
+        # Close the browser
+        driver.quit()
         #st.image("page_image.png", caption="Captured HTML Page as Image", use_column_width=True)
         #st.markdown(dff, unsafe_allow_html=True)
         #st.markdown('Tanggal Analisis'+tanalisis)
