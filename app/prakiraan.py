@@ -325,12 +325,6 @@ with tab1:
             """
         
         st.markdown(htmlcode, unsafe_allow_html=True)
-
-        # Set up Chrome options for headless mode
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
         
         # Function to initialize WebDriver
         @st.cache_resource  # Cache the WebDriver to avoid reinitialization
@@ -341,7 +335,8 @@ with tab1:
             chrome_options.add_argument("--disable-dev-shm-usage")
             
             # Specify path to your ChromeDriver if necessary, e.g., executable_path="/path/to/chromedriver"
-            driver = webdriver.Chrome(options=chrome_options)
+            #https://github.com/sinangga/web_tafor/raw/refs/heads/main/app/chromedriver
+            driver = webdriver.Chrome(executable_path="https://github.com/sinangga/web_tafor/raw/refs/heads/main/app/chromedriver", options=chrome_options)
             return driver
         # Initialize WebDriver (cached)
         driver = init_webdriver()
