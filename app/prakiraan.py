@@ -347,6 +347,6 @@ with tab1:
 
 with tab2:
     st.header("Kecamatan")
-    st.altair_chart(chart)
+    #st.altair_chart(chart)
     # Display Map
     #BorderAZ.plot()
