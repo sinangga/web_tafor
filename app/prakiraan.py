@@ -328,58 +328,29 @@ with tab1:
         
         st.markdown(htmlcode, unsafe_allow_html=True)
         
-        # Set path to chromedriver
-        chromedriver_path = "/mount/src/web_tafor/app/chromedriver"
+        # Function to create a PDF from HTML content
+        def create_pdf_from_html(html_content, output_filename="output.pdf"):
+            pdfkit.from_string(html_content, output_filename)
+            return output_filename
         
-        # Set Chrome options for headless browsing
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")  # Runs Chrome in headless mode
-        chrome_options.add_argument("--no-sandbox")  # Useful for running in Docker or cloud environments
-        chrome_options.add_argument("--disable-dev-shm-usage")  # To avoid issues in low-memory environments
+        # Streamlit app
+        st.title("HTML to PDF Converter")
         
-        # Create the WebDriver using the specified path
-        #service = Service(chromedriver_path)
-        service = Service(ChromeDriverManager(version="114.0.5735.90").install())
-        driver = webdriver.Chrome(service=service, options=chrome_options)
-
-        # Function to capture HTML as an image and save as a file
-        def capture_html_as_image(html_content, file_name="page_image.png"):
-            # Save HTML content to a temporary file
-            with open("temp.html", "w") as f:
-                f.write(html_content)
+        if st.button("Download PDF"):
+            # Generate PDF from HTML content
+            pdf_file = create_pdf_from_html(htmlcode)
             
-            # Open the temporary HTML file in the browser
-            driver.get("file://" + "temp.html")
-            
-            # Allow time for the page to render fully
-            time.sleep(2)
-            
-            # Capture a screenshot and save it as an image file
-            driver.save_screenshot(file_name)
-            return file_name
+            # Open the PDF file and make it downloadable
+            with open(pdf_file, "rb") as pdf:
+                st.download_button(
+                    label="Download PDF",
+                    data=pdf,
+                    file_name="prakicu.pdf",
+                    mime="application/pdf"
+                )
         
-        # Capture the HTML content as an image and save it to a file
-        image_file = capture_html_as_image(htmlcode)
-        
-        # Display the image in Streamlit
-        #st.image(image_file, caption="Captured HTML Page as Image", use_column_width=True)
-        
-        # Create a download button for the image file in Streamlit
-        with open(image_file, "rb") as img_file:
-            st.download_button(
-                label="Download",
-                data=img_file,
-                file_name="page_image.png",
-                mime="image/png"
-            )
-        
-        # Close the browser
-        driver.quit()
-        #st.image("page_image.png", caption="Captured HTML Page as Image", use_column_width=True)
-        #st.markdown(dff, unsafe_allow_html=True)
-        #st.markdown('Tanggal Analisis'+tanalisis)
-        #df.to_html(escape=False ,formatters=format_dict)
-        # Display the DataFrame as HTML
+            # Clean up the generated PDF file if needed
+            os.remove(pdf_file)
 
 with tab2:
     st.header("Kecamatan")
