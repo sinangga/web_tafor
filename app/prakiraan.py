@@ -13,15 +13,9 @@ from shapely.ops import transform
 from branca.element import Figure
 import folium
 import folium.plugins as plugins
-#from IPython.display import IFrame
-#from IPython.core.display import display, HTML
-import altair as alt
-from html2image import Html2Image
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import time
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
+import pdfkit
+import os
+
 
 
 ### Main Code Down Here ###
