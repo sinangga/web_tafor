@@ -20,3 +20,5 @@ altair
 html2image
 selenium==4.9.1
 webdriver-manager
+os
+pdfkit
