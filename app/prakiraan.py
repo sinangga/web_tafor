@@ -13,8 +13,8 @@ from shapely.ops import transform
 from branca.element import Figure
 import folium
 import folium.plugins as plugins
-import pdfkit
-import os
+from xhtml2pdf import pisa
+from io import BytesIO
 
 
 
@@ -321,30 +321,29 @@ with tab1:
             """
         
         st.markdown(htmlcode, unsafe_allow_html=True)
+        # Function to convert HTML to PDF
+        def convert_html_to_pdf(html_content):
+            # Create a BytesIO object to hold the PDF data
+            pdf = BytesIO()
+            # Use pisa to write the PDF to the BytesIO buffer
+            pisa_status = pisa.CreatePDF(BytesIO(html_content.encode("utf-8")), dest=pdf)
+            # Return the BytesIO buffer's value if successful, else None
+            return pdf.getvalue() if not pisa_status.err else None
         
-        # Function to create a PDF from HTML content
-        def create_pdf_from_html(html_content, output_filename="output.pdf"):
-            pdfkit.from_string(html_content, output_filename)
-            return output_filename
-        
-        # Streamlit app
-        st.title("HTML to PDF Converter")
-        
-        if st.button("Download PDF"):
+        if st.button("Generate and Download PDF"):
             # Generate PDF from HTML content
-            pdf_file = create_pdf_from_html(htmlcode)
+            pdf_data = convert_html_to_pdf(htmlcode)
             
-            # Open the PDF file and make it downloadable
-            with open(pdf_file, "rb") as pdf:
+            if pdf_data:
+                # Offer the PDF for download
                 st.download_button(
                     label="Download PDF",
-                    data=pdf,
-                    file_name="prakicu.pdf",
+                    data=pdf_data,
+                    file_name="generated_content.pdf",
                     mime="application/pdf"
                 )
-        
-            # Clean up the generated PDF file if needed
-            os.remove(pdf_file)
+            else:
+                st.error("Failed to create PDF")
 
 with tab2:
     st.header("Kecamatan")
