@@ -182,17 +182,6 @@ for entry in result_dicts:
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
 
-# Display the DataFrame as HTML
-#display = HTML(df.to_html(escape=False))
-
-#########################
-#########################
-# Load SHP data
-KH_map = gpd.read_file('https://github.com/sinangga/shp/raw/refs/heads/main/Kapuas_Hulu.shp')
-chart = alt.Chart(KH_map).mark_geoshape()
-
-
-    
 ### End of Main Code ###
 ########################
 
