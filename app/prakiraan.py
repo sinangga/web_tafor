@@ -98,25 +98,25 @@ def harian_kecamatan(nama):
         nama.append(c[i])
     order_list = [0,4,5,6,7,8,9,10,11,1,2,3]
     nama = [nama[i] for i in order_list]
-    if nama[10] == "SE":
-        nama[10] = 'Tenggara'
-    if nama[10] == "N":
-        nama[10] = 'Utara'
-    if nama[10] == "E":
-        nama[10] = 'Timur'
-    if nama[10] == "W":
-        nama[10] = 'Barat'
-    if nama[10] == "S":
-        nama[10] = 'Selatan'
-    if nama[10] == "NW":
-        nama[10] = 'Barat Laut'
-    if nama[10] == "NE":
-        nama[10] = 'Timur Laut'
-    if nama[10] == "SW":
-        nama[10] = 'Barat Daya'
+    if nama[11] == "SE":
+        nama[11] = 'Tenggara'
+    if nama[11] == "N":
+        nama[11] = 'Utara'
+    if nama[11] == "E":
+        nama[11] = 'Timur'
+    if nama[11] == "W":
+        nama[11] = 'Barat'
+    if nama[11] == "S":
+        nama[11] = 'Selatan'
+    if nama[11] == "NW":
+        nama[11] = 'Barat Laut'
+    if nama[11] == "NE":
+        nama[11] = 'Timur Laut'
+    if nama[11] == "SW":
+        nama[11] = 'Barat Daya'
     #nama[12] = str(round(nama[12])) + " Knot"
-    nama[9] = str(nama[10]) + "%"
-    nama[8] = str(nama[9]) + "°C"
+    nama[10] = str(nama[10]) + "%"
+    nama[9] = str(nama[9]) + "°C"
     return nama
 
 ## Printing to Web
