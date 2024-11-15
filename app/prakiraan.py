@@ -233,7 +233,7 @@ with tab1:
                         align-items: center;
                         justify-content: center;
                         height: 100vh;
-                        background-color: ##c1efff;
+                        background-color: #c1efff;
                         margin: 0;
                     }
                     table {
