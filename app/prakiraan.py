@@ -237,7 +237,7 @@ with tab1:
                         margin: 0;
                     }
                     table {
-                        align-items: center
+                        align-items: center;
                         justify-content: center;
                         background-color: #c1efff;
                         color: black;
