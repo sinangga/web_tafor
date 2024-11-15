@@ -243,14 +243,21 @@ with tab1:
                         background-color: #c1efff;
                         color: black;
                     }
-                    th {
-                        background-color: blue;
-                        color: white;
-                        pading: 10px;
-                    }
-                    td {
+                    tr{
                         text-align: center;
                     }
+                    th{
+                        text-align: center;
+                    }
+                    th:nth-child(1), td:nth-child(1) { width: 20%; }
+                    th:nth-child(3), td:nth-child(3) { width: 2.5%; }
+                    th:nth-child(2), td:nth-child(2) { width: 2.5%; }
+                    th:nth-child(4), td:nth-child(3) { width: 2.5%; }
+                    th:nth-child(2), td:nth-child(5) { width: 2.5%; }
+                    th:nth-child(6), td:nth-child(3) { width: 2.5%; }
+                    th:nth-child(2), td:nth-child(7) { width: 2.5%; }
+                    th:nth-child(8), td:nth-child(3) { width: 2.5%; }
+                    th:nth-child(2), td:nth-child(9) { width: 2.5%; }
                     .footnote {
                         color: grey;
                         text-align: left;
