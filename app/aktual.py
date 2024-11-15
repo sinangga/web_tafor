@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image, ImageDraw
 import requests
 tab1, tab2, tab3 = st.tabs(["METAR", "SATELIT", "RADAR"])
 
