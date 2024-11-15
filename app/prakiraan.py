@@ -299,9 +299,9 @@ with tab1:
                         Stasiun Meteorologi Pangsuma Kapuas Hulu
                     </div>
                     <div class="sub-text">
-                        Prakiraan Cuaca Kabupaten Kapuas Hulu \n
-                        Berlaku mulai : """+ tberlaku +""" \n
-                        Hingga : """+ thingga +"""
+                        Prakiraan Cuaca Kabupaten Kapuas Hulu
+                        <br>Berlaku mulai : """+ tberlaku +"""
+                        <br>Hingga : """+ thingga +"""
                         <hr class="gradient">
                     </div>
                         """ + htmlcode2 + """
