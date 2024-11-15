@@ -96,7 +96,7 @@ def harian_kecamatan(nama):
             nama.append(x)
     for i in range(len(c)):
         nama.append(c[i])
-    order_list = [0,5,6,7,8,9,10,11,12,1,2,3]
+    order_list = [0,4,5,6,7,8,9,10,11,1,2,3]
     nama = [nama[i] for i in order_list]
     if nama[11] == "SE":
         nama[11] = 'Tenggara'
