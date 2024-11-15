@@ -43,8 +43,8 @@ with tab3:
    image_rad = Image.open(BytesIO(response_rad.content))
    # Step 2: Draw a rectangle
    draw_rad = ImageDraw.Draw(image_rad)
-   rect_x1r, rect_y1r = 1000, 300 # Starting coordinates (top-left corner)
-   rect_x2r, rect_y2r = 1200, 500  # Ending coordinates (bottom-right corner)
+   rect_x1r, rect_y1r = 900, 300 # Starting coordinates (top-left corner)
+   rect_x2r, rect_y2r = 1100, 500  # Ending coordinates (bottom-right corner)
    draw_rad.rectangle([rect_x1r, rect_y1r, rect_x2r, rect_y2r], outline="red", width=3)
    
    # Step 3: Display the image in Streamlit
