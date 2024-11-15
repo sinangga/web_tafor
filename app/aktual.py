@@ -32,7 +32,7 @@ with tab2:
    draw.rectangle([rect_x1, rect_y1, rect_x2, rect_y2], outline="red", width=3)
    
    # Step 3: Display the image in Streamlit
-   st.image(image, use_column_width=True)
+   st.image(image)
    #st.image("https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png", width=None)
 
 with tab3:
@@ -48,5 +48,5 @@ with tab3:
    draw_rad.rectangle([rect_x1r, rect_y1r, rect_x2r, rect_y2r], outline="red", width=3)
    
    # Step 3: Display the image in Streamlit
-   st.image(image_rad, use_column_width=True)
+   st.image(image_rad)
    #st.image("https://inderaja.bmkg.go.id/Radar/SINT_SingleLayerCRefQC.png", width=None)
