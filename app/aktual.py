@@ -27,8 +27,8 @@ with tab2:
    image = Image.open(BytesIO(response.content))
    # Step 2: Draw a rectangle
    draw = ImageDraw.Draw(image)
-   rect_x1, rect_y1 = 1000, 500  # Starting coordinates (top-left corner)
-   rect_x2, rect_y2 = 1200, 700  # Ending coordinates (bottom-right corner)
+   rect_x1, rect_y1 = 850, 400  # Starting coordinates (top-left corner)
+   rect_x2, rect_y2 = 1050, 600  # Ending coordinates (bottom-right corner)
    draw.rectangle([rect_x1, rect_y1, rect_x2, rect_y2], outline="red", width=3)
    
    # Step 3: Display the image in Streamlit
