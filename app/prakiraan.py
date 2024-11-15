@@ -237,42 +237,19 @@ with tab1:
                         background-color: #c1efff;
                         margin: 0;
                     }
-                    table {{
-                                width: 100%;
-                                border-collapse: collapse;
-                            }}
-                            th {{
-                                background-color: blue;
-                                color: white;
-                                padding: 10px;
-                                text-align: center;
-                            }}
-                            td {{
-                                text-align: center;
-                                padding: 10px;
-                            }}
-                            td:nth-child(1) {{
-                                width: 25%;  /* Set width for 'Kecamatan' column */
-                            }}
-                            td:nth-child(2) {{
-                                width: 15%;  /* Set width for 'Tanggal' column */
-                            }}
-                            td:nth-child(3) {{
-                                width: 20%;  /* Set width for 'Cuaca' column */
-                            }}
-                            td:nth-child(4) {{
-                                width: 15%;  /* Set width for 'Angin' column */
-                            }}
-                            td:nth-child(5) {{
-                                width: 10%;  /* Set width for 'Suhu' column */
-                            }}
-                            td:nth-child(6) {{
-                                width: 15%;  /* Set width for 'Kelembapan' column */
-                            }}
-                            /* Optional: Add table borders for clarity */
-                            th, td {{
-                                border: 1px solid blue;
-                            }}
+                    table {
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #c1efff;
+                        color: black;
+                    }
+                    th {
+                        background-color: blue;
+                        color: white;
+                        pading: 10px;
+                    }
+                    td {
+                        text-align: center;
                     }
                     .footnote {
                         color: grey;
