@@ -38,7 +38,7 @@ with tab2:
 with tab3:
    st.header("RADAR")
     # Step 1: Load the image
-   image_url_rad = "https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png"  # Replace with your actual image path
+   image_url_rad = "https://inderaja.bmkg.go.id/Radar/SINT_SingleLayerCRefQC.png"  # Replace with your actual image path
    response_rad = requests.get(image_url_rad)
    image_rad = Image.open(BytesIO(response_rad.content))
    # Step 2: Draw a rectangle
