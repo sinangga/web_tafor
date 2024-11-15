@@ -248,8 +248,9 @@ with tab1:
                       background-color: #d0edf7;
                       color: black;
                     }
-                    thead{
-                        background-color: #77f2cd;
+                    thead {
+                        background-color: blue;
+                        color: black;
                     }
                     th{
                       text-align: center;
