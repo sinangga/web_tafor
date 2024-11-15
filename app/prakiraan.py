@@ -124,7 +124,7 @@ def harian_kecamatan(nama):
 tanggal = b[0][8]+b[0][9]+str("/")+b[0][5]+b[0][6]+str("/")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
 tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
 tberlaku = df_kh[0]['cuaca'][0][0]['datetime']
-thingga = df_kh[0]['cuaca'][0][7]['datetime']
+thingga = df_kh[0]['cuaca'][0][0]['datetime']
 jam = []
 for i in range(len(b)):
     jam.append(b[i][11]+b[i][12])
