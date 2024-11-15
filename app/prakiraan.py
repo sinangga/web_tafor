@@ -301,8 +301,8 @@ with tab1:
                         <br> Prakiraan Cuaca Kabupaten Kapuas Hulu
                     </div>
                     <div class="sub-text">
-                        Berlaku mulai : """+ tberlaku +"""
-                        <br>Hingga : """+ thingga +"""
+                        Berlaku mulai : """+ tberlaku +"""UTC
+                        <br>Hingga : """+ thingga +"""UTC
                         <hr class="gradient">
                     </div>
                         """ + htmlcode2 + """
