@@ -251,12 +251,6 @@ with tab1:
                     th{
                       text-align: center;
                     }
-                    
-                    th:nth-child(1), td:nth-child(1) { width: 20%; }
-                    th:nth-child(10), td:nth-child(10) { width: 10%; }
-                    th:nth-child(11), td:nth-child(11) { width: 15%; }
-                    th:nth-child(12), td:nth-child(12) { width: 10%; }
-                    
                     td:nth-child(2) img {
                       width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
