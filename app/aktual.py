@@ -1,6 +1,9 @@
 import streamlit as st
 from PIL import Image, ImageDraw
 import requests
+from io import BytesIO
+
+
 tab1, tab2, tab3 = st.tabs(["METAR", "SATELIT", "RADAR"])
 
 with tab1:
@@ -19,9 +22,9 @@ with tab1:
 with tab2:
    st.header("SATELIT")
    # Step 1: Load the image
-   image_path = "https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png"  # Replace with your actual image path
-   image = Image.open(image_path)
-   
+   image_url = "https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png"  # Replace with your actual image path
+   response = requests.get(image_url)
+   image = Image.open(BytesIO(response.content))
    # Step 2: Draw a rectangle
    draw = ImageDraw.Draw(image)
    rect_x1, rect_y1 = 50, 50  # Starting coordinates (top-left corner)
