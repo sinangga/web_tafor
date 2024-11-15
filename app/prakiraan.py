@@ -65,14 +65,14 @@ def printcuaca(x):
 #psu = ['c1 - cn', 'suhu(min-max)', 'RH (min-max)']
 def cuaca_gabungan_pagi(n):
     suhu = []
-    angin = []
+    #angin = []
     arah = []
     rh = []
     list_cuaca = []
     list_tgl = []
     for i in range(8):
         suhu.append(nesting(n)[i]["t"])
-        angin.append(nesting(n)[i]["ws"])
+        #angin.append(nesting(n)[i]["ws"])
         arah.append(nesting(n)[i]["wd"])
         rh.append(nesting(n)[i]["hu"])
         list_cuaca.append(nesting(n)[i]["weather_desc"])
@@ -83,9 +83,9 @@ def cuaca_gabungan_pagi(n):
     minrh = min(rh)
     suhu_akhir = str(minsuhu) + "-" + str(maxsuhu)
     rh_akhir = str(minrh) + "-" + str(maxrh)
-    angin = max(angin)
+    #angin = max(angin)
     arah = statistics.mode(arah)
-    return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah, angin
+    return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah#, angin
 
 ## Calling Data Kecamatan Daily
 def harian_kecamatan(nama):
@@ -120,14 +120,16 @@ def harian_kecamatan(nama):
     return nama
 
 ## Printing to Web
-(a, b, c, d, e, f, g) = cuaca_gabungan_pagi("Bika")
+(a, b, c, d, e, f) = cuaca_gabungan_pagi("Bika")
 tanggal = b[0][8]+b[0][9]+str("/")+b[0][5]+b[0][6]+str("/")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
 tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
+tberlaku = df_kh[0]['cuaca'][0][0]['datetime']
+thingga = df_kh[0]['cuaca'][0][7]['datetime']
 jam = []
 for i in range(len(b)):
     jam.append(b[i][11]+b[i][12])
 
-jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN', 'KECEPATAN']
+jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN']
 jammm = []
 for i in jamm:
     if type(i) == list:
@@ -226,7 +228,7 @@ with tab1:
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>BMKG Logo</title>
+                <title>BMKG Pangsuma</title>
                 <style>
                     body {
                         display: flex;
@@ -298,6 +300,8 @@ with tab1:
                     </div>
                     <div class="sub-text">
                         Prakiraan Cuaca Kabupaten Kapuas Hulu
+                        Berlaku mulai : """+ tberlaku +"""
+                        Hingga : """+ thingga +"""
                         <hr class="gradient">
                     </div>
                         """ + htmlcode2 + """
