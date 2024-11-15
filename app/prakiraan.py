@@ -179,7 +179,7 @@ for i in range(1,9):
 for entry in result_dicts:
     for key in time:
         if entry[key] in status_to_icon:
-            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="30">'
+            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="50">'
 
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
@@ -199,7 +199,7 @@ with tab1:
     with tab5:
         # convert your links to html tags 
         def path_to_image_html(path):
-            return '<img src="'+ path + '" width="40" >'
+            return '<img src="'+ path + '" width="50" >'
         
         
         # Loop through each dictionary and replace values in columns 2-9
