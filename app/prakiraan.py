@@ -244,49 +244,48 @@ with tab1:
                         color: black;
                     }
                     tr{
-                        text-align: center;
+                      text-align: center;
+                      background-color: white;
+                      color: black;
                     }
                     th{
-                        text-align: center;
+                      text-align: center;
                     }
+                    
                     th:nth-child(1), td:nth-child(1) { width: 20%; }
-                    th:nth-child(3), td:nth-child(3) { width: 2.5%; }
-                    th:nth-child(2), td:nth-child(2) { width: 2.5%; }
-                    th:nth-child(4), td:nth-child(3) { width: 2.5%; }
-                    th:nth-child(2), td:nth-child(5) { width: 2.5%; }
-                    th:nth-child(6), td:nth-child(3) { width: 2.5%; }
-                    th:nth-child(2), td:nth-child(7) { width: 2.5%; }
-                    th:nth-child(8), td:nth-child(3) { width: 2.5%; }
-                    th:nth-child(2), td:nth-child(9) { width: 2.5%; }
+                    th:nth-child(10), td:nth-child(10) { width: 10%; }
+                    th:nth-child(11), td:nth-child(11) { width: 15%; }
+                    th:nth-child(12), td:nth-child(12) { width: 10%; }
+                    
                     td:nth-child(2) img {
-                      width: 60px; /* Set desired image width */
+                      width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(3) img {
-                      width: 60px; /* Set desired image width */
+                      width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(4) img {
-                      width: 60px; /* Set desired image width */
+                      width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(5) img {
-                      width: 60px; /* Set desired image width */
+                      width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }td:nth-child(6) img {
-                      width: 60px; /* Set desired image width */
+                      width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(7) img {
-                      width: 60px; /* Set desired image width */
+                      width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(8) img {
-                      width: 60px; /* Set desired image width */
+                      width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(9) img {
-                      width: 60px; /* Set desired image width */
+                      width: 55px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     .footnote {
