@@ -37,4 +37,16 @@ with tab2:
 
 with tab3:
    st.header("RADAR")
-   st.image("https://inderaja.bmkg.go.id/Radar/SINT_SingleLayerCRefQC.png", width=None)
+    # Step 1: Load the image
+   image_url_rad = "https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png"  # Replace with your actual image path
+   response_rad = requests.get(image_url_rad)
+   image_rad = Image.open(BytesIO(response_rad.content))
+   # Step 2: Draw a rectangle
+   draw_rad = ImageDraw.Draw(image_rad)
+   rect_x1r, rect_y1r = 1000, 300 # Starting coordinates (top-left corner)
+   rect_x2r, rect_y2r = 1200, 500  # Ending coordinates (bottom-right corner)
+   draw_rad.rectangle([rect_x1r, rect_y1r, rect_x2r, rect_y2r], outline="red", width=3)
+   
+   # Step 3: Display the image in Streamlit
+   st.image(image_rad)#, use_column_width=True)
+   #st.image("https://inderaja.bmkg.go.id/Radar/SINT_SingleLayerCRefQC.png", width=None)
