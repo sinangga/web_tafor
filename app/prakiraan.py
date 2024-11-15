@@ -123,8 +123,8 @@ def harian_kecamatan(nama):
 (a, b, c, d, e, f) = cuaca_gabungan_pagi("Bika")
 tanggal = b[0][8]+b[0][9]+str("/")+b[0][5]+b[0][6]+str("/")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
 tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
-tberlaku = df_kh[0]['cuaca'][0][0]['datetime']
-thingga = df_kh[0]['cuaca'][0][0]['datetime']
+tberlaku = b[0]
+thingga = b[7]
 jam = []
 for i in range(len(b)):
     jam.append(b[i][11]+b[i][12])
@@ -277,6 +277,7 @@ with tab1:
                     .sub-text {
                         font-size: 16px; /* Slightly smaller font size */
                         color: black; /* Darker gray for the subtitle */
+                        text-align: center;
                     }
                     hr.gradient {
                         height: 3px;
@@ -297,10 +298,10 @@ with tab1:
                     <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
                     <div class="main-text">
                         Stasiun Meteorologi Pangsuma Kapuas Hulu
+                        <br> Prakiraan Cuaca Kabupaten Kapuas Hulu
                     </div>
                     <div class="sub-text">
-                        Prakiraan Cuaca Kabupaten Kapuas Hulu
-                        <br>Berlaku mulai : """+ tberlaku +"""
+                        Berlaku mulai : """+ tberlaku +"""
                         <br>Hingga : """+ thingga +"""
                         <hr class="gradient">
                     </div>
