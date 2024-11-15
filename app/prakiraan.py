@@ -299,8 +299,8 @@ with tab1:
                         Stasiun Meteorologi Pangsuma Kapuas Hulu
                     </div>
                     <div class="sub-text">
-                        Prakiraan Cuaca Kabupaten Kapuas Hulu
-                        Berlaku mulai : """+ tberlaku +"""
+                        Prakiraan Cuaca Kabupaten Kapuas Hulu \n
+                        Berlaku mulai : """+ tberlaku +""" \n
                         Hingga : """+ thingga +"""
                         <hr class="gradient">
                     </div>
