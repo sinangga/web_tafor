@@ -266,7 +266,7 @@ with tab1:
                         color: black
                     }
                     .logo {
-                        width: 100px; /* Adjust size as needed */
+                        width: 40px; /* Adjust size as needed */
                         height: auto;
                     }
                     .main-text {
