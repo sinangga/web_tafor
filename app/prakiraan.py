@@ -273,6 +273,7 @@ with tab1:
                         font-size: 20px;
                         color: black;
                         margin: 10px 0; /* Space around the text */
+                        text-align: center;
                     }
                     .sub-text {
                         font-size: 16px; /* Slightly smaller font size */
@@ -298,7 +299,7 @@ with tab1:
                     <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
                     <div class="main-text">
                         Stasiun Meteorologi Pangsuma Kapuas Hulu
-                        <br> Prakiraan Cuaca Kabupaten Kapuas Hulu
+                        <br> Prakiraan Cuaca Kabupaten
                     </div>
                     <div class="sub-text">
                         Berlaku mulai : """+ tberlaku +"""UTC
