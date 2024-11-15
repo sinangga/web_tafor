@@ -259,34 +259,34 @@ with tab1:
                     th:nth-child(8), td:nth-child(3) { width: 2.5%; }
                     th:nth-child(2), td:nth-child(9) { width: 2.5%; }
                     td:nth-child(2) img {
-                      width: 40px; /* Set desired image width */
+                      width: 60px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(3) img {
-                      width: 40px; /* Set desired image width */
+                      width: 60px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(4) img {
-                      width: 40px; /* Set desired image width */
+                      width: 60px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(5) img {
-                      width: 40px; /* Set desired image width */
+                      width: 60px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }td:nth-child(6) img {
-                      width: 40px; /* Set desired image width */
+                      width: 60px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(7) img {
-                      width: 40px; /* Set desired image width */
+                      width: 60px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(8) img {
-                      width: 40px; /* Set desired image width */
+                      width: 60px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(9) img {
-                      width: 40px; /* Set desired image width */
+                      width: 60px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     .footnote {
