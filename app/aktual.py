@@ -17,7 +17,24 @@ with tab1:
 
 with tab2:
    st.header("SATELIT")
-   st.image("https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png", width=None)
+   # Step 1: Load the image
+   image_path = "https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png"  # Replace with your actual image path
+   image = Image.open(image_path)
+   
+   # Step 2: Draw a rectangle
+   draw = ImageDraw.Draw(image)
+   rect_x1, rect_y1 = 50, 50  # Starting coordinates (top-left corner)
+   rect_x2, rect_y2 = 200, 200  # Ending coordinates (bottom-right corner)
+   draw.rectangle([rect_x1, rect_y1, rect_x2, rect_y2], outline="red", width=3)
+   
+   # Optionally, draw a line
+   line_start = (50, 250)  # Starting point of the line (x, y)
+   line_end = (250, 250)   # Ending point of the line (x, y)
+   draw.line([line_start, line_end], fill="blue", width=2)
+   
+   # Step 3: Display the image in Streamlit
+   st.image(image, caption="Image with overlay")#, use_column_width=True)
+   #st.image("https://satelit.bmkg.go.id/IMAGE/HIMA/H08_EH_Kalbar.png", width=None)
 
 with tab3:
    st.header("RADAR")
