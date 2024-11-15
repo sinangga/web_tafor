@@ -245,7 +245,7 @@ with tab1:
                     }
                     tr{
                       text-align: center;
-                      background-color: white;
+                      background-color: #d0edf7;
                       color: black;
                     }
                     th{
