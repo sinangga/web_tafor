@@ -252,6 +252,8 @@ with tab1:
                       text-align: center;
                       background-color: #d0edf7;
                       color: black;
+                      height: 20px;
+                      overflow: hidden;
                     }
                     thead {
                         background-color: blue;
@@ -355,6 +357,7 @@ with tab1:
             """
         
         st.markdown(htmlcode, unsafe_allow_html=True)
+        st.divider()
         def convert_html_to_image(html_content, output_file):
             # Specify Chromium executable path
             hti = Html2Image(browser_executable="/usr/bin/chromium")
@@ -365,7 +368,7 @@ with tab1:
                 temp_html_file.flush()
                 
                 # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1800))
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1700))
         
         # Add a button for image download
         if st.button("Unduh"):
