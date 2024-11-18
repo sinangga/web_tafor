@@ -200,6 +200,18 @@ with tab1:
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
         st.markdown(dfhtml, unsafe_allow_html=True)
         st.divider()
+        dfhtmlcss = """
+            <style>
+                table{
+                    background-color: #95c8e6;
+                }
+                thead{
+                    text-align: center;
+                    background-color: #54bbf7;
+                }
+            </style>
+           """+ dfhtml +"""
+        """
         def convert_html_to_img(html_content, output_file):
             # Specify Chromium executable path
             hti = Html2Image(browser_executable="/usr/bin/chromium")
