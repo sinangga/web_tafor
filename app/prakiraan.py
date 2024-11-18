@@ -378,7 +378,8 @@ with tab1:
                 st.error("Failed to create PDF")
                 # Function to convert HTML to an image
         def convert_html_to_image(html_content, output_file):
-            hti = Html2Image()
+            # Specify Chromium executable path
+            hti = Html2Image(browser_executable="/usr/bin/chromium")
             
             # Create a temporary HTML file
             with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
