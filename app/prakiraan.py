@@ -206,9 +206,16 @@ with tab1:
                   font-family: Arial, sans-serif;
                   font-weight: bold;
                 }
-                table {
+             table {
                     width: 100%;
-                    border-collapse: collapse;
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    border: 1px solid #ddd;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    align-items: center;
+                    justify-content: center;
+                    color: black;
                     background-color: #95c8e6;
                 }
                 th {
@@ -315,7 +322,7 @@ with tab1:
                         overflow: hidden;
                         align-items: center;
                         justify-content: center;
-                        background-color: #c1efff;
+                        background-color: white;
                         color: black;
                     }
                     tr{
