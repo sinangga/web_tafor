@@ -193,18 +193,16 @@ df = pd.DataFrame(result_dicts)
 tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
 
 with tab1:
-    tab3, tab4, tab5 = st.tabs([tanggal,'Hari Kedua', 'Unduh Tabel'])
+    tab3, tab4, tab5 = st.tabs([tanggal,'Hari Kedua', 'Unduh Info'])
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
         st.markdown(df.to_html(index = False, escape=False), unsafe_allow_html=True)
     with tab4:
-        import os
-        st.write(os.path.exists("/usr/bin/chromium"))
     with tab5:
         # convert your links to html tags 
         def path_to_image_html(path):
-            return '<img src="'+ path + '" width="50" >'
+            return '<img src="'+ path + '" width="20" >'
         
         
         # Loop through each dictionary and replace values in columns 2-9
