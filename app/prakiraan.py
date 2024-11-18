@@ -261,39 +261,44 @@ with tab1:
                       text-align: center;
                     }
                     td:nth-child(2) img {
-                      width: 20px; /* Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(3) img {
-                      width: 20px; /* Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(4) img {
-                      width: 20px; /* Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(5) img {
-                      width: 20px; /* Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }td:nth-child(6) img {
-                      width: 20px; /* Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(7) img {
-                      width: 20px; /* Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(8) img {
-                      width: 20px; /* Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(9) img {
-                      width: 20px; /* Set desired image width */
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(10) img {
+                      width: 50px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     .footnote {
                         color: grey;
                         text-align: left;
+                        font-size: 15px;
                     }
                     .logo-container {
                         display: flex;
