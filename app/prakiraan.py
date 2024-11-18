@@ -202,7 +202,7 @@ with tab1:
     with tab5:
         # convert your links to html tags 
         def path_to_image_html(path):
-            return '<img src="'+ path + '" width="auto" >'
+            return '<img src="'+ path + '" width="5%" >'
         
         
         # Loop through each dictionary and replace values in columns 2-9
