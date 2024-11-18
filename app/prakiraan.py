@@ -355,30 +355,6 @@ with tab1:
             """
         
         st.markdown(htmlcode, unsafe_allow_html=True)
-        # Function to convert HTML to PDF
-        def convert_html_to_pdf(html_content):
-            # Create a BytesIO object to hold the PDF data
-            pdf = BytesIO()
-            # Use pisa to write the PDF to the BytesIO buffer
-            pisa_status = pisa.CreatePDF(BytesIO(html_content.encode("utf-8")), dest=pdf)
-            # Return the BytesIO buffer's value if successful, else None
-            return pdf.getvalue() if not pisa_status.err else None
-        
-        if st.button("Generate and Download PDF"):
-            # Generate PDF from HTML content
-            pdf_data = convert_html_to_pdf(htmlcode)
-            
-            if pdf_data:
-                # Offer the PDF for download
-                st.download_button(
-                    label="Download PDF",
-                    data=pdf_data,
-                    file_name="generated_content.pdf",
-                    mime="application/pdf"
-                )
-            else:
-                st.error("Failed to create PDF")
-                # Function to convert HTML to an image
         def convert_html_to_image(html_content, output_file):
             # Specify Chromium executable path
             hti = Html2Image(browser_executable="/usr/bin/chromium")
@@ -389,10 +365,10 @@ with tab1:
                 temp_html_file.flush()
                 
                 # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1080))
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1400))
         
         # Add a button for image download
-        if st.button("2 Download Image"):
+        if st.button("Unduh"):
             try:
                 output_image_file = "generated_content.png"  # Define output image file name
                 
@@ -412,61 +388,6 @@ with tab1:
 
 with tab2:
     st.header("Kecamatan")
-    # Initialize Html2Image without specifying a browser executable
-    hti = Html2Image(browser_executable=None)
-    
-    # Function to convert HTML to an image
-    def convert_html_to_image(html_content, output_file):
-        """
-        Converts an HTML string to an image and saves it as a PNG file.
-    
-        Args:
-            html_content (str): The HTML string to convert.
-            output_file (str): The output PNG file path.
-        """
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
-            # Write the HTML content to a temporary file
-            temp_html_file.write(html_content.encode("utf-8"))
-            temp_html_file.flush()
-    
-            # Render the HTML to an image
-            hti.screenshot(html_file=temp_html_file.name, save_as=output_file, full_page=True)
-    
-    # Streamlit app layout
-    st.title("HTML to PNG Converter")
-    st.write("Enter your HTML code below, and we’ll generate an image for you!")
-    
-    # Input text area for HTML content
-    htmlcoded = st.text_area(
-        "HTML Code:",
-        value=htmlcode,
-        height=300,
-    )
-    
-    # Output file name for the generated image
-    output_file = "output_image.png"
-    
-    # Button to generate the PNG
-    if st.button("Generate PNG"):
-        try:
-            # Convert the HTML to an image
-            convert_html_to_image(htmlcoded, output_file)
-            
-            # Display the image in Streamlit
-            st.image(output_file, caption="Rendered Image", use_column_width=True)
-    
-            # Provide a download button for the image
-            with open(output_file, "rb") as file:
-                st.download_button(
-                    label="Download PNG",
-                    data=file,
-                    file_name="output_image.png",
-                    mime="image/png",
-                )
-    
-        except Exception as e:
-            # Handle any errors that occur during the rendering process
-            st.error(f"Error: {e}")
     #st.altair_chart(chart)
     # Display Map
     #BorderAZ.plot()
