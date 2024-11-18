@@ -202,7 +202,14 @@ with tab1:
         st.divider()
         dfhtmlcss = """
             <style>
-                table{
+                body {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #c1efff;
+                        margin: 0;
+                }
+                table {
                     width: 100%;
                     border-collapse: collapse;
                     background-color: #95c8e6;
@@ -223,7 +230,7 @@ with tab1:
                     background-color: #ffffff;
                 }
             </style>
-           """+ dfhtml +"""
+           """+ dfhtml+"""
         """
         def convert_html_to_img(html_content, output_file):
             # Specify Chromium executable path
