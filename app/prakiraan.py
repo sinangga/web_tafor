@@ -365,7 +365,7 @@ with tab1:
                 temp_html_file.flush()
                 
                 # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1400))
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1800))
         
         # Add a button for image download
         if st.button("Unduh"):
