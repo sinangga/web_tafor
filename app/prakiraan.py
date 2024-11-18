@@ -203,7 +203,8 @@ with tab1:
         dfhtmlcss = """
             <style>
                 * {
-                    font-weight: bold;
+                  font-family: Arial, sans-serif;
+                  font-weight: bold;
                 }
                 table {
                     width: 100%;
@@ -302,7 +303,8 @@ with tab1:
                         margin: 0;
                     }
                     * {
-                        font-weight: bold;
+                      font-family: Arial, sans-serif;
+                      font-weight: bold;
                     }
                     table {
                         width: 100%;
