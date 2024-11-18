@@ -389,7 +389,7 @@ with tab1:
                 temp_html_file.flush()
                 
                 # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file)
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, full_page=True)
         
         # Add a button for image download
         if st.button("2 Download Image"):
@@ -430,7 +430,7 @@ with tab2:
             temp_html_file.flush()
     
             # Render the HTML to an image
-            hti.screenshot(html_file=temp_html_file.name, save_as=output_file)
+            hti.screenshot(html_file=temp_html_file.name, save_as=output_file, full_page=True)
     
     # Streamlit app layout
     st.title("HTML to PNG Converter")
