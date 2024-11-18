@@ -202,6 +202,9 @@ with tab1:
         st.divider()
         dfhtmlcss = """
             <style>
+                * {
+                    font-weight: bold;
+                }
                 table {
                     width: 100%;
                     border-collapse: collapse;
@@ -297,6 +300,9 @@ with tab1:
                         justify-content: center;
                         background-color: #c1efff;
                         margin: 0;
+                    }
+                    * {
+                        font-weight: bold;
                     }
                     table {
                         width: 100%;
