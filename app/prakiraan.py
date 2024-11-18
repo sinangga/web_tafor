@@ -241,8 +241,7 @@ with tab1:
                         margin: 0;
                     }
                     table {
-                        width: 120%;
-                        table-layout: fixed;
+                        width: 100%;
                         align-items: center;
                         justify-content: center;
                         background-color: #c1efff;
