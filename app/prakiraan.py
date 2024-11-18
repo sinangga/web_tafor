@@ -235,7 +235,7 @@ with tab1:
                 temp_html_file.flush()
                 
                 # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1700))
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1600))
         
         # Add a button for image download
         if st.button("Unduh Tabel"):
@@ -315,8 +315,8 @@ with tab1:
                     }
                     th{
                       text-align: center;
-                      background-color: #49adf5;
-                      color: black;
+                      background-color: #0a2f69;
+                      color: white;
                     }
                     th, td {
                         border: 1px solid #ddd;
@@ -454,7 +454,7 @@ with tab1:
                 temp_html_file.flush()
                 
                 # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1240))
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1400))
         
         # Add a button for image download
         if st.button("Unduh"):
