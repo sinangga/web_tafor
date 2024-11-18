@@ -241,6 +241,7 @@ with tab1:
                         margin: 0;
                     }
                     table {
+                        width: 100%;
                         align-items: center;
                         justify-content: center;
                         background-color: #c1efff;
@@ -351,6 +352,20 @@ with tab1:
                         <br>Hingga : """+ thingga +"""UTC
                         <hr class="gradient">
                     </div>
+                      <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 10%;">
+                        <col style="width: 10%;">
+                        <col style="width: 10%;">
+                      </colgroup>
                         """ + htmlcode2 + """
                     <div class="footnote">
                         """ + htmlcode3 + """
