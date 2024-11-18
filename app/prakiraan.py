@@ -241,7 +241,7 @@ with tab1:
                         margin: 0;
                     }
                     table {
-                        width: 100%;
+                        width: 90%;
                         table-layout: fixed;
                         align-items: center;
                         justify-content: center;
