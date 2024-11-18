@@ -299,7 +299,7 @@ with tab1:
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        background-color: #c1efff;
+                        background-color: white;
                         margin: 0;
                     }
                     * {
@@ -308,7 +308,11 @@ with tab1:
                     }
                     table {
                         width: 100%;
-                        border-collapse: collapse;
+                        border-collapse: separate;
+                        border-spacing: 0;
+                        border: 1px solid #ddd;
+                        border-radius: 15px;
+                        overflow: hidden;
                         align-items: center;
                         justify-content: center;
                         background-color: #c1efff;
