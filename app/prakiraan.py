@@ -250,7 +250,7 @@ with tab1:
                 output_image_filet = "tabel_prakicu.png"  # Define output image file name
                 
                 # Convert HTML content to an image
-                convert_html_to_img(dfhtml, output_image_filet)
+                convert_html_to_img(dfhtmlcss, output_image_filet)
                 
                 # Provide download link for the image
                 with open(output_image_filet, "rb") as file:
