@@ -198,38 +198,7 @@ with tab1:
         #st.header("Kabupaten | Tanggal "+tanggal)
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
         st.markdown(df.to_html(index = False, escape=False), unsafe_allow_html=True)
-    with tab4:
-        # Function to convert HTML to an image
-        def convert_html_to_image(html_content, output_file):
-            hti = Html2Image()
-            
-            # Create a temporary HTML file
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
-                temp_html_file.write(html_content.encode("utf-8"))
-                temp_html_file.flush()
-                
-                # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file)
         
-        # Add a button for image download
-        if st.button("Generate and Download Image"):
-            try:
-                output_image_file = "generated_content.png"  # Define output image file name
-                
-                # Convert HTML content to an image
-                convert_html_to_image(htmlcode, output_image_file)
-                
-                # Provide download link for the image
-                with open(output_image_file, "rb") as file:
-                    st.download_button(
-                        label="Download Image",
-                        data=file,
-                        file_name="generated_content.png",
-                        mime="image/png"
-                    )
-            except Exception as e:
-                st.error(f"Failed to create image: {e}")
-
     with tab5:
         # convert your links to html tags 
         def path_to_image_html(path):
@@ -407,9 +376,40 @@ with tab1:
                 )
             else:
                 st.error("Failed to create PDF")
+                # Function to convert HTML to an image
+        def convert_html_to_image(html_content, output_file):
+            hti = Html2Image()
+            
+            # Create a temporary HTML file
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
+                temp_html_file.write(html_content.encode("utf-8"))
+                temp_html_file.flush()
+                
+                # Render the HTML as an image
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file)
+        
+        # Add a button for image download
+        if st.button("2 Download Image"):
+            try:
+                output_image_file = "generated_content.png"  # Define output image file name
+                
+                # Convert HTML content to an image
+                convert_html_to_image(htmlcode, output_image_file)
+                
+                # Provide download link for the image
+                with open(output_image_file, "rb") as file:
+                    st.download_button(
+                        label="Download Image",
+                        data=file,
+                        file_name="generated_content.png",
+                        mime="image/png"
+                    )
+            except Exception as e:
+                st.error(f"Failed to create image: {e}")
 
 with tab2:
     st.header("Kecamatan")
+    
     #st.altair_chart(chart)
     # Display Map
     #BorderAZ.plot()
