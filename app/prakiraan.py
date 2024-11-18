@@ -203,11 +203,24 @@ with tab1:
         dfhtmlcss = """
             <style>
                 table{
+                    width: 100%;
+                    border-collapse: collapse;
                     background-color: #95c8e6;
                 }
-                thead{
+                th {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+                th, td {
+                    border: 1px solid #ddd;
                     text-align: center;
-                    background-color: #54bbf7;
+                    padding: 8px;
+                }
+                tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+                tr:nth-child(odd) {
+                    background-color: #ffffff;
                 }
             </style>
            """+ dfhtml +"""
@@ -287,6 +300,7 @@ with tab1:
                     }
                     table {
                         width: 100%;
+                        border-collapse: collapse;
                         align-items: center;
                         justify-content: center;
                         background-color: #c1efff;
