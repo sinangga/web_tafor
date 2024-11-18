@@ -200,7 +200,7 @@ with tab1:
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
         st.markdown(dfhtml, unsafe_allow_html=True)
         st.divider()
-        def convert_html_to_image(html_content, output_file):
+        def convert_html_to_img(html_content, output_file):
             # Specify Chromium executable path
             hti = Html2Image(browser_executable="/usr/bin/chromium")
             
@@ -213,15 +213,15 @@ with tab1:
                 hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1080))
         
         # Add a button for image download
-        if st.button("Unduh"):
+        if st.button("Unduh Tabel"):
             try:
-                output_image_file = "tabel_prakicu.png"  # Define output image file name
+                output_image_filet = "tabel_prakicu.png"  # Define output image file name
                 
                 # Convert HTML content to an image
-                convert_html_to_image(dfhtml, output_image_file)
+                convert_html_to_img(dfhtml, output_image_filet)
                 
                 # Provide download link for the image
-                with open(output_image_file, "rb") as file:
+                with open(output_image_filet, "rb") as file:
                     st.download_button(
                         label="Unduh Tabel",
                         data=file,
