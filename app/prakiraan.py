@@ -393,6 +393,7 @@ with tab1:
                         flex-direction: column; /* Stack items vertically */
                         align-items: center;
                         /* background-color: #c1efff; White background */
+                        background-color: white;
                         padding: 20px; /* Space around the content */
                         border-radius: 8px; /* Rounded corners */
                         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
