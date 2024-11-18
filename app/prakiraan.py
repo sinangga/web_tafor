@@ -185,6 +185,7 @@ for entry in result_dicts:
 
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
+dfhtml = df.to_html(index = False, escape=False)
 
 ### End of Main Code ###
 ########################
@@ -197,7 +198,39 @@ with tab1:
     with tab3:
         #st.header("Kabupaten | Tanggal "+tanggal)
         st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
-        st.markdown(df.to_html(index = False, escape=False), unsafe_allow_html=True)
+        st.markdown(dfhtml, unsafe_allow_html=True)
+        st.divider()
+        def convert_html_to_image(html_content, output_file):
+            # Specify Chromium executable path
+            hti = Html2Image(browser_executable="/usr/bin/chromium")
+            
+            # Create a temporary HTML file
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
+                temp_html_file.write(html_content.encode("utf-8"))
+                temp_html_file.flush()
+                
+                # Render the HTML as an image
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1080))
+        
+        # Add a button for image download
+        if st.button("Unduh"):
+            try:
+                output_image_file = "tabel_prakicu.png"  # Define output image file name
+                
+                # Convert HTML content to an image
+                convert_html_to_image(dfhtml, output_image_file)
+                
+                # Provide download link for the image
+                with open(output_image_file, "rb") as file:
+                    st.download_button(
+                        label="Unduh Tabel",
+                        data=file,
+                        file_name="tabel_prakicu.png",
+                        mime="image/png"
+                    )
+            except Exception as e:
+                st.error(f"Failed to create image: {e}")
+
     
     with tab5:
         # convert your links to html tags 
@@ -391,7 +424,7 @@ with tab1:
         # Add a button for image download
         if st.button("Unduh"):
             try:
-                output_image_file = "generated_content.png"  # Define output image file name
+                output_image_file = "prakicu.png"  # Define output image file name
                 
                 # Convert HTML content to an image
                 convert_html_to_image(htmlcode, output_image_file)
@@ -399,9 +432,9 @@ with tab1:
                 # Provide download link for the image
                 with open(output_image_file, "rb") as file:
                     st.download_button(
-                        label="Download Image",
+                        label="Unduh Sekarang",
                         data=file,
-                        file_name="generated_content.png",
+                        file_name="prakicu.png",
                         mime="image/png"
                     )
             except Exception as e:
