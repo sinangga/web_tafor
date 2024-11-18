@@ -202,7 +202,7 @@ with tab1:
     with tab5:
         # convert your links to html tags 
         def path_to_image_html(path):
-            return '<img src="'+ path + ' "width="20px"; >'
+            return '<img src="'+ path + ' "width="30px"; >'
         
         
         # Loop through each dictionary and replace values in columns 2-9
@@ -252,7 +252,7 @@ with tab1:
                       text-align: center;
                       background-color: #d0edf7;
                       color: black;
-                      /* height: 20px; */
+                      height: 30px;
                       overflow: hidden;
                     }
                     thead {
@@ -263,34 +263,34 @@ with tab1:
                       text-align: center;
                     }
                     td:nth-child(2) img {
-                      /* width: 30px; Set desired image width */
+                      width: 30px; /*Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(3) img {
-                      /* width: 30px;  Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(4) img {
-                      /* width: 30px;  Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(5) img {
-                      /* width: 30px;  Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }td:nth-child(6) img {
-                      /* width: 30px;  Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(7) img {
-                      /* width: 30px;  Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(8) img {
-                      /* width: 30px;  Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(9) img {
-                      /* width: 30px;  Set desired image width */
+                      width: 30px; /* Set desired image width */
                       height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(10) img {
