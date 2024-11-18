@@ -235,7 +235,7 @@ with tab1:
                 temp_html_file.flush()
                 
                 # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1080))
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1700))
         
         # Add a button for image download
         if st.button("Unduh Tabel"):
@@ -454,7 +454,7 @@ with tab1:
                 temp_html_file.flush()
                 
                 # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1080))
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1240))
         
         # Add a button for image download
         if st.button("Unduh"):
