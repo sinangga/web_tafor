@@ -202,13 +202,6 @@ with tab1:
         st.divider()
         dfhtmlcss = """
             <style>
-                body {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: #c1efff;
-                        margin: 0;
-                }
                 table {
                     width: 100%;
                     border-collapse: collapse;
@@ -320,12 +313,21 @@ with tab1:
                       height: 30px;
                       overflow: hidden;
                     }
-                    thead {
-                        background-color: blue;
-                        color: black;
-                    }
                     th{
                       text-align: center;
+                      background-color: #49adf5;
+                      color: black;
+                    }
+                    th, td {
+                        border: 1px solid #ddd;
+                        text-align: center;
+                        padding: 8px;
+                    }
+                    tr:nth-child(even) {
+                        background-color: #f2f2f2;
+                    }
+                    tr:nth-child(odd) {
+                        background-color: #ffffff;
                     }
                     td:nth-child(2) img {
                       width: 30px; /*Set desired image width */
