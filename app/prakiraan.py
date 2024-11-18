@@ -412,7 +412,61 @@ with tab1:
 
 with tab2:
     st.header("Kecamatan")
+    # Initialize Html2Image without specifying a browser executable
+    hti = Html2Image(browser_executable=None)
     
+    # Function to convert HTML to an image
+    def convert_html_to_image(html_content, output_file):
+        """
+        Converts an HTML string to an image and saves it as a PNG file.
+    
+        Args:
+            html_content (str): The HTML string to convert.
+            output_file (str): The output PNG file path.
+        """
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
+            # Write the HTML content to a temporary file
+            temp_html_file.write(html_content.encode("utf-8"))
+            temp_html_file.flush()
+    
+            # Render the HTML to an image
+            hti.screenshot(html_file=temp_html_file.name, save_as=output_file)
+    
+    # Streamlit app layout
+    st.title("HTML to PNG Converter")
+    st.write("Enter your HTML code below, and we’ll generate an image for you!")
+    
+    # Input text area for HTML content
+    htmlcoded = st.text_area(
+        "HTML Code:",
+        value=htmlcode,
+        height=300,
+    )
+    
+    # Output file name for the generated image
+    output_file = "output_image.png"
+    
+    # Button to generate the PNG
+    if st.button("Generate PNG"):
+        try:
+            # Convert the HTML to an image
+            convert_html_to_image(htmlcoded, output_file)
+            
+            # Display the image in Streamlit
+            st.image(output_file, caption="Rendered Image", use_column_width=True)
+    
+            # Provide a download button for the image
+            with open(output_file, "rb") as file:
+                st.download_button(
+                    label="Download PNG",
+                    data=file,
+                    file_name="output_image.png",
+                    mime="image/png",
+                )
+    
+        except Exception as e:
+            # Handle any errors that occur during the rendering process
+            st.error(f"Error: {e}")
     #st.altair_chart(chart)
     # Display Map
     #BorderAZ.plot()
