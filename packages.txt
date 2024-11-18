@@ -1,2 +1,2 @@
 wkhtmltopdf
-chromium-browser
+chromium
