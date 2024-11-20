@@ -47,8 +47,8 @@ def nesting(nama_kecamatan):
         nesting.append(i)
     nest1 = nesting[0]
     nest2 = nesting[1]
-    #nest3 = nesting[2]
-    nesting_list = [nest1, nest2]
+    nest3 = nesting[2]
+    nesting_list = [nest1, nest2, nest3]
     nesting = [element for nestedlist in nesting_list for element in nestedlist]
     return nesting
 
