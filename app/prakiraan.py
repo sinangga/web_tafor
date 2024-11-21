@@ -462,7 +462,7 @@ with tab1:
         # Add a button for image download
         if st.button("Unduh Infografis "+tanggal+""):
             try:
-                output_image_file = "prakicu"+tanggal+".png"  # Define output image file name
+                output_image_file = "info_prakicu_"+tanggal+".png"  # Define output image file name
                 
                 # Convert HTML content to an image
                 convert_html_to_image(htmlcode, output_image_file)
@@ -472,7 +472,7 @@ with tab1:
                     st.download_button(
                         label="Unduh",
                         data=file,
-                        file_name="prakicu"+tanggal+".png",
+                        file_name="info_prakicu_"+tanggal+".png",
                         mime="image/png"
                     )
             except Exception as e:
@@ -688,7 +688,7 @@ with tab1:
         # Add a button for image download
         if st.button("Unduh Infografis "+tanggal2+""):
             try:
-                output_image_file = "prakicu"+tanggal2+".png"  # Define output image file name
+                output_image_file = "info_prakicu_"+tanggal2+".png"  # Define output image file name
                 
                 # Convert HTML content to an image
                 convert_html_to_image(htmlcode, output_image_file)
@@ -698,7 +698,7 @@ with tab1:
                     st.download_button(
                         label="Unduh",
                         data=file,
-                        file_name="prakicu"+tanggal2+".png",
+                        file_name="info_prakicu_"+tanggal2+".png",
                         mime="image/png"
                     )
             except Exception as e:
@@ -775,7 +775,7 @@ with tab2:
                     st.download_button(
                         label="Unduh",
                         data=file,
-                        file_name="tabel_prakicu"+tanggal+".png",
+                        file_name="tabel_prakicu_"+tanggal+".png",
                         mime="image/png"
                     )
             except Exception as e:
@@ -837,7 +837,7 @@ with tab2:
         # Add a button for image download
         if st.button("Unduh Tabel "+tanggal2+""):
             try:
-                output_image_filet = "tabel_prakicu"+tanggal2+".png"  # Define output image file name
+                output_image_filet = "tabel_prakicu_"+tanggal2+".png"  # Define output image file name
                 
                 # Convert HTML content to an image
                 convert_html_to_img(dfhtmlcss, output_image_filet)
@@ -847,7 +847,7 @@ with tab2:
                     st.download_button(
                         label="Unduh",
                         data=file,
-                        file_name="tabel_prakicu"+tanggal2+".png",
+                        file_name="tabel_prakicu_"+tanggal2+".png",
                         mime="image/png"
                     )
             except Exception as e:
