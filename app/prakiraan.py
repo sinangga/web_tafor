@@ -209,6 +209,8 @@ status_to_icon = {
     'Udara Kabur': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png',
     'Berawan': 'https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg'
 }
+
+# DATA TABEL PERTAMA
 (datacoba, headers, result_dicts) = resultdict(cuaca_pertama, jammm)
 # Loop through each dictionary and replace values in columns 2-9
 time = []
@@ -222,7 +224,9 @@ for entry in result_dicts:
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
 dfhtml = df.to_html(index = False, escape=False)
-#HTML(dfhtml)
+
+
+# DATA TABEL KEDUA
 (datacoba2, headers2, result_dicts2) = resultdict(cuaca_kedua, jammm2)
 # Loop through each dictionary and replace values in columns 2-9
 time2 = []
@@ -257,23 +261,23 @@ with tab1:
         time = []
         for i in range(1,9):
             time.append(jammm[i])
-        result_dicts2 = [dict(zip(headers, values)) for values in datacoba]
-        for entry2 in result_dicts2:
+        result_info = [dict(zip(headers, values)) for values in datacoba]
+        for entryinfo in result_info:
             for key in time:
-                if entry2[key] in status_to_icon:
-                    entry2[key] = status_to_icon[entry2[key]]
+                if entryinfo[key] in status_to_icon:
+                    entryinfo[key] = status_to_icon[entryinfo[key]]
         
         
         image_cols = jam  #<- define which columns will be used to convert to html
         
         # Create the dictionariy to be passed as formatters
-        format_dict2 = {}
+        format_dictinfo = {}
         for image_col in image_cols:
-            format_dict2[image_col] = path_to_image_html
+            format_dictinfo[image_col] = path_to_image_html
         
         # Convert the updated results to a Pandas DataFrame
-        df2 = pd.DataFrame(result_dicts2)
-        htmlcode2 = df2.to_html(index = False, escape=False ,formatters=format_dict2)
+        df2_info = pd.DataFrame(result_info)
+        htmlcode2 = df2_info.to_html(index = False, escape=False ,formatters=format_dictinfo)
         htmlcode3 = 'Tanggal Analisis : '+str(df_kh[0]['cuaca'][0][0]['analysis_date'])
         htmlcode = """
             <head>
@@ -473,7 +477,232 @@ with tab1:
                     )
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
-
+    with tab4:
+        # convert your links to html tags 
+        def path_to_image_html(path):
+            return '<img src="'+ path + ' "width="30px"; >'
+        
+        
+        # Loop through each dictionary and replace values in columns 2-9
+        time = []
+        for i in range(1,9):
+            time.append(jammm[i])
+        result_info2 = [dict(zip(headers, values)) for values in datacoba2]
+        for entryinfo2 in result_info2:
+            for key in time:
+                if entryinfo2[key] in status_to_icon:
+                    entryinfo2[key] = status_to_icon[entryinfo2[key]]
+        
+        
+        image_cols2 = jam2  #<- define which columns will be used to convert to html
+        
+        # Create the dictionariy to be passed as formatters
+        format_dictinfo2 = {}
+        for image_col in image_cols2:
+            format_dictinfo2[image_col] = path_to_image_html
+        
+        # Convert the updated results to a Pandas DataFrame
+        df2_info2 = pd.DataFrame(result_info2)
+        htmlcode2 = df2_info2.to_html(index = False, escape=False ,formatters=format_dictinfo2)
+        htmlcode3 = 'Tanggal Analisis : '+nesting('Bika')[8]['analysis_date'])
+        htmlcode = """
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>BMKG Pangsuma</title>
+                <style>
+                    body {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #c1efff;
+                        margin: 0;
+                    }
+                    * {
+                      font-family: Arial, sans-serif;
+                      font-weight: bold;
+                    }
+                    table {
+                        width: 100%;
+                        border-collapse: separate;
+                        border-spacing: 0;
+                        border: 1px solid #ddd;
+                        border-radius: 15px;
+                        overflow: hidden;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: white;
+                        color: black;
+                    }
+                    tr{
+                      text-align: center;
+                      background-color: #d0edf7;
+                      color: black;
+                      height: 30px;
+                      overflow: hidden;
+                    }
+                    th{
+                      text-align: center;
+                      background-color: #0a2f69;
+                      color: white;
+                    }
+                    th, td {
+                        border: 1px solid #ddd;
+                        text-align: center;
+                        padding: 8px;
+                    }
+                    tr:nth-child(even) {
+                        background-color: #f2f2f2;
+                    }
+                    tr:nth-child(odd) {
+                        background-color: #ffffff;
+                    }
+                    td:nth-child(2) img {
+                      width: 30px; /*Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(3) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(4) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(5) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }td:nth-child(6) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(7) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(8) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(9) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(10) img {
+                      width: 50px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    .footnote {
+                        color: grey;
+                        text-align: left;
+                        font-size: 15px;
+                    }
+                    .logo-container {
+                        display: flex;
+                        flex-direction: column; /* Stack items vertically */
+                        align-items: center;
+                        /* background-color: #c1efff; White background */
+                        background-color: white;
+                        padding: 20px; /* Space around the content */
+                        border-radius: 8px; /* Rounded corners */
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+                        color: black
+                    }
+                    .logo {
+                        width: 40px; /* Adjust size as needed */
+                        height: auto;
+                    }
+                    .main-text {
+                        font-size: 20px;
+                        color: black;
+                        margin: 10px 0; /* Space around the text */
+                        text-align: center;
+                    }
+                    .sub-text {
+                        font-size: 16px; /* Slightly smaller font size */
+                        color: black; /* Darker gray for the subtitle */
+                        text-align: center;
+                    }
+                    hr.gradient {
+                        height: 3px;
+                        border: none;
+                        border-radius: 6px;
+                        background: linear-gradient(
+                            90deg,
+                            rgba(13, 8, 96, 1) 0%,
+                            rgba(9, 9, 121, 1) 11%,
+                            rgba(6, 84, 170, 1) 31%,
+                            rgba(0, 255, 113, 1) 100%
+                        );
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="logo-container">
+                    <img src="https://cdn.bmkg.go.id/Web/Logo-BMKG-new.png" alt="BMKG Logo" class="logo" />
+                    <div class="main-text">
+                        Stasiun Meteorologi Pangsuma Kapuas Hulu
+                        <br> Prakiraan Cuaca Kabupaten
+                    </div>
+                    <div class="sub-text">
+                        Berlaku mulai : """+ tberlaku2 +"""UTC
+                        <br>Hingga : """+ thingga2 +"""UTC
+                        <hr class="gradient">
+                    </div>
+                      <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 5%;">
+                        <col style="width: 10%;">
+                        <col style="width: 10%;">
+                        <col style="width: 10%;">
+                      </colgroup>
+                        """ + htmlcode2 + """
+                    <div class="footnote">
+                        """ + htmlcode3 + """
+                    </div>
+                </div>
+            </body>
+            """
+        
+        st.markdown(htmlcode, unsafe_allow_html=True)
+        st.divider()
+        def convert_html_to_image(html_content, output_file):
+            # Specify Chromium executable path
+            hti = Html2Image(browser_executable="/usr/bin/chromium")
+            
+            # Create a temporary HTML file
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
+                temp_html_file.write(html_content.encode("utf-8"))
+                temp_html_file.flush()
+                
+                # Render the HTML as an image
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1400))
+        
+        # Add a button for image download
+        if st.button("Unduh Infografis "+tanggal2+""):
+            try:
+                output_image_file = "prakicu"+tanggal2+".png"  # Define output image file name
+                
+                # Convert HTML content to an image
+                convert_html_to_image(htmlcode, output_image_file)
+                
+                # Provide download link for the image
+                with open(output_image_file, "rb") as file:
+                    st.download_button(
+                        label="Unduh",
+                        data=file,
+                        file_name="prakicu"+tanggal2+".png",
+                        mime="image/png"
+                    )
+            except Exception as e:
+                st.error(f"Failed to create image: {e}")
 with tab2:
     tab5, tab6 = st.tabs([tanggal, tanggal2])
     with tab5:
@@ -602,7 +831,7 @@ with tab2:
                 hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1650))
         
         # Add a button for image download
-        if st.button("Unduh Tabel"+tanggal2+""):
+        if st.button("Unduh Tabel "+tanggal2+""):
             try:
                 output_image_filet = "tabel_prakicu"+tanggal2+".png"  # Define output image file name
                 
