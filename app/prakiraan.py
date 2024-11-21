@@ -37,7 +37,7 @@ for kh in df_kh:
     list_kecamatan.append(kh['lokasi']['kecamatan'])
 
 #### Main Dataset ####
-df_kh_2 = dict(zip(list_kecamatan, df_kh)) 
+df_kh_2 = dict(zip(list_kecamatan, df_kh))
 ######################
 
 # Function to Call Specific Weather Data Kecamatan
@@ -52,7 +52,7 @@ def nesting(nama_kecamatan):
     nesting = [element for nestedlist in nesting_list for element in nestedlist]
     return nesting
 
-# Function to Create Data inside Prettytable 
+# Function to Create Data inside Prettytable
 def printcuaca(x):
     n = 0
     t = PrettyTable(['Kecamatan', 'Tanggal', 'Cuaca', 'Angin', 'Suhu', 'Kelembapan'])
@@ -65,7 +65,7 @@ def printcuaca(x):
     return t
 
 #psu = ['c1 - cn', 'suhu(min-max)', 'RH (min-max)']
-def cuaca_gabungan_pagi(n):
+def cuaca_pertama(n):
     suhu = []
     #angin = []
     arah = []
@@ -89,9 +89,33 @@ def cuaca_gabungan_pagi(n):
     arah = statistics.mode(arah)
     return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah#, angin
 
+def cuaca_kedua(n):
+    suhu = []
+    #angin = []
+    arah = []
+    rh = []
+    list_cuaca = []
+    list_tgl = []
+    for i in range(8,16):
+        suhu.append(nesting(n)[i]["t"])
+        #angin.append(nesting(n)[i]["ws"])
+        arah.append(nesting(n)[i]["wd"])
+        rh.append(nesting(n)[i]["hu"])
+        list_cuaca.append(nesting(n)[i]["weather_desc"])
+        list_tgl.append(nesting(n)[i]["utc_datetime"])
+    maxsuhu = max(suhu)
+    minsuhu = min(suhu)
+    maxrh = max(rh)
+    minrh = min(rh)
+    suhu_akhir = str(minsuhu) + "-" + str(maxsuhu)
+    rh_akhir = str(minrh) + "-" + str(maxrh)
+    #angin = max(angin)
+    arah = statistics.mode(arah)
+    return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah#, angin
+
 ## Calling Data Kecamatan Daily
-def harian_kecamatan(nama):
-    (a, b, c, d, e, f) = cuaca_gabungan_pagi(nama)
+def harian_kecamatan(waktu, nama):
+    (a, b, c, d, e, f) = waktu(nama)
     nama = []
     for x in (a, d, e, f):
         if x in (a,d,e,f):
@@ -122,40 +146,52 @@ def harian_kecamatan(nama):
     return nama
 
 ## Printing to Web
-(a, b, c, d, e, f) = cuaca_gabungan_pagi("Bika")
-tanggal = b[0][8]+b[0][9]+str("/")+b[0][5]+b[0][6]+str("/")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
-tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
-tberlaku = b[0]
-thingga = b[7]
-jam = []
-for i in range(len(b)):
-    jam.append(b[i][11]+b[i][12])
+def waktuu(waktu):
+    (a, b, c, d, e, f) = waktu("Bika")
+    tanggal = b[0][8]+b[0][9]+str("/")+b[0][5]+b[0][6]+str("/")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
+    tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
+    tberlaku = b[0]
+    thingga = b[7]
+    jam = []
+    for i in range(len(b)):
+        jam.append(b[i][11]+b[i][12])
+    jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN']
+    jammm = []
+    for i in jamm:
+        if type(i) == list:
+            for a in range(len(jam)):
+                jammm.append(jam[a])
+        else:
+            jammm.append(i)
+    return tanggal, tanalisis, tberlaku, thingga, jam, jamm, jammm
 
-jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN']
-jammm = []
-for i in jamm:
-    if type(i) == list:
-        for a in range(len(jam)):
-            jammm.append(jam[a])
-    else:
-        jammm.append(i)
 
-table = PrettyTable(jammm)
+(tanggal, tanalisis, tberlaku, thingga, jam, jamm, jammm) = waktuu(cuaca_pertama)
+table_pertama = PrettyTable(jammm)
 #table.title = "CUACA KABUPATEN KAPUAS HULU TANGGAL "+tanggal
 for i in list_kecamatan:
-    table.add_row(harian_kecamatan(i))
-table.align["Kecamatan"]="l"
-table.align["Angin"]="l"
+    table_pertama.add_row(harian_kecamatan(cuaca_pertama, i))
+table_pertama.align["Kecamatan"]="l"
+table_pertama.align["Angin"]="l"
 
-
-#########################
-#########################
-
-datacoba = []
+(tanggal2, tanalisis2, tberlaku2, thingga2, jam2, jamm2, jammm2) = waktuu(cuaca_kedua)
+table_kedua = PrettyTable(jammm2)
+#table.title = "CUACA KABUPATEN KAPUAS HULU TANGGAL "+tanggal
 for i in list_kecamatan:
-    datacoba.append(harian_kecamatan(i))
-headers = jammm #['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan']
-result_dicts = [dict(zip(headers, values)) for values in datacoba]
+    table_kedua.add_row(harian_kecamatan(cuaca_kedua, i))
+table_kedua.align["Kecamatan"]="l"
+table_kedua.align["Angin"]="l"
+
+#########################
+#########################
+
+def resultdict(waktu, jjaamm):
+    datacoba = []
+    for i in list_kecamatan:
+        datacoba.append(harian_kecamatan(waktu, i))
+    headers = jjaamm #['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan']
+    result_dicts = [dict(zip(headers, values)) for values in datacoba]
+    return headers, result_dicts
 
 # Define the local path for the icons
 #base_path = "/mount/src/web_tafor/icon/"
@@ -173,7 +209,7 @@ status_to_icon = {
     'Udara Kabur': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png',
     'Berawan': 'https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg'
 }
-
+(headers, result_dicts) = resultdict(cuaca_pertama, jammm)
 # Loop through each dictionary and replace values in columns 2-9
 time = []
 for i in range(1,9):
@@ -186,89 +222,34 @@ for entry in result_dicts:
 # Convert the updated results to a Pandas DataFrame
 df = pd.DataFrame(result_dicts)
 dfhtml = df.to_html(index = False, escape=False)
+#HTML(dfhtml)
+(headers2, result_dicts2) = resultdict(cuaca_kedua, jammm2)
+# Loop through each dictionary and replace values in columns 2-9
+time2 = []
+for i in range(1,9):
+    time2.append(jammm2[i])
+for entry in result_dicts2:
+    for key in time2:
+        if entry[key] in status_to_icon:
+            entry[key] = f'<img src="{status_to_icon[entry[key]]}" width="50">'
 
+# Convert the updated results to a Pandas DataFrame
+df2 = pd.DataFrame(result_dicts2)
+dfhtml2 = df2.to_html(index = False, escape=False)
+
+### End of Main Code ###
+########################
 ### End of Main Code ###
 ########################
 
 
-tab1, tab2 = st.tabs(["Kabupaten","Kecamatan"])
+tab1, tab2 = st.tabs(["Infografis","Tabel"])
 
 with tab1:
-    tab3, tab4, tab5 = st.tabs([tanggal,'Hari Kedua', 'Unduh Info'])
-    with tab3:
-        #st.header("Kabupaten | Tanggal "+tanggal)
-        st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
-        st.markdown(dfhtml, unsafe_allow_html=True)
-        st.divider()
-        dfhtmlcss = """
-            <style>
-                * {
-                  font-family: Arial, sans-serif;
-                  font-weight: bold;
-                }
-             table {
-                    width: 100%;
-                    border-collapse: separate;
-                    border-spacing: 0;
-                    border: 1px solid #ddd;
-                    border-radius: 15px;
-                    overflow: hidden;
-                    align-items: center;
-                    justify-content: center;
-                    color: black;
-                    background-color: #95c8e6;
-                }
-                th {
-                    background-color: #0a2f69;
-                    color: white;
-                }
-                th, td {
-                    border: 1px solid #ddd;
-                    text-align: center;
-                    padding: 8px;
-                }
-                tr:nth-child(even) {
-                    background-color: #f2f2f2;
-                }
-                tr:nth-child(odd) {
-                    background-color: #ffffff;
-                }
-            </style>
-           """+ dfhtml+"""
-        """
-        def convert_html_to_img(html_content, output_file):
-            # Specify Chromium executable path
-            hti = Html2Image(browser_executable="/usr/bin/chromium")
-            
-            # Create a temporary HTML file
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
-                temp_html_file.write(html_content.encode("utf-8"))
-                temp_html_file.flush()
-                
-                # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1650))
-        
-        # Add a button for image download
-        if st.button("Unduh Tabel"):
-            try:
-                output_image_filet = "tabel_prakicu.png"  # Define output image file name
-                
-                # Convert HTML content to an image
-                convert_html_to_img(dfhtmlcss, output_image_filet)
-                
-                # Provide download link for the image
-                with open(output_image_filet, "rb") as file:
-                    st.download_button(
-                        label="Unduh Tabel",
-                        data=file,
-                        file_name="tabel_prakicu.png",
-                        mime="image/png"
-                    )
-            except Exception as e:
-                st.error(f"Failed to create image: {e}")
-
+    st.write("Infografis Prakiraan Cuaca")
+    tab3, tab4 = st.tabs([tanggal, tanggal2])
     
-    with tab5:
+    with tab3:
         # convert your links to html tags 
         def path_to_image_html(path):
             return '<img src="'+ path + ' "width="30px"; >'
@@ -477,9 +458,9 @@ with tab1:
                 hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1400))
         
         # Add a button for image download
-        if st.button("Unduh"):
+        if st.button("Unduh Infografis"+tanggal+""):
             try:
-                output_image_file = "prakicu.png"  # Define output image file name
+                output_image_file = "prakicu"+tanggal+".png"  # Define output image file name
                 
                 # Convert HTML content to an image
                 convert_html_to_image(htmlcode, output_image_file)
@@ -487,16 +468,158 @@ with tab1:
                 # Provide download link for the image
                 with open(output_image_file, "rb") as file:
                     st.download_button(
-                        label="Unduh Sekarang",
+                        label="Unduh",
                         data=file,
-                        file_name="prakicu.png",
+                        file_name="prakicu"+tanggal+".png",
                         mime="image/png"
                     )
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
 
 with tab2:
-    st.header("Kecamatan")
-    #st.altair_chart(chart)
-    # Display Map
-    #BorderAZ.plot()
+    st.write("Tabel Prakiraan Cuaca")
+    tab5, tab6 = st.tabs([tanggal, tanggal2])
+    with tab5:
+        #st.header("Kabupaten | Tanggal "+tanggal)
+        st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
+        st.markdown(dfhtml, unsafe_allow_html=True)
+        st.divider()
+        dfhtmlcss = """
+            <style>
+                * {
+                  font-family: Arial, sans-serif;
+                  font-weight: bold;
+                }
+             table {
+                    width: 100%;
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    border: 1px solid #ddd;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    align-items: center;
+                    justify-content: center;
+                    color: black;
+                    background-color: #95c8e6;
+                }
+                th {
+                    background-color: #0a2f69;
+                    color: white;
+                }
+                th, td {
+                    border: 1px solid #ddd;
+                    text-align: center;
+                    padding: 8px;
+                }
+                tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+                tr:nth-child(odd) {
+                    background-color: #ffffff;
+                }
+            </style>
+           """+ dfhtml+"""
+        """
+        def convert_html_to_img(html_content, output_file):
+            # Specify Chromium executable path
+            hti = Html2Image(browser_executable="/usr/bin/chromium")
+            
+            # Create a temporary HTML file
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
+                temp_html_file.write(html_content.encode("utf-8"))
+                temp_html_file.flush()
+                
+                # Render the HTML as an image
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1650))
+        
+        # Add a button for image download
+        if st.button("Unduh Tabel"+tanggal+""):
+            try:
+                output_image_filet = "tabel_prakicu_"+tanggal+".png"  # Define output image file name
+                
+                # Convert HTML content to an image
+                convert_html_to_img(dfhtmlcss, output_image_filet)
+                
+                # Provide download link for the image
+                with open(output_image_filet, "rb") as file:
+                    st.download_button(
+                        label="Unduh",
+                        data=file,
+                        file_name="tabel_prakicu"+tanggal+".png",
+                        mime="image/png"
+                    )
+            except Exception as e:
+                st.error(f"Failed to create image: {e}")
+
+    with tab6:
+        #st.header("Kabupaten | Tanggal "+tanggal)
+        st.write('Tanggal Analisis :',df_kh2[0]['cuaca'][0][0]['analysis_date'])
+        st.markdown(dfhtml2, unsafe_allow_html=True)
+        st.divider()
+        dfhtmlcss = """
+            <style>
+                * {
+                  font-family: Arial, sans-serif;
+                  font-weight: bold;
+                }
+             table {
+                    width: 100%;
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    border: 1px solid #ddd;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    align-items: center;
+                    justify-content: center;
+                    color: black;
+                    background-color: #95c8e6;
+                }
+                th {
+                    background-color: #0a2f69;
+                    color: white;
+                }
+                th, td {
+                    border: 1px solid #ddd;
+                    text-align: center;
+                    padding: 8px;
+                }
+                tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+                tr:nth-child(odd) {
+                    background-color: #ffffff;
+                }
+            </style>
+           """+ dfhtml2+"""
+        """
+        def convert_html_to_img(html_content, output_file):
+            # Specify Chromium executable path
+            hti = Html2Image(browser_executable="/usr/bin/chromium")
+            
+            # Create a temporary HTML file
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
+                temp_html_file.write(html_content.encode("utf-8"))
+                temp_html_file.flush()
+                
+                # Render the HTML as an image
+                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1650))
+        
+        # Add a button for image download
+        if st.button("Unduh Tabel"+tanggal2+""):
+            try:
+                output_image_filet = "tabel_prakicu"+tanggal2+".png"  # Define output image file name
+                
+                # Convert HTML content to an image
+                convert_html_to_img(dfhtmlcss, output_image_filet)
+                
+                # Provide download link for the image
+                with open(output_image_filet, "rb") as file:
+                    st.download_button(
+                        label="Unduh",
+                        data=file,
+                        file_name="tabel_prakicu"+tanggal2+".png",
+                        mime="image/png"
+                    )
+            except Exception as e:
+                st.error(f"Failed to create image: {e}")
+    
