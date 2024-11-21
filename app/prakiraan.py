@@ -707,7 +707,11 @@ with tab2:
     tab5, tab6 = st.tabs([tanggal, tanggal2])
     with tab5:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        st.write('Tanggal Analisis :', nesting('Bika')[0]['analysis_date'])
+        #st.write('Tanggal Analisis :', nesting('Bika')[0]['analysis_date'])
+        dfhtml = """
+            <p> Tanggal Analisis : """+str(nesting('Bika')[0]['analysis_date'])+"""</p>
+            """+dfhtml+"""
+        """
         st.markdown(dfhtml, unsafe_allow_html=True)
         st.divider()
         dfhtmlcss = """
