@@ -148,7 +148,7 @@ def harian_kecamatan(waktu, nama):
 ## Printing to Web
 def waktuu(waktu):
     (a, b, c, d, e, f) = waktu("Bika")
-    tanggal = b[0][8]+b[0][9]+str("/")+b[0][5]+b[0][6]+str("/")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
+    tanggal = b[0][8]+b[0][9]+str("-")+b[0][5]+b[0][6]+str("-")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
     tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
     tberlaku = b[0]
     thingga = b[7]
