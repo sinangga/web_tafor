@@ -244,9 +244,7 @@ dfhtml2 = df2.to_html(index = False, escape=False)
 
 
 tab1, tab2 = st.tabs(["Infografis","Tabel"])
-
 with tab1:
-    st.write("Infografis Prakiraan Cuaca")
     tab3, tab4 = st.tabs([tanggal, tanggal2])
     
     with tab3:
@@ -477,11 +475,10 @@ with tab1:
                 st.error(f"Failed to create image: {e}")
 
 with tab2:
-    st.write("Tabel Prakiraan Cuaca")
     tab5, tab6 = st.tabs([tanggal, tanggal2])
     with tab5:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        st.write('Tanggal Analisis :',df_kh[0]['cuaca'][0][0]['analysis_date'])
+        st.write('Tanggal Analisis :', nesting('Bika')[0]['analysis_date'])
         st.markdown(dfhtml, unsafe_allow_html=True)
         st.divider()
         dfhtmlcss = """
@@ -553,7 +550,7 @@ with tab2:
 
     with tab6:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        st.write('Tanggal Analisis :',df_kh2[0]['cuaca'][0][0]['analysis_date'])
+        st.write('Tanggal Analisis :', nesting('Bika')[8]['analysis_date'])
         st.markdown(dfhtml2, unsafe_allow_html=True)
         st.divider()
         dfhtmlcss = """
