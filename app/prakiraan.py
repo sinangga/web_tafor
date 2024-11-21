@@ -278,7 +278,7 @@ with tab1:
         # Convert the updated results to a Pandas DataFrame
         df2_info = pd.DataFrame(result_info)
         htmlcode2 = df2_info.to_html(index = False, escape=False ,formatters=format_dictinfo)
-        htmlcode3 = 'Tanggal Analisis : '+str(df_kh[0]['cuaca'][0][0]['analysis_date'])
+        htmlcode3 = 'Tanggal Analisis : '+str(nesting('Bika')[0]['analysis_date'])
         htmlcode = """
             <head>
                 <meta charset="UTF-8">
@@ -504,7 +504,7 @@ with tab1:
         # Convert the updated results to a Pandas DataFrame
         df2_info2 = pd.DataFrame(result_info2)
         htmlcode2 = df2_info2.to_html(index = False, escape=False ,formatters=format_dictinfo2)
-        htmlcode3 = 'Tanggal Analisis : '+nesting('Bika')[8]['analysis_date'])
+        htmlcode3 = 'Tanggal Analisis : '+ str(nesting('Bika')[8]['analysis_date'])
         htmlcode = """
             <head>
                 <meta charset="UTF-8">
