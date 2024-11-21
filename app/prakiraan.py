@@ -191,7 +191,7 @@ def resultdict(waktu, jjaamm):
         datacoba.append(harian_kecamatan(waktu, i))
     headers = jjaamm #['Kecamatan', '12', '15', '18', '21', '00', '03', '06', '09', 'Suhu', 'Kelembapan', 'Angin', 'Kecepatan']
     result_dicts = [dict(zip(headers, values)) for values in datacoba]
-    return headers, result_dicts
+    return datacoba, headers, result_dicts
 
 # Define the local path for the icons
 #base_path = "/mount/src/web_tafor/icon/"
@@ -209,7 +209,7 @@ status_to_icon = {
     'Udara Kabur': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png',
     'Berawan': 'https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg'
 }
-(headers, result_dicts) = resultdict(cuaca_pertama, jammm)
+(datacoba, headers, result_dicts) = resultdict(cuaca_pertama, jammm)
 # Loop through each dictionary and replace values in columns 2-9
 time = []
 for i in range(1,9):
@@ -223,7 +223,7 @@ for entry in result_dicts:
 df = pd.DataFrame(result_dicts)
 dfhtml = df.to_html(index = False, escape=False)
 #HTML(dfhtml)
-(headers2, result_dicts2) = resultdict(cuaca_kedua, jammm2)
+(datacoba2, headers2, result_dicts2) = resultdict(cuaca_kedua, jammm2)
 # Loop through each dictionary and replace values in columns 2-9
 time2 = []
 for i in range(1,9):
