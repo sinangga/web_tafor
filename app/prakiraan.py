@@ -460,7 +460,7 @@ with tab1:
                 hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1400))
         
         # Add a button for image download
-        if st.button("Unduh Infografis"+tanggal+""):
+        if st.button("Unduh Infografis "+tanggal+""):
             try:
                 output_image_file = "prakicu"+tanggal+".png"  # Define output image file name
                 
