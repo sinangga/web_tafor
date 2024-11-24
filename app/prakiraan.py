@@ -323,7 +323,7 @@ with tab1:
                       font-weight: bold;
                     }
                     table {
-                        width: 100%;
+                        width: 80%;
                         border-collapse: separate;
                         border-spacing: 0;
                         border: 1px solid #ddd;
