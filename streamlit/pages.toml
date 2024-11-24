@@ -11,7 +11,7 @@ icon = "🌤️"
 [[pages]]
 path = "app/wrhp.py"
 name = "Angin dan RASON"
-icon = ":wind:"
+icon = "🎈"
 
 [[pages]]
 path = "app/regional.py"
