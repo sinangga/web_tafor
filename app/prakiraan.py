@@ -853,5 +853,5 @@ with tab2:
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
     with tab7:
-        secrets = st.secrets.instagram.client_id
+        secrets = st.secrets['instagram']['client_id']
         st.write("cli id key : ",secrets)
