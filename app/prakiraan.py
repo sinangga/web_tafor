@@ -317,13 +317,14 @@ with tab1:
                         justify-content: center;
                         background-color: #c1efff;
                         margin: 0;
+                        width: 100vw;
                     }
                     * {
                       font-family: Arial, sans-serif;
                       font-weight: bold;
                     }
                     table {
-                        width: 120%;
+                        width: 100%;
                         border-collapse: separate;
                         border-spacing: 0;
                         border: 1px solid #ddd;
