@@ -152,7 +152,7 @@ def waktuu(waktu):
     tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
     tberlaku = b[0]
     # Parse and attach UTC timezone
-    utc_time = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S%Z")
+    utc_time = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S")
     utc_time = utc_time.replace(tzinfo=ZoneInfo("UTC"))
     
     # Convert to UTC+7
