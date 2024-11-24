@@ -151,6 +151,13 @@ def waktuu(waktu):
     tanggal = b[0][8]+b[0][9]+str("-")+b[0][5]+b[0][6]+str("-")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
     tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
     tberlaku = b[0]
+    # Parse and attach UTC timezone
+    utc_time = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S%Z")
+    utc_time = utc_time.replace(tzinfo=ZoneInfo("UTC"))
+    
+    # Convert to UTC+7
+    tberlaku = utc_time.astimezone(ZoneInfo("Asia/Bangkok"))
+
     thingga = b[7]
     jam = []
     for i in range(len(b)):
