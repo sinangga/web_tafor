@@ -853,4 +853,5 @@ with tab2:
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
     with tab7:
-        st.write("post key : ",st.secrets(client_secret))
+        secrets = st.secrets["client_id"]
+        st.write("post key : ",secrets)
