@@ -419,7 +419,7 @@ with tab1:
                         <br> Prakiraan Cuaca Kabupaten
                     </div>
                     <div class="sub-text">
-                        Berlaku mulai : """+ tberlaku +"""UTC
+                        Berlaku : """+ tberlaku +"""UTC
                         <br>Hingga : """+ thingga +"""UTC
                         <hr class="gradient">
                     </div>
@@ -646,7 +646,7 @@ with tab1:
                         <br> Prakiraan Cuaca Kabupaten
                     </div>
                     <div class="sub-text">
-                        Berlaku mulai : """+ tberlaku2 +"""UTC
+                        Berlaku : """+ tberlaku2 +"""UTC
                         <br>Hingga : """+ thingga2 +"""UTC
                         <hr class="gradient">
                     </div>
