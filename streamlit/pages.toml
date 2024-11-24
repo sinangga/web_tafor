@@ -1,24 +1,24 @@
 [[pages]]
 path = "app/aktual.py"
 name = "Aktual"
-icon = "🏠"
+icon = ":clock:"
 
 [[pages]]
 path = "app/prakiraan.py"
 name = "Prakicu"
-icon = ":cloud:"
+icon = "🌤️"
 
 [[pages]]
 path = "app/wrhp.py"
 name = "Angin dan RASON"
-icon = "🏠"
+icon = ":wind:"
 
 [[pages]]
 path = "app/regional.py"
 name = "Parameter Regional"
-icon = ":books:"
+icon = "🌏"
 
 [[pages]]
 path = "app/rainrate.py"
 name = "Rainrate"
-icon = "🏠"
+icon = "🌧️"
