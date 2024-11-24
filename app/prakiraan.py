@@ -170,14 +170,14 @@ def waktuu(waktu):
     for i in range(len(b)):
         textjam = b[i][11:13]
         textjamdirection ={
-            "00": "07:00",
-            "03": "10:00",
-            "06": "13:00",
-            "09": "16:00",
-            "12": "19:00",
-            "15": "22:00",
-            "18": "01:00",
-            "21": "04:00"
+            "00": "07",
+            "03": "10",
+            "06": "13",
+            "09": "16",
+            "12": "19",
+            "15": "22",
+            "18": "01",
+            "21": "04"
         }
         textjam = textjamdirection.get(b[i][11:13], b[i][11:13])
         jam.append(textjam)       
@@ -317,7 +317,6 @@ with tab1:
                         justify-content: center;
                         background-color: #c1efff;
                         margin: 0;
-                        width: 100vw;
                     }
                     * {
                       font-family: Arial, sans-serif;
@@ -325,7 +324,6 @@ with tab1:
                     }
                     table {
                         width: 100%;
-                        max-width: 1200px;
                         border-collapse: separate;
                         border-spacing: 0;
                         border: 1px solid #ddd;
