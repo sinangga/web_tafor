@@ -141,8 +141,8 @@ def harian_kecamatan(waktu, nama):
     if nama[11] == "SW":
         nama[11] = 'Barat Daya'
     nama[12] = str(round(nama[12])) + " Knot"
-    nama[11] = str(nama[11]) + "%"
-    nama[10] = str(nama[10]) + "°C"
+    nama[10] = str(nama[10]) + "%"
+    nama[9] = str(nama[9]) + "°C"
     return nama
 
 ## Printing to Web
