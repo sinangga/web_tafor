@@ -247,7 +247,7 @@ dfhtml2 = df2.to_html(index = False, escape=False)
 ########################
 
 
-tab1, tab2 = st.tabs(["Infografis","Tabel"])
+tab1, tab2, tab7 = st.tabs(["Infografis","Tabel", 'Post'])
 with tab1:
     tab3, tab4 = st.tabs([tanggal, tanggal2])
     
@@ -852,4 +852,5 @@ with tab2:
                     )
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
-    
+    with tab7:
+        st.write("post")
