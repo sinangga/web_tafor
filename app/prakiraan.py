@@ -152,14 +152,14 @@ def waktuu(waktu):
     tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
     tberlaku = b[0]
     # Parse the string and specify it is in UTC
-    utc_time = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S%Z")
+    utc_time = datetime.strptime(tberlaku, "%YYYY-%mm-%dd %HH:%MM:%SS%Z")
     utc_time = utc_time.replace(tzinfo=pytz.utc)
     # Convert to UTC+7
     target_timezone = pytz.timezone("Asia/Bangkok")  # UTC+7
     tberlaku = utc_time.astimezone(target_timezone)
     thingga = b[7]
     # Parse the string and specify it is in UTC
-    utc_time_hingga = datetime.strptime(thingga, "%Y-%m-%d %H:%M:%S%Z")
+    utc_time_hingga = datetime.strptime(thingga, "%YYYY-%mm-%dd %HH:%MM:%SS%Z")
     utc_time_hingga = utc_time_hingga.replace(tzinfo=pytz.utc)
     # Convert to UTC+7
     thingga = utc_time_hingga.astimezone(target_timezone)
