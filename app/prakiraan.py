@@ -17,8 +17,8 @@ from xhtml2pdf import pisa
 from io import BytesIO
 from html2image import Html2Image
 import tempfile
-
-
+import pytz
+from datetime import datetime
 
 ### Main Code Down Here ###
 ###########################
@@ -151,7 +151,18 @@ def waktuu(waktu):
     tanggal = b[0][8]+b[0][9]+str("-")+b[0][5]+b[0][6]+str("-")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
     tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
     tberlaku = b[0]
+    # Parse the string and specify it is in UTC
+    utc_time = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S%Z")
+    utc_time = utc_time.replace(tzinfo=pytz.utc)
+    # Convert to UTC+7
+    target_timezone = pytz.timezone("Asia/Bangkok")  # UTC+7
+    tberlaku = utc_time.astimezone(target_timezone)
     thingga = b[7]
+    # Parse the string and specify it is in UTC
+    utc_time_hingga = datetime.strptime(thingga, "%Y-%m-%d %H:%M:%S%Z")
+    utc_time_hingga = utc_time_hingga.replace(tzinfo=pytz.utc)
+    # Convert to UTC+7
+    thingga = utc_time_hingga.astimezone(target_timezone)
     jam = []
     for i in range(len(b)):
         jam.append(b[i][11]+b[i][12])
