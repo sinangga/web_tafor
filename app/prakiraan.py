@@ -153,19 +153,19 @@ def waktuu(waktu):
     tberlaku = b[0]
     # Parse and attach UTC timezone
     tberlaku = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S")
-    tberlaku = tberlaku.strftime("%d-%m-%Y %H:%M:%S")
     tberlaku = tberlaku.replace(tzinfo=ZoneInfo("UTC"))
     # Convert to UTC+7
     tberlaku = tberlaku.astimezone(ZoneInfo("Asia/Bangkok"))
+    tberlaku = tberlaku.strftime("%d-%m-%Y %H:%M:%S")
     tberlaku = str(tberlaku)
     tberlaku = tberlaku[0:16]
     thingga = b[7]
     # Parse and attach UTC timezone
     thingga = datetime.strptime(thingga, "%Y-%m-%d %H:%M:%S")
-    thingga = thingga.strftime("%d-%m-%Y %H:%M:%S")
     thingga = thingga.replace(tzinfo=ZoneInfo("UTC"))
     # Convert to UTC+7
     thingga = thingga.astimezone(ZoneInfo("Asia/Bangkok"))  
+    thingga = thingga.strftime("%d-%m-%Y %H:%M:%S")
     thingga = str(thingga)
     thingga = thingga[0:16]
     jam = []
