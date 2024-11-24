@@ -247,7 +247,7 @@ dfhtml2 = df2.to_html(index = False, escape=False)
 ########################
 
 
-tab1, tab2, tab7 = st.tabs(["Infografis","Tabel", 'Post'])
+tab1, tab2 = st.tabs(["Infografis","Tabel"])
 with tab1:
     tab3, tab4 = st.tabs([tanggal, tanggal2])
     
@@ -852,7 +852,7 @@ with tab2:
                     )
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
-    with tab7:
-        #secrets = st.secrets['instagram']['client_id']
-        st.write("cli id key : ",st.secrets)
+    #with tab7:
+    #    #secrets = st.secrets['instagram']['client_id']
+    #    st.write("cli id key : ",st.secrets)
     
