@@ -855,3 +855,4 @@ with tab2:
     with tab7:
         #secrets = st.secrets['instagram']['client_id']
         st.write("cli id key : ",st.secrets)
+    
