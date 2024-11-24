@@ -325,6 +325,7 @@ with tab1:
                     }
                     table {
                         width: 100%;
+                        max-width: 1200px;
                         border-collapse: separate;
                         border-spacing: 0;
                         border: 1px solid #ddd;
