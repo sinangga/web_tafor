@@ -5,7 +5,7 @@ icon = "🧭"
 
 [[pages]]
 path = "app/prakiraan.py"
-name = "Prakicu"
+name = "Prakiraan Cuaca"
 icon = "🌤️"
 
 [[pages]]
