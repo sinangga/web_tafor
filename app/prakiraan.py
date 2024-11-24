@@ -169,6 +169,10 @@ def waktuu(waktu):
     jam = []
     for i in range(len(b)):
         textjam = b[i][11:13]
+        if textjam == "00":
+            textjam = "07"
+        else:
+            textjam = textjam
         jam.append(textjam)       
     jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN', 'KECEPATAN']
     jammm = []
