@@ -67,14 +67,14 @@ def printcuaca(x):
 #psu = ['c1 - cn', 'suhu(min-max)', 'RH (min-max)']
 def cuaca_pertama(n):
     suhu = []
-    #angin = []
+    angin = []
     arah = []
     rh = []
     list_cuaca = []
     list_tgl = []
     for i in range(8):
         suhu.append(nesting(n)[i]["t"])
-        #angin.append(nesting(n)[i]["ws"])
+        angin.append(nesting(n)[i]["ws"])
         arah.append(nesting(n)[i]["wd"])
         rh.append(nesting(n)[i]["hu"])
         list_cuaca.append(nesting(n)[i]["weather_desc"])
@@ -85,20 +85,20 @@ def cuaca_pertama(n):
     minrh = min(rh)
     suhu_akhir = str(minsuhu) + "-" + str(maxsuhu)
     rh_akhir = str(minrh) + "-" + str(maxrh)
-    #angin = max(angin)
+    angin = max(angin)
     arah = statistics.mode(arah)
-    return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah#, angin
+    return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah, angin
 
 def cuaca_kedua(n):
     suhu = []
-    #angin = []
+    angin = []
     arah = []
     rh = []
     list_cuaca = []
     list_tgl = []
     for i in range(8,16):
         suhu.append(nesting(n)[i]["t"])
-        #angin.append(nesting(n)[i]["ws"])
+        angin.append(nesting(n)[i]["ws"])
         arah.append(nesting(n)[i]["wd"])
         rh.append(nesting(n)[i]["hu"])
         list_cuaca.append(nesting(n)[i]["weather_desc"])
@@ -109,20 +109,20 @@ def cuaca_kedua(n):
     minrh = min(rh)
     suhu_akhir = str(minsuhu) + "-" + str(maxsuhu)
     rh_akhir = str(minrh) + "-" + str(maxrh)
-    #angin = max(angin)
+    angin = max(angin)
     arah = statistics.mode(arah)
-    return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah#, angin
+    return n, list_tgl, list_cuaca, suhu_akhir, rh_akhir, arah, angin
 
 ## Calling Data Kecamatan Daily
 def harian_kecamatan(waktu, nama):
-    (a, b, c, d, e, f) = waktu(nama)
+    (a, b, c, d, e, f, g) = waktu(nama)
     nama = []
-    for x in (a, d, e, f):
-        if x in (a,d,e,f):
+    for x in (a, d, e, f, g):
+        if x in (a,d,e,f,g):
             nama.append(x)
     for i in range(len(c)):
         nama.append(c[i])
-    order_list = [0,4,5,6,7,8,9,10,11,1,2,3]
+    order_list = [0,5,6,7,8,9,10,11,12,1,2,3,4]
     nama = [nama[i] for i in order_list]
     if nama[11] == "SE":
         nama[11] = 'Tenggara'
@@ -140,14 +140,14 @@ def harian_kecamatan(waktu, nama):
         nama[11] = 'Timur Laut'
     if nama[11] == "SW":
         nama[11] = 'Barat Daya'
-    #nama[12] = str(round(nama[12])) + " Knot"
-    nama[10] = str(nama[10]) + "%"
-    nama[9] = str(nama[9]) + "°C"
+    nama[12] = str(round(nama[12])) + " Knot"
+    nama[11] = str(nama[11]) + "%"
+    nama[10] = str(nama[10]) + "°C"
     return nama
 
 ## Printing to Web
 def waktuu(waktu):
-    (a, b, c, d, e, f) = waktu("Bika")
+    (a, b, c, d, e, f, g) = waktu("Bika")
     tanggal = b[0][8]+b[0][9]+str("-")+b[0][5]+b[0][6]+str("-")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
     tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
     tberlaku = b[0]
@@ -155,7 +155,7 @@ def waktuu(waktu):
     jam = []
     for i in range(len(b)):
         jam.append(b[i][11]+b[i][12])
-    jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN']
+    jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN', 'KECEPATAN']
     jammm = []
     for i in jamm:
         if type(i) == list:
@@ -436,6 +436,7 @@ with tab1:
                         <col style="width: 10%;">
                         <col style="width: 10%;">
                         <col style="width: 10%;">
+                        <col style="width: 10%;">
                       </colgroup>
                         """ + htmlcode2 + """
                     <div class="footnote">
@@ -659,6 +660,7 @@ with tab1:
                         <col style="width: 5%;">
                         <col style="width: 5%;">
                         <col style="width: 5%;">
+                        <col style="width: 10%;">
                         <col style="width: 10%;">
                         <col style="width: 10%;">
                         <col style="width: 10%;">
