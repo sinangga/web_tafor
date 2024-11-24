@@ -154,12 +154,16 @@ def waktuu(waktu):
     # Parse and attach UTC timezone
     tberlaku = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S")
     tberlaku = tberlaku.replace(tzinfo=ZoneInfo("UTC"))
+    tberlaku = str(tberlaku)
+    tberlaku = tberlaku[0:16]
     # Convert to UTC+7
     tberlaku = tberlaku.astimezone(ZoneInfo("Asia/Bangkok"))
     thingga = b[7]
     # Parse and attach UTC timezone
     thingga = datetime.strptime(thingga, "%Y-%m-%d %H:%M:%S")
     thingga = thingga.replace(tzinfo=ZoneInfo("UTC"))
+    thingga = str(thingga)
+    thingga = thingga[0:16]
     # Convert to UTC+7
     thingga = thingga.astimezone(ZoneInfo("Asia/Bangkok"))    
     jam = []
@@ -429,8 +433,8 @@ with tab1:
                         <br> Prakiraan Cuaca Kabupaten
                     </div>
                     <div class="sub-text">
-                        Berlaku : """+ tberlaku +"""UTC
-                        <br>Hingga : """+ thingga +"""UTC
+                        Berlaku : """+ tberlaku +""" WIB
+                        <br>Hingga : """+ thingga +""" WIB
                         <hr class="gradient">
                     </div>
                       <colgroup>
@@ -656,8 +660,8 @@ with tab1:
                         <br> Prakiraan Cuaca Kabupaten
                     </div>
                     <div class="sub-text">
-                        Berlaku : """+ tberlaku2 +"""UTC
-                        <br>Hingga : """+ thingga2 +"""UTC
+                        Berlaku : """+ tberlaku2 +""" WIB
+                        <br>Hingga : """+ thingga2 +""" WIB
                         <hr class="gradient">
                     </div>
                       <colgroup>
