@@ -17,7 +17,7 @@ from xhtml2pdf import pisa
 from io import BytesIO
 from html2image import Html2Image
 import tempfile
-import pytz
+from zoneinfo import ZoneInfo
 from datetime import datetime
 
 ### Main Code Down Here ###
@@ -152,13 +152,16 @@ def waktuu(waktu):
     tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
     tberlaku = b[0]
     # Parse and attach UTC timezone
-    utc_time = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S")
-    utc_time = utc_time.replace(tzinfo=ZoneInfo("UTC"))
-    
+    tberlaku = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S")
+    tberlaku = tberlaku.replace(tzinfo=ZoneInfo("UTC"))
     # Convert to UTC+7
-    tberlaku = utc_time.astimezone(ZoneInfo("Asia/Bangkok"))
-
+    tberlaku = tberlaku.astimezone(ZoneInfo("Asia/Bangkok"))
     thingga = b[7]
+    # Parse and attach UTC timezone
+    thingga = datetime.strptime(thingga, "%Y-%m-%d %H:%M:%S")
+    thingga = thingga.replace(tzinfo=ZoneInfo("UTC"))
+    # Convert to UTC+7
+    thingga = thingga.astimezone(ZoneInfo("Asia/Bangkok"))    
     jam = []
     for i in range(len(b)):
         jam.append(b[i][11]+b[i][12])
