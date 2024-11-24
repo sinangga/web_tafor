@@ -168,7 +168,7 @@ def waktuu(waktu):
     thingga = thingga[0:16]
     jam = []
     for i in range(len(b)):
-        textjam = b[i][11:12]
+        textjam = b[i][11:13]
         jam.append(textjam)       
     jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN', 'KECEPATAN']
     jammm = []
