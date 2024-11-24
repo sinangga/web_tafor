@@ -723,7 +723,6 @@ with tab2:
                   font-weight: bold;
                 }
              table {
-                    width: 90%;
                     border-collapse: separate;
                     border-spacing: 0;
                     border: 1px solid #ddd;
@@ -795,7 +794,7 @@ with tab2:
                   font-weight: bold;
                 }
              table {
-                    width: 90%;
+                    width: 100%;
                     border-collapse: separate;
                     border-spacing: 0;
                     border: 1px solid #ddd;
