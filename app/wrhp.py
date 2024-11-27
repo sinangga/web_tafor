@@ -30,4 +30,8 @@ with tab2:
 
 with tab3:
    st.header("RASON")
-   components.iframe("https://aviation.bmkg.go.id/monitoring_rason/index", height=500)
+   #using iframe markdown
+   url = "https://aviation.bmkg.go.id/monitoring_rason/index"
+   st.markdown(f'<iframe src={url} width="100%" height="600" style="position:absolute; top:200px; left:0; overflow:hidden; margin-top:-300px;"></iframe>', unsafe_allow_html=True)
+
+   #components.iframe("https://aviation.bmkg.go.id/monitoring_rason/index", height=500)
