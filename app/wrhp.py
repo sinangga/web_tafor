@@ -35,6 +35,6 @@ with tab3:
    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
    url = "https://aviation.bmkg.go.id/monitoring_rason/index"
    #rason_res = requests.get(url, headers=headers)
-   st.markdown(f'<iframe src={url, headers=headers} width="100%" height="600" style="position:absolute; top:200px; left:0; overflow:hidden; margin-top:-300px;"></iframe>', unsafe_allow_html=True)
+   st.markdown(f'<iframe src={url} headers={headers} width="100%" height="600" style="position:absolute; top:200px; left:0; overflow:hidden; margin-top:-300px;"></iframe>', unsafe_allow_html=True)
 
    #components.iframe("https://aviation.bmkg.go.id/monitoring_rason/index", height=500)
