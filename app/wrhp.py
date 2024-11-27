@@ -30,4 +30,4 @@ with tab2:
 
 with tab3:
    st.header("RASON")
-   components.iframe("aviation.bmkg.go.id/monitoring_rason/index", height=500)
+   components.iframe("https://aviation.bmkg.go.id/monitoring_rason/index", height=500)
