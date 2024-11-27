@@ -31,7 +31,9 @@ with tab2:
 with tab3:
    st.header("RASON")
    #using iframe markdown
+   headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
    url = "https://aviation.bmkg.go.id/monitoring_rason/index"
-   st.markdown(f'<iframe src={url} width="100%" height="600" style="position:absolute; top:200px; left:0; overflow:hidden; margin-top:-300px;"></iframe>', unsafe_allow_html=True)
+   rason_res = requests.get(url, headers=headers)
+   st.markdown(f'<iframe src={rason_res} width="100%" height="600" style="position:absolute; top:200px; left:0; overflow:hidden; margin-top:-300px;"></iframe>', unsafe_allow_html=True)
 
    #components.iframe("https://aviation.bmkg.go.id/monitoring_rason/index", height=500)
