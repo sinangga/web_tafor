@@ -673,8 +673,7 @@ with tab1:
                         <br> Prakiraan Cuaca Kabupaten
                     </div>
                     <div class="sub-text">
-                        Berlaku : """+ tberlaku2 +""" WIB
-                        <br>Hingga : """+ thingga2 +""" WIB
+                        Berlaku : """+ tberlaku2 +""" WIB | Hingga : """+ thingga2 +""" WIB
                         <hr class="gradient">
                     </div>
                       <colgroup>
