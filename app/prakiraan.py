@@ -506,6 +506,27 @@ with tab1:
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
     with tab4:
+        # Sample data containing image URLs
+        data = {
+            "Name": ["Image 1", "Image 2", "Image 3"],
+            "Image_URL": [
+                "https://via.placeholder.com/150",
+                "https://via.placeholder.com/150/0000FF/808080",
+                "https://via.placeholder.com/150/FF0000/FFFFFF",
+            ],
+        }
+        
+        # Create a DataFrame
+        df = pd.DataFrame(data)
+        
+        # Display the table
+        st.write("### Image Table")
+        
+        # Generate the table with images
+        for index, row in df.iterrows():
+            st.markdown(f"**{row['Name']}**")
+            st.image(row['Image_URL'], width=150)  # Adjust the width as needed
+
         # convert your links to html tags 
         def path_to_image_html(path):
             return '<img src="'+ path + ' "width="30px"; >'
