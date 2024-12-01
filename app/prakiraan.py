@@ -321,8 +321,8 @@ with tab1:
                         margin: 0;
                     }
                     * {
-                        font-family: Arial, sans-serif;
-                        font-weight: bold;
+                      font-family: Arial, sans-serif;
+                      font-weight: bold;
                     }
                     table {
                         width: 100%;
@@ -336,17 +336,17 @@ with tab1:
                         background-color: white;
                         color: black;
                     }
-                    tr {
-                        text-align: center;
-                        background-color: #d0edf7;
-                        color: black;
-                        height: 30px;
-                        overflow: hidden;
+                    tr{
+                      text-align: center;
+                      background-color: #d0edf7;
+                      color: black;
+                      height: 30px;
+                      overflow: hidden;
                     }
-                    th {
-                        text-align: center;
-                        background-color: #0a2f69;
-                        color: white;
+                    th{
+                      text-align: center;
+                      background-color: #0a2f69;
+                      color: white;
                     }
                     th, td {
                         border: 1px solid #ddd;
@@ -359,21 +359,40 @@ with tab1:
                     tr:nth-child(odd) {
                         background-color: #ffffff;
                     }
-                    td:nth-child(2) img,
-                    td:nth-child(3) img,
-                    td:nth-child(4) img,
-                    td:nth-child(5) img,
-                    td:nth-child(6) img,
-                    td:nth-child(7) img,
-                    td:nth-child(8) img,
-                    td:nth-child(9) img,
-                    td:nth-child(10) img {
-                        width: 30px; /* Set desired image width */
-                        height: auto; /* Keep aspect ratio */
+                    td:nth-child(2) img {
+                      width: 30px; /*Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(3) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(4) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(5) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }td:nth-child(6) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(7) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(8) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
+                    }
+                    td:nth-child(9) img {
+                      width: 30px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
                     }
                     td:nth-child(10) img {
-                        width: 50px; /* Set desired image width for the last image */
-                        height: auto; /* Keep aspect ratio */
+                      width: 50px; /* Set desired image width */
+                      height: auto; /* Keep aspect ratio */
                     }
                     .footnote {
                         color: grey;
@@ -382,29 +401,29 @@ with tab1:
                     }
                     .logo-container {
                         display: flex;
-                        align-items: center; /* Vertically center the logo and text */
-                        justify-content: flex-start; /* Align items to the left */
+                        flex-direction: column; /* Stack items vertically */
+                        align-items: center;
+                        /* background-color: #c1efff; White background */
                         background-color: white;
                         padding: 20px; /* Space around the content */
                         border-radius: 8px; /* Rounded corners */
                         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-                        color: black;
+                        color: black
                     }
                     .logo {
                         width: 40px; /* Adjust size as needed */
                         height: auto;
-                        margin-right: 10px; /* Space between the logo and text */
                     }
                     .main-text {
                         font-size: 20px;
                         color: black;
-                        margin: 0; /* Remove margin to ensure tight alignment */
-                        text-align: left; /* Align text to the left */
+                        margin: 10px 0; /* Space around the text */
+                        text-align: center;
                     }
                     .sub-text {
                         font-size: 16px; /* Slightly smaller font size */
                         color: black; /* Darker gray for the subtitle */
-                        text-align: left; /* Align text to the left */
+                        text-align: center;
                     }
                     hr.gradient {
                         height: 3px;
@@ -427,11 +446,10 @@ with tab1:
                         Stasiun Meteorologi Pangsuma Kapuas Hulu
                         <br> Prakiraan Cuaca Kabupaten
                     </div>
-                </div>
-                <div class="sub-text">
-                    Berlaku : """+ tberlaku +""" WIB | Hingga : """+ thingga +""" WIB
-                    <hr class="gradient">
-                </div>
+                    <div class="sub-text">
+                        Berlaku : """+ tberlaku2 +""" WIB | Hingga : """+ thingga2 +""" WIB
+                        <hr class="gradient">
+                    </div>
                       <colgroup>
                         <col style="width: 20%;">
                         <col style="width: 5%;">
