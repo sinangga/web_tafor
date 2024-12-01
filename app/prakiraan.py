@@ -437,30 +437,6 @@ with tab1:
                             rgba(0, 255, 113, 1) 100%
                         );
                     }
-                    .weather-table {
-                        width: 80%;
-                        margin: 20px auto;
-                        border-collapse: collapse;
-                        text-align: center;
-                    }
-            
-                    .weather-table th {
-                        padding: 10px;
-                    }
-            
-                    .weather-table img {
-                        width: 50px;
-                        height: auto;
-                        display: block;
-                        margin: 0 auto 5px;
-                    }
-            
-                    .weather-table small {
-                        display: block;
-                        margin-top: 5px;
-                        font-size: 0.9em;
-                        color: #555;
-                    }
                 </style>
             </head>
             <body>
