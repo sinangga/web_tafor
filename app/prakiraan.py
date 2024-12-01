@@ -466,9 +466,6 @@ with tab1:
                         <col style="width: 10%;">
                       </colgroup>
                         """ + htmlcode2 + """
-                    <div class="footnote">
-                        """ + htmlcode3 + """
-                    </div>
                     <!-- This is the second table (your weather icons table) -->
                     <table>
                         <thead>
