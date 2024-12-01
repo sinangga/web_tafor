@@ -437,6 +437,30 @@ with tab1:
                             rgba(0, 255, 113, 1) 100%
                         );
                     }
+                    .weather-table {
+                        width: 80%;
+                        margin: 20px auto;
+                        border-collapse: collapse;
+                        text-align: center;
+                    }
+            
+                    .weather-table th {
+                        padding: 10px;
+                    }
+            
+                    .weather-table img {
+                        width: 50px;
+                        height: auto;
+                        display: block;
+                        margin: 0 auto 5px;
+                    }
+            
+                    .weather-table small {
+                        display: block;
+                        margin-top: 5px;
+                        font-size: 0.9em;
+                        color: #555;
+                    }
                 </style>
             </head>
             <body>
@@ -468,6 +492,55 @@ with tab1:
                         """ + htmlcode2 + """
                     <div class="footnote">
                         """ + htmlcode3 + """
+                    </div>
+                    <!-- This is the second table (your weather icons table) -->
+                    <div class="weather-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah-am.png" alt="Cerah Icon">
+                                        <small>Cerah</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20ringan-am.png" alt="Hujan Ringan Icon">
+                                        <small>Hujan Ringan</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png" alt="Hujan Petir Icon">
+                                        <small>Hujan Petir</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png" alt="Petir Icon">
+                                        <small>Petir</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah%20berawan-am.png" alt="Cerah Berawan Icon">
+                                        <small>Cerah Berawan</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20lebat-am.png" alt="Hujan Lebat Icon">
+                                        <small>Hujan Lebat</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20sedang-am.png" alt="Hujan Sedang Icon">
+                                        <small>Hujan Sedang</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/kabut-am.png" alt="Kabut/Asap Icon">
+                                        <small>Kabut/Asap</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png" alt="Udara Kabur Icon">
+                                        <small>Udara Kabur</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg" alt="Berawan Icon">
+                                        <small>Berawan</small>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </body>
@@ -663,6 +736,31 @@ with tab1:
                             rgba(0, 255, 113, 1) 100%
                         );
                     }
+                    /* Styling the second table */
+                    .weather-table {
+                        width: 80%;
+                        margin: 20px auto;
+                        border-collapse: collapse;
+                        text-align: center;
+                    }
+            
+                    .weather-table th {
+                        padding: 10px;
+                    }
+            
+                    .weather-table img {
+                        width: 50px;
+                        height: auto;
+                        display: block;
+                        margin: 0 auto 5px;
+                    }
+            
+                    .weather-table small {
+                        display: block;
+                        margin-top: 5px;
+                        font-size: 0.9em;
+                        color: #555;
+                    }
                 </style>
             </head>
             <body>
@@ -694,6 +792,54 @@ with tab1:
                         """ + htmlcode2 + """
                     <div class="footnote">
                         """ + htmlcode3 + """
+                    </div>
+                    <div class="weather-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah-am.png" alt="Cerah Icon">
+                                        <small>Cerah</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20ringan-am.png" alt="Hujan Ringan Icon">
+                                        <small>Hujan Ringan</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png" alt="Hujan Petir Icon">
+                                        <small>Hujan Petir</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png" alt="Petir Icon">
+                                        <small>Petir</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah%20berawan-am.png" alt="Cerah Berawan Icon">
+                                        <small>Cerah Berawan</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20lebat-am.png" alt="Hujan Lebat Icon">
+                                        <small>Hujan Lebat</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20sedang-am.png" alt="Hujan Sedang Icon">
+                                        <small>Hujan Sedang</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/kabut-am.png" alt="Kabut/Asap Icon">
+                                        <small>Kabut/Asap</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png" alt="Udara Kabur Icon">
+                                        <small>Udara Kabur</small>
+                                    </th>
+                                    <th>
+                                        <img src="https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg" alt="Berawan Icon">
+                                        <small>Berawan</small>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </body>
