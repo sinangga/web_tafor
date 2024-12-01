@@ -736,9 +736,6 @@ with tab1:
                         <col style="width: 10%;">
                       </colgroup>
                         """ + htmlcode2 + """
-                    <div class="footnote">
-                        """ + htmlcode3 + """
-                    </div>
                     <table>
                         <thead>
                             <tr>
