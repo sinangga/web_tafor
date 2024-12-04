@@ -23,22 +23,11 @@ from datetime import datetime
 ### Main Code Down Here ###
 ###########################
 
-# Bypass Forbidden Status Code
+# BMKG API Request
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
-
-# Store Data from BMKG API (Kecamatan / adm2)
 kecamatan_res = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm2=61.06", headers=headers)
 kecamatan_output = kecamatan_res.json()
-df_kh = kecamatan_output['data']
-
-# Clustering Data into Single Dataset
-list_kecamatan = []
-for kh in df_kh:
-    list_kecamatan.append(kh['lokasi']['kecamatan'])
-
-#### Main Dataset ####
-df_kh_2 = dict(zip(list_kecamatan, df_kh))
-######################
+df_kh_2 = {kh['lokasi']['kecamatan']: kh for kh in kecamatan_output['data']}
 
 # Function to Call Specific Weather Data Kecamatan
 def nesting(nama_kecamatan):
