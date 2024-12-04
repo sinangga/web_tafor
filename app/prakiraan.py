@@ -237,56 +237,6 @@ status_to_icon = {
     'Udara Kabur': 'https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png',
     'Berawan': 'https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg'
 }
-tabel2 = """
-        <!-- This is the second table (your weather icons table) -->
-        <table>
-            <thead>
-                <tr>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah-am.png" alt="Cerah Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Cerah</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah%20berawan-am.png" alt="Cerah Berawan Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Cerah Berawan</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg" alt="Berawan Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Berawan</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/kabut-am.png" alt="Kabut/Asap Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Kabut/Asap</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png" alt="Udara Kabur Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Udara Kabur</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20ringan-am.png" alt="Hujan Ringan Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Hujan Ringan</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20sedang-am.png" alt="Hujan Sedang Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Hujan Sedang</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20lebat-am.png" alt="Hujan Lebat Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Hujan Lebat</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png" alt="Hujan Petir Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Hujan Petir</small>
-                    </th>
-                    <th style="text-align: center; padding: 10px;">
-                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png" alt="Petir Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
-                        <small>Petir</small>
-                    </th>
-                </tr>
-            </thead>
-        </table> 
-        """
-
 
 # DATA TABEL PERTAMA
 (datacoba, headers, result_dicts) = resultdict(cuaca_pertama, jammm)
@@ -786,7 +736,53 @@ with tab1:
                         <col style="width: 10%;">
                       </colgroup>
                         """ + htmlcode2 + """
-                        """ + tabel2 + """
+                        <!-- This is the second table (your weather icons table) -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah-am.png" alt="Cerah Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Cerah</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/cerah%20berawan-am.png" alt="Cerah Berawan Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Cerah Berawan</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg" alt="Berawan Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Berawan</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/kabut-am.png" alt="Kabut/Asap Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Kabut/Asap</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/udara%20kabur.png" alt="Udara Kabur Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Udara Kabur</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20ringan-am.png" alt="Hujan Ringan Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Hujan Ringan</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20sedang-am.png" alt="Hujan Sedang Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Hujan Sedang</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20lebat-am.png" alt="Hujan Lebat Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Hujan Lebat</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png" alt="Hujan Petir Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Hujan Petir</small>
+                                    </th>
+                                    <th style="text-align: center; padding: 10px;">
+                                        <img src="https://raw.githubusercontent.com/sinangga/web_tafor/refs/heads/main/icon/hujan%20petir-am.png" alt="Petir Icon" style="width: 30px; height: auto; display: block; margin: 0 auto 5px;">
+                                        <small>Petir</small>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table> 
                 </div>
             </body>
             """
