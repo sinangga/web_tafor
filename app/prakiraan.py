@@ -19,6 +19,9 @@ from html2image import Html2Image
 import tempfile
 from zoneinfo import ZoneInfo
 from datetime import datetime
+import folium
+from folium import Popup
+from streamlit_folium import st_folium
 
 ### Main Code Down Here ###
 ###########################
