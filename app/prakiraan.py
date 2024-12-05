@@ -23,11 +23,22 @@ from datetime import datetime
 ### Main Code Down Here ###
 ###########################
 
-# BMKG API Request
+# Bypass Forbidden Status Code
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+
+# Store Data from BMKG API (Kecamatan / adm2)
 kecamatan_res = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm2=61.06", headers=headers)
 kecamatan_output = kecamatan_res.json()
-df_kh_2 = {kh['lokasi']['kecamatan']: kh for kh in kecamatan_output['data']}
+df_kh = kecamatan_output['data']
+
+# Clustering Data into Single Dataset
+list_kecamatan = []
+for kh in df_kh:
+    list_kecamatan.append(kh['lokasi']['kecamatan'])
+
+#### Main Dataset ####
+df_kh_2 = dict(zip(list_kecamatan, df_kh))
+######################
 
 # Function to Call Specific Weather Data Kecamatan
 def nesting(nama_kecamatan):
@@ -264,7 +275,7 @@ dfhtml2 = df2.to_html(index = False, escape=False)
 ########################
 
 
-tab1, tab2 = st.tabs(["Infografis","Tabel"])
+tab1, tab2, tab7 = st.tabs(["Infografis","Tabel", "Peta Interaktif"])
 with tab1:
     tab3, tab4 = st.tabs([tanggal, tanggal2])
     
@@ -956,7 +967,32 @@ with tab2:
                     )
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
-    #with tab7:
-    #    #secrets = st.secrets['instagram']['client_id']
-    #    st.write("cli id key : ",st.secrets)
+    with tab7:
+        # Initialize map centered on Kapuas Hulu
+        m = folium.Map(location=[-0.8356, 112.9304], zoom_start=10)
+        
+        # Iterate over the data and add to the map
+        for kecamatan, data in df_kh_2.items():
+            forecast = data['parameter'][0]['description']  # Modify based on actual data structure
+        
+            # Example coordinates (use actual coordinates for each region)
+            coords = [[-0.8356, 112.9304]]  # Placeholder for demonstration
+        
+            # Create pop-up with forecast data
+            popup_html = f"""
+            <table border="1" style="width:100%; text-align:center;">
+                <tr><th>Kecamatan</th><td>{kecamatan}</td></tr>
+                <tr><th>Forecast</th><td>{forecast}</td></tr>
+            </table>
+            """
+            popup = Popup(popup_html, max_width=300)
+        
+            # Add marker or polygon for each kecamatan
+            folium.Marker(
+                location=coords[0],  # Adjust this to the actual coordinates
+                popup=popup
+            ).add_to(m)
+        
+        # Display map in Streamlit
+        st_data = st_folium(m, width=700, height=500)
     
