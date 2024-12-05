@@ -971,27 +971,6 @@ with tab2:
         # Initialize map centered on Kapuas Hulu
         m = folium.Map(location=[-0.8356, 112.9304], zoom_start=10)
         
-        # Iterate over the data and add to the map
-        for kecamatan, data in df_kh_2.items():
-            forecast = data['parameter'][0]['description']  # Modify based on actual data structure
-        
-            # Example coordinates (use actual coordinates for each region)
-            coords = [[-0.8356, 112.9304]]  # Placeholder for demonstration
-        
-            # Create pop-up with forecast data
-            popup_html = f"""
-            <table border="1" style="width:100%; text-align:center;">
-                <tr><th>Kecamatan</th><td>{kecamatan}</td></tr>
-                <tr><th>Forecast</th><td>{forecast}</td></tr>
-            </table>
-            """
-            popup = Popup(popup_html, max_width=300)
-        
-            # Add marker or polygon for each kecamatan
-            folium.Marker(
-                location=coords[0],  # Adjust this to the actual coordinates
-                popup=popup
-            ).add_to(m)
         
         # Display map in Streamlit
         st_data = st_folium(m, width=700, height=500)
