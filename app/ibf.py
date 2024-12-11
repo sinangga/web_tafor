@@ -10,14 +10,14 @@ st.write("Impact Based Forecast Wilayah Kalimantan Barat")
 with tab1:
     st.header("H-0")
     H00 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_00.png"  
-    st.iamge(H00)
+    st.image(H00)
 
 with tab2:
     st.header("H-24")
     H24 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_24.png"  
-    st.iamge(H24)
+    st.image(H24)
 
 with tab3:
     st.header("H-48")
     H48 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_48.png"  
-    st.iamge(H48)
+    st.image(H48)
