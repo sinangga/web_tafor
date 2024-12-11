@@ -5,7 +5,7 @@ from io import BytesIO
 
 
 tab1, tab2, tab3 = st.tabs(["H0", "H24", "H48"])
-st.header("Impact Based Forecast Wilayah Kalimantan Barat")
+#st.header("Impact Based Forecast Wilayah Kalimantan Barat")
 
 with tab1:
     st.header("H-0")
