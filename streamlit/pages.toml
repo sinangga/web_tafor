@@ -1,12 +1,17 @@
 [[pages]]
-path = "app/aktual.py"
-name = "Aktual"
-icon = "🧭"
+path = "app/ibf.py"
+name = "Warning"
+icon = "⚠️"
 
 [[pages]]
 path = "app/prakiraan.py"
 name = "Prakiraan Cuaca"
 icon = "🌤️"
+
+[[pages]]
+path = "app/aktual.py"
+name = "Aktual"
+icon = "🧭"
 
 [[pages]]
 path = "app/wrhp.py"
