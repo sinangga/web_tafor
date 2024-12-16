@@ -1,6 +1,6 @@
 [[pages]]
 path = "app/ibf.py"
-name = "Warning"
+name = "Peringatan Dini"
 icon = "⚠️"
 
 [[pages]]
