@@ -2,19 +2,23 @@ import streamlit as st
 from PIL import Image, ImageDraw
 import requests
 from io import BytesIO
+from datetime import datetime
 
+# DATE ACQUIRING
+now = datetime.now()
+year = now.strftime("%Y")
+month = now.strftime("%m")
+day = now.strftime("%d")
 
-tab1, tab2 = st.tabs(["PETA", "DETAIL"])
+tab1, tab2 = st.tabs(["Peta", "Detail"])
 #st.header("Impact Based Forecast Wilayah Kalimantan Barat")
 
 with tab1:
-    st.header("PETA")
-    H00 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_00.png" 
-    URL = "https://nowcasting.bmkg.go.id/infografis/CKB/2024/12/16/infografis.jpg"
+    st.header("Peta")
+    URL = "https://nowcasting.bmkg.go.id/infografis/CKB/"+year+"/"+month+"/"+day+"/infografis.jpg"
     st.image(URL)
 
 with tab2:
-    st.header("DETAIL")
-    H24 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_24.png" 
-    URL = "https://nowcasting.bmkg.go.id/infografis/CKB/2024/12/16/infografis.jpg"
-    st.image(URL)
+    st.header("Detail")
+    url = "https://nowcasting.bmkg.go.id/infografis/CKB/"+year+"/"+month+"/"+day+"/infografis.jpg"
+    st.image(url)
