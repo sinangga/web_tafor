@@ -15,10 +15,10 @@ tab1, tab2 = st.tabs(["Peta", "Detail"])
 
 with tab1:
     st.header("Peta")
-    URL = "https://nowcasting.bmkg.go.id/infografis/CKB/"+year+"/"+month+"/"+day+"/infografis.jpg"
-    st.image(URL)
+    url = "https://nowcasting.bmkg.go.id/infografis/CKB/"+year+"/"+month+"/"+day+"/infografis.jpg"
+    st.image(url)
 
 with tab2:
     st.header("Detail")
-    url = "https://nowcasting.bmkg.go.id/infografis/CKB/"+year+"/"+month+"/"+day+"/infografis.jpg"
-    st.image(url)
+    url_text = "https://nowcasting.bmkg.go.id/infografis/CKB/"+year+"/"+month+"/"+day+"/infografis_text.jpg"
+    st.image(url_text)
