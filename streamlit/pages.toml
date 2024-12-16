@@ -4,14 +4,19 @@ name = "Peringatan Dini"
 icon = "⚠️"
 
 [[pages]]
+path = "app/aktual.py"
+name = "Aktual"
+icon = "🧭"
+
+[[pages]]
 path = "app/prakiraan.py"
 name = "Prakiraan Cuaca"
 icon = "🌤️"
 
 [[pages]]
-path = "app/aktual.py"
-name = "Aktual"
-icon = "🧭"
+path = "app/rainrate.py"
+name = "Rainrate"
+icon = "🌧️"
 
 [[pages]]
 path = "app/wrhp.py"
@@ -22,8 +27,3 @@ icon = "🎈"
 path = "app/regional.py"
 name = "Parameter Regional"
 icon = "🌏"
-
-[[pages]]
-path = "app/rainrate.py"
-name = "Rainrate"
-icon = "🌧️"
