@@ -4,20 +4,17 @@ import requests
 from io import BytesIO
 
 
-tab1, tab2, tab3 = st.tabs(["H0", "H24", "H48"])
+tab1, tab2 = st.tabs(["PETA", "DETAIL"])
 #st.header("Impact Based Forecast Wilayah Kalimantan Barat")
 
 with tab1:
-    st.header("H-0")
-    H00 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_00.png"  
-    st.image(H00)
+    st.header("PETA")
+    H00 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_00.png" 
+    URL = "https://nowcasting.bmkg.go.id/infografis/CKB/2024/12/16/infografis.jpg"
+    st.image(URL)
 
 with tab2:
-    st.header("H-24")
-    H24 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_24.png"  
-    st.image(H24)
-
-with tab3:
-    st.header("H-48")
-    H48 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_48.png"  
-    st.image(H48)
+    st.header("DETAIL")
+    H24 = "https://web-meteo.bmkg.go.id/media/data/bmkg/ibfnew/20_kalbar_24.png" 
+    URL = "https://nowcasting.bmkg.go.id/infografis/CKB/2024/12/16/infografis.jpg"
+    st.image(URL)
