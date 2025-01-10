@@ -898,6 +898,9 @@ with tab2:
                     )
             except Exception as e:
                 st.error(f"Failed to create image: {e}")
+        output_image_filet = "tabel_prakicu_"+tanggal+".png"
+        convert_html_to_img(dfhtmlcss, output_image_filet)
+        st.image(output_image_filet)
 
     with tab6:
         #st.header("Kabupaten | Tanggal "+tanggal)
