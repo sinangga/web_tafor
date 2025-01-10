@@ -523,7 +523,7 @@ with tab1:
             """
         
         #st.markdown(htmlcode, unsafe_allow_html=True)
-        st.divider()
+        #st.divider()
         def convert_html_to_image(html_content, output_file):
             # Specify Chromium executable path
             hti = Html2Image(browser_executable="/usr/bin/chromium")
