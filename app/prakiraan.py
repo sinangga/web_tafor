@@ -520,7 +520,7 @@ with tab1:
             </body>
             """
         
-        st.markdown(htmlcode, unsafe_allow_html=True)
+        #st.markdown(htmlcode, unsafe_allow_html=True)
         st.divider()
         def convert_html_to_image(html_content, output_file):
             # Specify Chromium executable path
@@ -535,23 +535,9 @@ with tab1:
                 hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1400))
         
         # Add a button for image download
-        if st.button("Unduh Infografis "+tanggal+""):
-            try:
-                output_image_file = "info_prakicu_"+tanggal+".png"  # Define output image file name
-                
-                # Convert HTML content to an image
-                convert_html_to_image(htmlcode, output_image_file)
-                
-                # Provide download link for the image
-                with open(output_image_file, "rb") as file:
-                    st.download_button(
-                        label="Unduh",
-                        data=file,
-                        file_name="info_prakicu_"+tanggal+".png",
-                        mime="image/png"
-                    )
-            except Exception as e:
-                st.error(f"Failed to create image: {e}")
+        output_image_file = "info_prakicu_"+tanggal+".png"
+        convert_html_to_img(dfhtmlcss, output_image_file)
+        st.image(output_image_file)
     with tab4:
         # convert your links to html tags 
         def path_to_image_html(path):
@@ -790,7 +776,7 @@ with tab1:
             </body>
             """
         
-        st.markdown(htmlcode, unsafe_allow_html=True)
+        #st.markdown(htmlcode, unsafe_allow_html=True)
         st.divider()
         def convert_html_to_image(html_content, output_file):
             # Specify Chromium executable path
@@ -805,23 +791,9 @@ with tab1:
                 hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1400))
         
         # Add a button for image download
-        if st.button("Unduh Infografis "+tanggal2+""):
-            try:
-                output_image_file = "info_prakicu_"+tanggal2+".png"  # Define output image file name
-                
-                # Convert HTML content to an image
-                convert_html_to_image(htmlcode, output_image_file)
-                
-                # Provide download link for the image
-                with open(output_image_file, "rb") as file:
-                    st.download_button(
-                        label="Unduh",
-                        data=file,
-                        file_name="info_prakicu_"+tanggal2+".png",
-                        mime="image/png"
-                    )
-            except Exception as e:
-                st.error(f"Failed to create image: {e}")
+        output_image_file = "info_prakicu_"+tanggal2+".png"
+        convert_html_to_img(dfhtmlcss, output_image_file)
+        st.image(output_image_file)
 with tab2:
     tab5, tab6 = st.tabs([tanggal, tanggal2])
     with tab5:
