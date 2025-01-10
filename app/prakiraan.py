@@ -283,6 +283,8 @@ with tab1:
     tab3, tab4 = st.tabs([tanggal, tanggal2])
     
     with tab3:
+        st.write('Tanggal Analisis :', nesting('Bika')[8]['analysis_date'])
+        st.divider()
         # convert your links to html tags 
         def path_to_image_html(path):
             return '<img src="'+ path + ' "width="30px"; >'
@@ -539,6 +541,8 @@ with tab1:
         convert_html_to_image(htmlcode, output_image_file)
         st.image(output_image_file)
     with tab4:
+        st.write('Tanggal Analisis :', nesting('Bika')[8]['analysis_date'])
+        st.divider()
         # convert your links to html tags 
         def path_to_image_html(path):
             return '<img src="'+ path + ' "width="30px"; >'
@@ -798,7 +802,7 @@ with tab2:
     tab5, tab6 = st.tabs([tanggal, tanggal2])
     with tab5:
         #st.header("Kabupaten | Tanggal "+tanggal)
-        #st.write('Tanggal Analisis :', nesting('Bika')[0]['analysis_date'])
+        st.write('Tanggal Analisis :', nesting('Bika')[0]['analysis_date'])
         dfhtml = """
             <p> Tanggal Analisis : """+str(nesting('Bika')[0]['analysis_date'])+"""</p>
             """+dfhtml+"""
