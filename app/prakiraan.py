@@ -284,7 +284,7 @@ with tab1:
     
     with tab3:
         st.write('Tanggal Analisis :', nesting('Bika')[8]['analysis_date'])
-        st.divider()
+        #st.divider()
         # convert your links to html tags 
         def path_to_image_html(path):
             return '<img src="'+ path + ' "width="30px"; >'
@@ -542,7 +542,7 @@ with tab1:
         st.image(output_image_file)
     with tab4:
         st.write('Tanggal Analisis :', nesting('Bika')[8]['analysis_date'])
-        st.divider()
+        #st.divider()
         # convert your links to html tags 
         def path_to_image_html(path):
             return '<img src="'+ path + ' "width="30px"; >'
@@ -781,7 +781,7 @@ with tab1:
             """
         
         #st.markdown(htmlcode, unsafe_allow_html=True)
-        st.divider()
+        #st.divider()
         def convert_html_to_image(html_content, output_file):
             # Specify Chromium executable path
             hti = Html2Image(browser_executable="/usr/bin/chromium")
@@ -808,7 +808,7 @@ with tab2:
             """+dfhtml+"""
         """
         #st.markdown(dfhtml, unsafe_allow_html=True)
-        st.divider()
+        #st.divider()
         dfhtmlcss = """
             <style>
                 * {
@@ -864,7 +864,7 @@ with tab2:
         #st.header("Kabupaten | Tanggal "+tanggal)
         st.write('Tanggal Analisis :', nesting('Bika')[8]['analysis_date'])
         #st.markdown(dfhtml2, unsafe_allow_html=True)
-        st.divider()
+        #st.divider()
         dfhtmlcss = """
             <style>
                 * {
