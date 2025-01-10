@@ -880,24 +880,6 @@ with tab2:
                 # Render the HTML as an image
                 hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1650))
         
-        # Add a button for image download
-        if st.button("Unduh Tabel"+tanggal+""):
-            try:
-                output_image_filet = "tabel_prakicu_"+tanggal+".png"  # Define output image file name
-                
-                # Convert HTML content to an image
-                convert_html_to_img(dfhtmlcss, output_image_filet)
-                
-                # Provide download link for the image
-                with open(output_image_filet, "rb") as file:
-                    st.download_button(
-                        label="Unduh",
-                        data=file,
-                        file_name="tabel_prakicu_"+tanggal+".png",
-                        mime="image/png"
-                    )
-            except Exception as e:
-                st.error(f"Failed to create image: {e}")
         output_image_filet = "tabel_prakicu_"+tanggal+".png"
         convert_html_to_img(dfhtmlcss, output_image_filet)
         st.image(output_image_filet)
@@ -955,24 +937,9 @@ with tab2:
                 # Render the HTML as an image
                 hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1650))
         
-        # Add a button for image download
-        if st.button("Unduh Tabel "+tanggal2+""):
-            try:
-                output_image_filet = "tabel_prakicu_"+tanggal2+".png"  # Define output image file name
-                
-                # Convert HTML content to an image
-                convert_html_to_img(dfhtmlcss, output_image_filet)
-                
-                # Provide download link for the image
-                with open(output_image_filet, "rb") as file:
-                    st.download_button(
-                        label="Unduh",
-                        data=file,
-                        file_name="tabel_prakicu_"+tanggal2+".png",
-                        mime="image/png"
-                    )
-            except Exception as e:
-                st.error(f"Failed to create image: {e}")
+        output_image_filet = "tabel_prakicu_"+tanggal2+".png"
+        convert_html_to_img(dfhtmlcss, output_image_filet)
+        st.image(output_image_filet)
     with tab7:
         # Initialize map centered on Kapuas Hulu
         m = folium.Map(location=[-0.8356, 112.9304], zoom_start=10)
