@@ -536,7 +536,7 @@ with tab1:
         
         # Add a button for image download
         output_image_file = "info_prakicu_"+tanggal+".png"
-        convert_html_to_img(dfhtmlcss, output_image_file)
+        convert_html_to_image(dfhtmlcss, output_image_file)
         st.image(output_image_file)
     with tab4:
         # convert your links to html tags 
@@ -792,7 +792,7 @@ with tab1:
         
         # Add a button for image download
         output_image_file = "info_prakicu_"+tanggal2+".png"
-        convert_html_to_img(dfhtmlcss, output_image_file)
+        convert_html_to_image(dfhtmlcss, output_image_file)
         st.image(output_image_file)
 with tab2:
     tab5, tab6 = st.tabs([tanggal, tanggal2])
