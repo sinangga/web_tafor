@@ -831,7 +831,7 @@ with tab2:
             <p> Tanggal Analisis : """+str(nesting('Bika')[0]['analysis_date'])+"""</p>
             """+dfhtml+"""
         """
-        st.markdown(dfhtml, unsafe_allow_html=True)
+        #st.markdown(dfhtml, unsafe_allow_html=True)
         st.divider()
         dfhtmlcss = """
             <style>
@@ -887,7 +887,7 @@ with tab2:
     with tab6:
         #st.header("Kabupaten | Tanggal "+tanggal)
         st.write('Tanggal Analisis :', nesting('Bika')[8]['analysis_date'])
-        st.markdown(dfhtml2, unsafe_allow_html=True)
+        #st.markdown(dfhtml2, unsafe_allow_html=True)
         st.divider()
         dfhtmlcss = """
             <style>
