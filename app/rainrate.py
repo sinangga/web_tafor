@@ -197,48 +197,48 @@ with tab1:
     st.header("IFS")
     tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10 = st.tabs(listtimel)
     with tab3:
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl1.strftime('%Y'))+str(tl1.strftime('%m'))+str(tl1.strftime('%d'))+str(tl1.strftime('%H'))+"0000.png"
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl1.strftime('%Y'))+str(tl1.strftime('%m'))+str(tl1.strftime('%d'))+str(tl1.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab4:
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl2.strftime('%Y'))+str(tl2.strftime('%m'))+str(tl2.strftime('%d'))+str(tl2.strftime('%H'))+"0000.png"
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl2.strftime('%Y'))+str(tl2.strftime('%m'))+str(tl2.strftime('%d'))+str(tl2.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab5:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl3.strftime('%Y'))+str(tl3.strftime('%m'))+str(tl3.strftime('%d'))+str(tl3.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl3.strftime('%Y'))+str(tl3.strftime('%m'))+str(tl3.strftime('%d'))+str(tl3.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl3.strftime('%Y'))+str(tl3.strftime('%m'))+str(tl3.strftime('%d'))+str(tl3.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl3.strftime('%Y'))+str(tl3.strftime('%m'))+str(tl3.strftime('%d'))+str(tl3.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab6:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl4.strftime('%Y'))+str(tl4.strftime('%m'))+str(tl4.strftime('%d'))+str(tl4.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl4.strftime('%Y'))+str(tl4.strftime('%m'))+str(tl4.strftime('%d'))+str(tl4.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl4.strftime('%Y'))+str(tl4.strftime('%m'))+str(tl4.strftime('%d'))+str(tl4.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl4.strftime('%Y'))+str(tl4.strftime('%m'))+str(tl4.strftime('%d'))+str(tl4.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab7:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl5.strftime('%Y'))+str(tl5.strftime('%m'))+str(tl5.strftime('%d'))+str(tl5.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl5.strftime('%Y'))+str(tl5.strftime('%m'))+str(tl5.strftime('%d'))+str(tl5.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl5.strftime('%Y'))+str(tl5.strftime('%m'))+str(tl5.strftime('%d'))+str(tl5.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl5.strftime('%Y'))+str(tl5.strftime('%m'))+str(tl5.strftime('%d'))+str(tl5.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab8:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl6.strftime('%Y'))+str(tl6.strftime('%m'))+str(tl6.strftime('%d'))+str(tl6.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl6.strftime('%Y'))+str(tl6.strftime('%m'))+str(tl6.strftime('%d'))+str(tl6.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl6.strftime('%Y'))+str(tl6.strftime('%m'))+str(tl6.strftime('%d'))+str(tl6.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl6.strftime('%Y'))+str(tl6.strftime('%m'))+str(tl6.strftime('%d'))+str(tl6.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab9:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl7.strftime('%Y'))+str(tl7.strftime('%m'))+str(tl7.strftime('%d'))+str(tl7.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl7.strftime('%Y'))+str(tl7.strftime('%m'))+str(tl7.strftime('%d'))+str(tl7.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl7.strftime('%Y'))+str(tl7.strftime('%m'))+str(tl7.strftime('%d'))+str(tl7.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl7.strftime('%Y'))+str(tl7.strftime('%m'))+str(tl7.strftime('%d'))+str(tl7.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab10:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl8.strftime('%Y'))+str(tl8.strftime('%m'))+str(tl8.strftime('%d'))+str(tl8.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl8.strftime('%Y'))+str(tl8.strftime('%m'))+str(tl8.strftime('%d'))+str(tl8.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl8.strftime('%Y'))+str(tl8.strftime('%m'))+str(tl8.strftime('%d'))+str(tl8.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_"+str(tl8.strftime('%Y'))+str(tl8.strftime('%m'))+str(tl8.strftime('%d'))+str(tl8.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
@@ -246,50 +246,50 @@ with tab2:
     st.header("WRF")
     tab11, tab12, tab13, tab14, tab15, tab16, tab17, tab18 = st.tabs(listtime)
     with tab11:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t1.strftime('%Y'))+str(t1.strftime('%m'))+str(t1.strftime('%d'))+str(t1.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t1.strftime('%Y'))+str(t1.strftime('%m'))+str(t1.strftime('%d'))+str(t1.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t1.strftime('%Y'))+str(t1.strftime('%m'))+str(t1.strftime('%d'))+str(t1.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t1.strftime('%Y'))+str(t1.strftime('%m'))+str(t1.strftime('%d'))+str(t1.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab12:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t2.strftime('%Y'))+str(t2.strftime('%m'))+str(t2.strftime('%d'))+str(t2.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t2.strftime('%Y'))+str(t2.strftime('%m'))+str(t2.strftime('%d'))+str(t2.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t2.strftime('%Y'))+str(t2.strftime('%m'))+str(t2.strftime('%d'))+str(t2.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t2.strftime('%Y'))+str(t2.strftime('%m'))+str(t2.strftime('%d'))+str(t2.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab13:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t3.strftime('%Y'))+str(t3.strftime('%m'))+str(t3.strftime('%d'))+str(t3.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t3.strftime('%Y'))+str(t3.strftime('%m'))+str(t3.strftime('%d'))+str(t3.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t3.strftime('%Y'))+str(t3.strftime('%m'))+str(t3.strftime('%d'))+str(t3.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t3.strftime('%Y'))+str(t3.strftime('%m'))+str(t3.strftime('%d'))+str(t3.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab14:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t4.strftime('%Y'))+str(t4.strftime('%m'))+str(t4.strftime('%d'))+str(t4.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t4.strftime('%Y'))+str(t4.strftime('%m'))+str(t4.strftime('%d'))+str(t4.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t4.strftime('%Y'))+str(t4.strftime('%m'))+str(t4.strftime('%d'))+str(t4.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t4.strftime('%Y'))+str(t4.strftime('%m'))+str(t4.strftime('%d'))+str(t4.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab15:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t5.strftime('%Y'))+str(t5.strftime('%m'))+str(t5.strftime('%d'))+str(t5.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t5.strftime('%Y'))+str(t5.strftime('%m'))+str(t5.strftime('%d'))+str(t5.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t5.strftime('%Y'))+str(t5.strftime('%m'))+str(t5.strftime('%d'))+str(t5.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t5.strftime('%Y'))+str(t5.strftime('%m'))+str(t5.strftime('%d'))+str(t5.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab16:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t6.strftime('%Y'))+str(t6.strftime('%m'))+str(t6.strftime('%d'))+str(t6.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t6.strftime('%Y'))+str(t6.strftime('%m'))+str(t6.strftime('%d'))+str(t6.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t6.strftime('%Y'))+str(t6.strftime('%m'))+str(t6.strftime('%d'))+str(t6.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t6.strftime('%Y'))+str(t6.strftime('%m'))+str(t6.strftime('%d'))+str(t6.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab17:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t7.strftime('%Y'))+str(t7.strftime('%m'))+str(t7.strftime('%d'))+str(t7.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t7.strftime('%Y'))+str(t7.strftime('%m'))+str(t7.strftime('%d'))+str(t7.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t7.strftime('%Y'))+str(t7.strftime('%m'))+str(t7.strftime('%d'))+str(t7.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t7.strftime('%Y'))+str(t7.strftime('%m'))+str(t7.strftime('%d'))+str(t7.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
     with tab18:
-        #st.image("https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t8.strftime('%Y'))+str(t8.strftime('%m'))+str(t8.strftime('%d'))+str(t8.strftime('%H'))+"0000.png", width=None)
-        url = "https://web.meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t8.strftime('%Y'))+str(t8.strftime('%m'))+str(t8.strftime('%d'))+str(t8.strftime('%H'))+"0000.png"
+        #st.image("https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t8.strftime('%Y'))+str(t8.strftime('%m'))+str(t8.strftime('%d'))+str(t8.strftime('%H'))+"0000.png", width=None)
+        url = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_"+str(t8.strftime('%Y'))+str(t8.strftime('%m'))+str(t8.strftime('%d'))+str(t8.strftime('%H'))+"0000.png"
         st.image(url, width=None)
         hujan_psu, ratarata, rmax = kategori_hujan(url)
         st.write("Kondisi cuaca dominan", hujan_psu,"dengan rata-rata curah hujan untuk wilayah Kapuas Hulu sebesar ",ratarata,"mm/jam","dan berpotensi hujan dengan nilai",rmax)
