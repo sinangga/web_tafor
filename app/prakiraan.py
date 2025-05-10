@@ -27,12 +27,54 @@ from streamlit_folium import st_folium
 ###########################
 
 # Bypass Forbidden Status Code
-headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+#headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 
 # Store Data from BMKG API (Kecamatan / adm2)
-kecamatan_res = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm2=61.06", headers=headers)
-kecamatan_output = kecamatan_res.json()
-df_kh = kecamatan_output['data']
+#kecamatan_res = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm2=61.06", headers=headers)
+#kecamatan_output = kecamatan_res.json()
+#df_kh = kecamatan_output['data']
+
+### UPDATE DATABASE
+import requests
+
+# Daftar kode akhir adm4
+suffixes2_16 = [f"{i:02d}.2001" for i in range(2,17)]
+suffixes18_23 = [f"{i:02d}.2001" for i in range(18,24)]
+base_url = "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06."
+
+# Variabel penampung semua data JSON
+gabungan_data = []
+response = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06.01.1001")
+response.raise_for_status()
+data1 = response.json()
+gabungan_data.append(data1)
+
+
+# Loop untuk ambil data dari setiap URL
+for suffix in suffixes2_16:
+    url = base_url + suffix
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        gabungan_data.append(data)
+                
+response = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06.17.1001")
+response.raise_for_status()
+data1 = response.json()
+gabungan_data.append(data1)
+
+# Loop untuk ambil data dari setiap URL
+for suffix in suffixes18_23:
+    url = base_url + suffix
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        gabungan_data.append(data)
+
+df_kf = gabungan_data
+
 
 # Clustering Data into Single Dataset
 list_kecamatan = []
