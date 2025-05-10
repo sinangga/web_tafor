@@ -463,10 +463,6 @@ with tab1:
                         color: black; /* Darker gray for the subtitle */
                         text-align: center;
                     }
-                    .coder-left {
-                        text-align: left;
-                        font-size: small;
-                    }
                     hr.gradient {
                         height: 3px;
                         border: none;
@@ -509,7 +505,7 @@ with tab1:
                       </colgroup>
                         """ + htmlcode2 + """
                         <!-- This is the second table (your weather icons table) -->
-                        <div class="coder-left"><sup><i>Coder: Sinangga</i></sup></div>
+                        <div style="text-align: right; font-size: small;"><sup>Coder: Sinangga</sup></div>
                         <table>
                             <thead>
                                 <tr>
