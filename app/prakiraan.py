@@ -443,7 +443,7 @@ with tab1:
                         align-items: center;
                         /* background-color: #c1efff; White background */
                         background-color: white;
-                        padding: 20px; /* Space around the content */
+                        padding: 10px; /* Space around the content */
                         border-radius: 8px; /* Rounded corners */
                         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
                         color: black
@@ -505,7 +505,7 @@ with tab1:
                       </colgroup>
                         """ + htmlcode2 + """
                         <!-- This is the second table (your weather icons table) -->
-                        <div style="text-align: right; font-size: small;"><sup>Coder: Sinangga</sup></div>
+                        <div style="text-align: right; font-size: small;"><sup><i>Coder: Sinangga</i></sup></div>
                         <table>
                             <thead>
                                 <tr>
