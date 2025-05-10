@@ -72,7 +72,7 @@ for suffix in suffixes18_23:
 
 # Sekarang `gabungan_data` berisi semua JSON
 # Bisa langsung digunakan dalam kode
-df_kf = gabungan_data
+df_kh = gabungan_data
 
 
 # Clustering Data into Single Dataset
