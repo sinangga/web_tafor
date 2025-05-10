@@ -87,7 +87,7 @@ df_kh_2 = dict(zip(list_kecamatan, df_kh))
 # Function to Call Specific Weather Data Kecamatan
 def nesting(nama_kecamatan):
     nesting = []
-    for i in df_kh_2[(nama_kecamatan)]["cuaca"]:
+    for i in df_kh_2[(nama_kecamatan)]['data'][0]['cuaca']:
         nesting.append(i)
     nest1 = nesting[0]
     nest2 = nesting[1]
@@ -193,7 +193,7 @@ def harian_kecamatan(waktu, nama):
 def waktuu(waktu):
     (a, b, c, d, e, f, g) = waktu("Bika")
     tanggal = b[0][8]+b[0][9]+str("-")+b[0][5]+b[0][6]+str("-")+b[0][0]+b[0][1]+b[0][2]+b[0][3]
-    tanalisis = df_kh[0]['cuaca'][0][0]['analysis_date']
+    tanalisis = df_kh[0]['data'][0]['cuaca'][0][0]['analysis_date']
     tberlaku = b[0]
     # Parse and attach UTC timezone
     tberlaku = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S")
@@ -236,8 +236,6 @@ def waktuu(waktu):
         else:
             jammm.append(i)
     return tanggal, tanalisis, tberlaku, thingga, jam, jamm, jammm
-
-
 (tanggal, tanalisis, tberlaku, thingga, jam, jamm, jammm) = waktuu(cuaca_pertama)
 table_pertama = PrettyTable(jammm)
 #table.title = "CUACA KABUPATEN KAPUAS HULU TANGGAL "+tanggal
