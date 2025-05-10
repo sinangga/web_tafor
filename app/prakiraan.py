@@ -104,7 +104,7 @@ def printcuaca(x):
         data = nesting(i)
         for a in range(x):
             angin = str(data[a]["wd"])+" "+str(round(data[a]["ws"]))+"KT"
-            t.add_row([list_kecamatan[n],data[a]["utc_datetime"], data[a]["weather_desc"],angin, data[a]["t"], data[a]["hu"]])
+            t.add_row([list_kecamatan[n],data[a]["local_datetime"], data[a]["weather_desc"],angin, data[a]["t"], data[a]["hu"]])
         n = n+1
     return t
 
@@ -122,7 +122,7 @@ def cuaca_pertama(n):
         arah.append(nesting(n)[i]["wd"])
         rh.append(nesting(n)[i]["hu"])
         list_cuaca.append(nesting(n)[i]["weather_desc"])
-        list_tgl.append(nesting(n)[i]["utc_datetime"])
+        list_tgl.append(nesting(n)[i]["local_datetime"])
     maxsuhu = max(suhu)
     minsuhu = min(suhu)
     maxrh = max(rh)
@@ -146,7 +146,7 @@ def cuaca_kedua(n):
         arah.append(nesting(n)[i]["wd"])
         rh.append(nesting(n)[i]["hu"])
         list_cuaca.append(nesting(n)[i]["weather_desc"])
-        list_tgl.append(nesting(n)[i]["utc_datetime"])
+        list_tgl.append(nesting(n)[i]["local_datetime"])
     maxsuhu = max(suhu)
     minsuhu = min(suhu)
     maxrh = max(rh)
@@ -197,18 +197,12 @@ def waktuu(waktu):
     tberlaku = b[0]
     # Parse and attach UTC timezone
     tberlaku = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S")
-    #tberlaku = tberlaku.replace(tzinfo=ZoneInfo("UTC"))
-    # Convert to UTC+7
-    #tberlaku = tberlaku.astimezone(ZoneInfo("Asia/Bangkok"))
     tberlaku = tberlaku.strftime("%d-%m-%Y %H:%M:%S")
     tberlaku = str(tberlaku)
     tberlaku = tberlaku[0:16]
     thingga = b[7]
     # Parse and attach UTC timezone
     thingga = datetime.strptime(thingga, "%Y-%m-%d %H:%M:%S")
-    #thingga = thingga.replace(tzinfo=ZoneInfo("UTC"))
-    # Convert to UTC+7
-    #thingga = thingga.astimezone(ZoneInfo("Asia/Bangkok"))  
     thingga = thingga.strftime("%d-%m-%Y %H:%M:%S")
     thingga = str(thingga)
     thingga = thingga[0:16]
