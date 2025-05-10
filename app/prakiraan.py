@@ -505,6 +505,7 @@ with tab1:
                       </colgroup>
                         """ + htmlcode2 + """
                         <!-- This is the second table (your weather icons table) -->
+                        <small><sup>Coder: Sinangga</sup></small>
                         <table>
                             <thead>
                                 <tr>
