@@ -463,6 +463,10 @@ with tab1:
                         color: black; /* Darker gray for the subtitle */
                         text-align: center;
                     }
+                    .coder-left {
+                        text-align: left;
+                        font-size: small;
+                    }
                     hr.gradient {
                         height: 3px;
                         border: none;
@@ -505,7 +509,7 @@ with tab1:
                       </colgroup>
                         """ + htmlcode2 + """
                         <!-- This is the second table (your weather icons table) -->
-                        <small><sup>Coder: Sinangga</sup></small>
+                        <div class="coder-left"><sup><i>Coder: Sinangga</i></sup></div>
                         <table>
                             <thead>
                                 <tr>
@@ -722,6 +726,10 @@ with tab1:
                         color: black; /* Darker gray for the subtitle */
                         text-align: center;
                     }
+                    .coder-left {
+                        text-align: left;
+                        font-size: small;
+                    }
                     hr.gradient {
                         height: 3px;
                         border: none;
@@ -763,6 +771,7 @@ with tab1:
                         <col style="width: 10%;">
                       </colgroup>
                         """ + htmlcode2 + """
+                        <div class="coder-left"><sup><i>Coder: Sinangga</i></sup></div>
                         <!-- This is the second table (your weather icons table) -->
                         <table>
                             <thead>
