@@ -197,18 +197,18 @@ def waktuu(waktu):
     tberlaku = b[0]
     # Parse and attach UTC timezone
     tberlaku = datetime.strptime(tberlaku, "%Y-%m-%d %H:%M:%S")
-    tberlaku = tberlaku.replace(tzinfo=ZoneInfo("UTC"))
+    #tberlaku = tberlaku.replace(tzinfo=ZoneInfo("UTC"))
     # Convert to UTC+7
-    tberlaku = tberlaku.astimezone(ZoneInfo("Asia/Bangkok"))
+    #tberlaku = tberlaku.astimezone(ZoneInfo("Asia/Bangkok"))
     tberlaku = tberlaku.strftime("%d-%m-%Y %H:%M:%S")
     tberlaku = str(tberlaku)
     tberlaku = tberlaku[0:16]
     thingga = b[7]
     # Parse and attach UTC timezone
     thingga = datetime.strptime(thingga, "%Y-%m-%d %H:%M:%S")
-    thingga = thingga.replace(tzinfo=ZoneInfo("UTC"))
+    #thingga = thingga.replace(tzinfo=ZoneInfo("UTC"))
     # Convert to UTC+7
-    thingga = thingga.astimezone(ZoneInfo("Asia/Bangkok"))  
+    #thingga = thingga.astimezone(ZoneInfo("Asia/Bangkok"))  
     thingga = thingga.strftime("%d-%m-%Y %H:%M:%S")
     thingga = str(thingga)
     thingga = thingga[0:16]
@@ -216,14 +216,14 @@ def waktuu(waktu):
     for i in range(len(b)):
         textjam = b[i][11:13]
         textjamdirection ={
-            "00": "07",
-            "03": "10",
-            "06": "13",
-            "09": "16",
-            "12": "19",
-            "15": "22",
-            "18": "01",
-            "21": "04"
+            "05": "12",
+            "08": "15",
+            "11": "18",
+            "14": "21",
+            "17": "24",
+            "20": "03",
+            "23": "06",
+            "02": "09"
         }
         textjam = textjamdirection.get(b[i][11:13], b[i][11:13])
         jam.append(textjam)       
