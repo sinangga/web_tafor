@@ -35,8 +35,6 @@ from streamlit_folium import st_folium
 #df_kh = kecamatan_output['data']
 
 ### UPDATE DATABASE
-import requests
-
 # Daftar kode akhir adm4
 suffixes2_16 = [f"{i:02d}.2001" for i in range(2,17)]
 suffixes18_23 = [f"{i:02d}.2001" for i in range(18,24)]
@@ -53,12 +51,12 @@ gabungan_data.append(data1)
 # Loop untuk ambil data dari setiap URL
 for suffix in suffixes2_16:
     url = base_url + suffix
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
-        gabungan_data.append(data)
-                
+    response = requests.get(url)
+    response.raise_for_status()
+    data = response.json()
+    gabungan_data.append(data)
+        
+        
 response = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06.17.1001")
 response.raise_for_status()
 data1 = response.json()
@@ -67,12 +65,13 @@ gabungan_data.append(data1)
 # Loop untuk ambil data dari setiap URL
 for suffix in suffixes18_23:
     url = base_url + suffix
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
-        gabungan_data.append(data)
+    response = requests.get(url)
+    response.raise_for_status()
+    data = response.json()
+    gabungan_data.append(data)
 
+# Sekarang `gabungan_data` berisi semua JSON
+# Bisa langsung digunakan dalam kode
 df_kf = gabungan_data
 
 
