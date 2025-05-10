@@ -702,7 +702,7 @@ with tab1:
                         align-items: center;
                         /* background-color: #c1efff; White background */
                         background-color: white;
-                        padding: 20px; /* Space around the content */
+                        padding: 10px; /* Space around the content */
                         border-radius: 8px; /* Rounded corners */
                         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
                         color: black
@@ -721,10 +721,6 @@ with tab1:
                         font-size: 16px; /* Slightly smaller font size */
                         color: black; /* Darker gray for the subtitle */
                         text-align: center;
-                    }
-                    .coder-left {
-                        text-align: left;
-                        font-size: small;
                     }
                     hr.gradient {
                         height: 3px;
