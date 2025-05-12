@@ -27,3 +27,8 @@ icon = "🎈"
 path = "app/regional.py"
 name = "Parameter Regional"
 icon = "🌏"
+
+[[pages]]
+path = "app/hotspot.py"
+name = "Hotspot Monitoring System"
+icon = "🔥"
