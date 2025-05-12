@@ -34,8 +34,8 @@ df['persistent'] = df['days_detected'].fillna(0) >= 3
 
 # === 5. Create Folium Map ===
 m = folium.Map(location=[df['latitude'].mean(), df['longitude'].mean()], zoom_start=5)
-marker_cluster = MarkerCluster().add_to(m)
 
+# Plot each hotspot as an individual marker
 for _, row in df.iterrows():
     popup_html = f"""
     <b>Date:</b> {row['acq_date'].date()}<br>
@@ -51,16 +51,15 @@ for _, row in df.iterrows():
         fill=True,
         fill_opacity=0.7,
         popup=folium.Popup(popup_html, max_width=300)
-    ).add_to(marker_cluster)
+    ).add_to(m)
 
 # === 6. Render Map in Streamlit ===
 # Convert the Folium map to HTML and render in Streamlit
 from streamlit_folium import st_folium
-st.title("FIRMS Hotspot Monitoring System")
+#st.title("FIRMS Hotspot Monitoring System")
 st.markdown("**Hotspots detected over the last 3 days**")
 st_folium(m, width=700, height=500)
 
 # Display additional info as table
 st.subheader("Recent Hotspot Details")
 st.write(df[['acq_date', 'latitude', 'longitude', 'brightness', 'persistent']].head(10))
-
