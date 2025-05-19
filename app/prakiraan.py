@@ -219,7 +219,8 @@ def waktuu(waktu):
             "23": "06",
             "02": "09"
         }
-        textjam = textjamdirection.get(b[i][11:13], b[i][11:13])
+        #textjam = textjamdirection.get(b[i][11:13], b[i][11:13])
+        textjam = textjam
         jam.append(textjam)       
     jamm = ['KECAMATAN', jam, 'SUHU', 'KELEMBAPAN', 'ANGIN', 'KECEPATAN']
     jammm = []
