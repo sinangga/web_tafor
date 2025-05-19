@@ -506,7 +506,7 @@ with tab1:
                       </colgroup>
                         """ + htmlcode2 + """
                         <!-- This is the second table (your weather icons table) -->
-                        <div style="text-align: right; font-size: small;"><sup><i>Coder: Sinangga</i></sup></div>
+                        <div style="text-align: right; font-size: small;"><sup><i>Developed by Sinangga</i></sup></div>
                         <table>
                             <thead>
                                 <tr>
@@ -764,7 +764,7 @@ with tab1:
                         <col style="width: 10%;">
                       </colgroup>
                         """ + htmlcode2 + """
-                        <div class="coder-left"><sup><i>Coder: Sinangga</i></sup></div>
+                        <div class="coder-left"><sup><i>Developed by Sinangga</i></sup></div>
                         <!-- This is the second table (your weather icons table) -->
                         <table>
                             <thead>
