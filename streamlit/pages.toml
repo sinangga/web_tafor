@@ -1,6 +1,6 @@
 [[pages]]
 path = "app/ibf.py"
-name = "Peringatan Dini"
+name = "Peringatan Dini Cuaca"
 icon = "⚠️"
 
 [[pages]]
@@ -12,6 +12,11 @@ icon = "🧭"
 path = "app/prakiraan.py"
 name = "Prakiraan Cuaca"
 icon = "🌤️"
+
+[[pages]]
+path = "app/hotspot.py"
+name = "Hotspot Monitoring System"
+icon = "🔥"
 
 [[pages]]
 path = "app/rainrate.py"
@@ -27,8 +32,3 @@ icon = "🎈"
 path = "app/regional.py"
 name = "Parameter Regional"
 icon = "🌏"
-
-[[pages]]
-path = "app/hotspot.py"
-name = "Hotspot Monitoring System"
-icon = "🔥"
