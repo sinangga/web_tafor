@@ -312,7 +312,7 @@ dfhtml2 = df2.to_html(index = False, escape=False)
 ########################
 
 
-tab1, tab2, tab7 = st.tabs(["Infografis","Tabel", "Peta Interaktif"])
+tab1, tab7 = st.tabs(["Infografis", "Peta Interaktif"])
 with tab1:
     tab3, tab4 = st.tabs([tanggal, tanggal2])
     
@@ -834,125 +834,90 @@ with tab1:
         output_image_file = "info_prakicu_"+tanggal2+".png"
         convert_html_to_image(htmlcode, output_image_file)
         st.image(output_image_file)
-with tab2:
-    tab5, tab6 = st.tabs([tanggal, tanggal2])
-    with tab5:
-        #st.header("Kabupaten | Tanggal "+tanggal)
-        st.write('Tanggal Analisis :', nesting('Bika')[0]['analysis_date'])
-        #st.markdown(dfhtml, unsafe_allow_html=True)
-        #st.divider()
-        dfhtmlcss = """
-            <style>
-                * {
-                  font-family: Arial, sans-serif;
-                  font-weight: bold;
-                }
-             table {
-                    border-collapse: separate;
-                    border-spacing: 0;
-                    border: 1px solid #ddd;
-                    border-radius: 15px;
-                    overflow: hidden;
-                    align-items: center;
-                    justify-content: center;
-                    color: black;
-                    background-color: #95c8e6;
-                }
-                th {
-                    background-color: #0a2f69;
-                    color: white;
-                }
-                th, td {
-                    border: 1px solid #ddd;
-                    text-align: center;
-                    padding: 8px;
-                }
-                tr:nth-child(even) {
-                    background-color: #f2f2f2;
-                }
-                tr:nth-child(odd) {
-                    background-color: #ffffff;
-                }
-            </style>
-           """+ dfhtml+"""
-        """
-        def convert_html_to_img(html_content, output_file):
-            # Specify Chromium executable path
-            hti = Html2Image(browser_executable="/usr/bin/chromium")
-            
-            # Create a temporary HTML file
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
-                temp_html_file.write(html_content.encode("utf-8"))
-                temp_html_file.flush()
-                
-                # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1650))
-        
-        output_image_filet = "tabel_prakicu_"+tanggal+".png"
-        convert_html_to_img(dfhtmlcss, output_image_filet)
-        st.image(output_image_filet)
 
-    with tab6:
-        #st.header("Kabupaten | Tanggal "+tanggal)
-        st.write('Tanggal Analisis :', nesting('Bika')[8]['analysis_date'])
-        #st.markdown(dfhtml2, unsafe_allow_html=True)
-        #st.divider()
-        dfhtmlcss = """
-            <style>
-                * {
-                  font-family: Arial, sans-serif;
-                  font-weight: bold;
-                }
-             table {
-                    width: 100%;
-                    border-collapse: separate;
-                    border-spacing: 0;
-                    border: 1px solid #ddd;
-                    border-radius: 15px;
-                    overflow: hidden;
-                    align-items: center;
-                    justify-content: center;
-                    color: black;
-                    background-color: #95c8e6;
-                }
-                th {
-                    background-color: #0a2f69;
-                    color: white;
-                }
-                th, td {
-                    border: 1px solid #ddd;
-                    text-align: center;
-                    padding: 8px;
-                }
-                tr:nth-child(even) {
-                    background-color: #f2f2f2;
-                }
-                tr:nth-child(odd) {
-                    background-color: #ffffff;
-                }
-            </style>
-           """+ dfhtml2+"""
-        """
-        def convert_html_to_img(html_content, output_file):
-            # Specify Chromium executable path
-            hti = Html2Image(browser_executable="/usr/bin/chromium")
-            
-            # Create a temporary HTML file
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_html_file:
-                temp_html_file.write(html_content.encode("utf-8"))
-                temp_html_file.flush()
-                
-                # Render the HTML as an image
-                hti.screenshot(html_file=temp_html_file.name, save_as=output_file, size=(1080, 1650))
-        
-        output_image_filet = "tabel_prakicu_"+tanggal2+".png"
-        convert_html_to_img(dfhtmlcss, output_image_filet)
-        st.image(output_image_filet)
     with tab7:
         # Initialize map centered on Kapuas Hulu
-        m = folium.Map(location=[-0.8356, 112.9304], zoom_start=10)
+        from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
+
+        # Title
+        st.title("Prakiraan Cuaca Harian Kapuas Hulu")
         
+        # Load GeoJSON
+        gdf = gpd.read_file("kapuas_hulu.geojson")
+        gdf["kecamatan"] = gdf["properties"].apply(lambda p: p["kecamatan"].lower())
         
-        # Display map in Streamlit
-        st_data = st_folium(m, width=700, height=500)
+        # Get BMKG data
+        with st.spinner("Mengambil data dari BMKG..."):
+            df_kh = fetch_bmkg_data()
+            result_dicts, jammm, status_to_icon = process_bmkg_data(df_kh)
+            weather = pd.DataFrame(result_dicts)
+            weather["kecamatan"] = weather["KECAMATAN"].str.lower()
+        
+        # Estimate total rainfall from weather description
+        def estimate_rain(entry):
+            text = "".join(str(entry[col]) for col in jammm[1:9]).lower()
+            if "hujan" in text:
+                return 30
+            elif "berawan" in text:
+                return 5
+            else:
+                return 0
+        
+        weather["total_rainfall"] = weather.apply(estimate_rain, axis=1)
+        
+        # Merge to GeoDataFrame
+        gdf = gdf.merge(weather[["kecamatan", "total_rainfall"]], on="kecamatan")
+        
+        # Build popup
+        popup_tables = {}
+        for _, row in weather.iterrows():
+            rows = "".join(f"<tr><td>{col}:00</td><td>{row[col]}</td></tr>" for col in jammm[1:9])
+            popup = f"""
+            <b>Kecamatan: {row['KECAMATAN']}</b><br>
+            <table style='font-size:10px'>
+                <tr><th>Jam</th><th>Cuaca</th></tr>
+                {rows}
+            </table>
+            """
+            popup_tables[row["kecamatan"]] = popup
+        
+        gdf["popup"] = gdf["kecamatan"].map(popup_tables)
+        
+        # Map style
+        def get_color(value):
+            if value > 20:
+                return "#084594"
+            elif value > 10:
+                return "#4292c6"
+            elif value > 0:
+                return "#c6dbef"
+            else:
+                return "#ffffff"
+        
+        # Create map
+        m = folium.Map(location=[0.9, 112.9], zoom_start=8)
+        
+        folium.GeoJson(
+            gdf,
+            name="Cuaca",
+            style_function=lambda feature: {
+                "fillColor": get_color(feature["properties"]["total_rainfall"]),
+                "color": "black",
+                "weight": 0.5,
+                "fillOpacity": 0.7,
+            },
+            tooltip=GeoJsonTooltip(
+                fields=["kecamatan", "total_rainfall"],
+                aliases=["Kecamatan", "Hujan (mm)"],
+                localize=True
+            ),
+            popup=folium.GeoJsonPopup(fields=["popup"])
+        ).add_to(m)
+        
+        # Display in Streamlit
+        st_folium(m, width=700, height=500)
+        
+        # Optional: Show table
+        st.subheader("Tabel Prakiraan Cuaca")
+        st.markdown(weather.to_html(escape=False, index=False), unsafe_allow_html=True)
     
