@@ -16,6 +16,8 @@ status_to_icon = {
     'Berawan': 'https://api-apps.bmkg.go.id/storage/icon/cuaca/berawan-am.svg'
 }
 
+
+@st.cache_data(ttl=600)
 def fetch_bmkg_data():
     suffixes2_16 = [f"{i:02d}.2001" for i in range(2, 17)]
     suffixes18_23 = [f"{i:02d}.2001" for i in range(18, 24)]
