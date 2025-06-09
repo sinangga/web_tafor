@@ -36,6 +36,7 @@ from streamlit_folium import st_folium
 
 @st.cache_data(ttl=600)  # Cache for 10 minutes
 def fetch_prakiraan_data():
+    print("🔁 Fetching data from API...")
     gabungan_data = []
 
     # Ambil data untuk awal dan ID khusus
@@ -827,7 +828,7 @@ with tab1:
         import matplotlib.cm as cm
         import matplotlib.colors as colors
         
-        from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
+        #from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
         
         # Title
         st.title("Peta Prakiraan Cuaca Harian - Kapuas Hulu")
