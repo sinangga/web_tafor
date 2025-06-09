@@ -836,29 +836,31 @@ with tab1:
         st.image(output_image_file)
 
     with tab7:
-        # Initialize map centered on Kapuas Hulu
         from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
-
+        
         # Title
-        st.title("Prakiraan Cuaca Harian Kapuas Hulu")
+        st.title("Peta Prakiraan Cuaca Harian - Kapuas Hulu")
         
         # Load GeoJSON
         gdf = gpd.read_file("KH_kecamatan_fix.json")
-        gdf["kecamatan"] = gdf["properties"].apply(lambda p: p["kecamatan"].lower())
+        gdf = gdf[gdf.is_valid & ~gdf.is_empty]
+        gdf['kecamatan'] = gdf['kecamatan'].astype(str).str.strip().str.lower()
         
-        # Get BMKG data
+        # Get weather data
         with st.spinner("Mengambil data dari BMKG..."):
-            df_kh = fetch_bmkg_data()
-            result_dicts, jammm, status_to_icon = process_bmkg_data(df_kh)
-            weather = pd.DataFrame(result_dicts)
-            weather["kecamatan"] = weather["KECAMATAN"].str.lower()
+            bmkg_data = fetch_bmkg_data()
+            result_dicts, jammm, status_to_icon = process_bmkg_data(bmkg_data)
         
-        # Estimate total rainfall from weather description
+        # Convert to DataFrame
+        weather = pd.DataFrame(result_dicts)
+        weather["kecamatan"] = weather["KECAMATAN"].str.strip().str.lower()
+        
+        # Estimate rainfall
         def estimate_rain(entry):
-            text = "".join(str(entry[col]) for col in jammm[1:9]).lower()
-            if "hujan" in text:
+            descriptions = "".join(str(entry[col]) for col in jammm[1:9])
+            if "hujan" in descriptions.lower():
                 return 30
-            elif "berawan" in text:
+            elif "berawan" in descriptions.lower():
                 return 5
             else:
                 return 0
@@ -868,56 +870,57 @@ with tab1:
         # Merge to GeoDataFrame
         gdf = gdf.merge(weather[["kecamatan", "total_rainfall"]], on="kecamatan")
         
-        # Build popup
+        # Color map (white to blue)
+        norm = colors.Normalize(vmin=0, vmax=50)
+        cmap = cm.get_cmap('Blues')
+        
+        def get_color_by_rain(total):
+            rgba = cmap(norm(min(total, 50)))
+            return colors.to_hex(rgba)
+        
+        # HTML table popups
         popup_tables = {}
-        for _, row in weather.iterrows():
-            rows = "".join(f"<tr><td>{col}:00</td><td>{row[col]}</td></tr>" for col in jammm[1:9])
-            popup = f"""
-            <b>Kecamatan: {row['KECAMATAN']}</b><br>
-            <table style='font-size:10px'>
-                <tr><th>Jam</th><th>Cuaca</th></tr>
-                {rows}
-            </table>
+        for entry in result_dicts:
+            kec = entry['KECAMATAN'].strip().lower()
+            rows = "".join(f"<tr><td>{t}:00</td><td>{entry[t]}</td></tr>" for t in jammm[1:9])
+            table = f"""
+                <b>Kecamatan: {kec.title()}</b><br>
+                <table style='font-size:10px'>
+                    <tr><th>Time</th><th>Condition</th></tr>
+                    {rows}
+                </table>
             """
-            popup_tables[row["kecamatan"]] = popup
+            popup_tables[kec] = table
         
         gdf["popup"] = gdf["kecamatan"].map(popup_tables)
         
-        # Map style
-        def get_color(value):
-            if value > 20:
-                return "#084594"
-            elif value > 10:
-                return "#4292c6"
-            elif value > 0:
-                return "#c6dbef"
-            else:
-                return "#ffffff"
+        rain_dict = dict(zip(gdf["kecamatan"], gdf["total_rainfall"]))
         
-        # Create map
-        m = folium.Map(location=[0.9, 112.9], zoom_start=8)
+        def style_function(feature):
+            kecamatan = feature["properties"].get("kecamatan", "").strip().lower()
+            total_rain = rain_dict.get(kecamatan, 0.0)
+            return {
+                "fillColor": get_color_by_rain(total_rain),
+                "color": "black",
+                "weight": 0.8,
+                "fillOpacity": 0.6,
+            }
+        
+        # Create and show map
+        m = folium.Map(location=[0.9, 112.9], zoom_start=8, tiles="cartodbpositron")
         
         folium.GeoJson(
             gdf,
             name="Cuaca",
-            style_function=lambda feature: {
-                "fillColor": get_color(feature["properties"]["total_rainfall"]),
-                "color": "black",
-                "weight": 0.5,
-                "fillOpacity": 0.7,
-            },
-            tooltip=GeoJsonTooltip(
-                fields=["kecamatan", "total_rainfall"],
-                aliases=["Kecamatan", "Hujan (mm)"],
-                localize=True
-            ),
-            popup=folium.GeoJsonPopup(fields=["popup"])
+            style_function=style_function,
+            tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
+            popup=folium.GeoJsonPopup(fields=["popup"], labels=False, max_width=400)
         ).add_to(m)
         
-        # Display in Streamlit
-        st_folium(m, width=700, height=500)
+        st_data = st_folium(m, width=700, height=500)
         
-        # Optional: Show table
-        st.subheader("Tabel Prakiraan Cuaca")
+        # Optional: Display forecast table
+        st.subheader("Data Tabel Prakiraan")
         st.markdown(weather.to_html(escape=False, index=False), unsafe_allow_html=True)
+
     
