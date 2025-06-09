@@ -34,46 +34,33 @@ from streamlit_folium import st_folium
 #kecamatan_output = kecamatan_res.json()
 #df_kh = kecamatan_output['data']
 
-### UPDATE DATABASE
-# Daftar kode akhir adm4
-suffixes2_16 = [f"{i:02d}.2001" for i in range(2,17)]
-suffixes18_23 = [f"{i:02d}.2001" for i in range(18,24)]
-base_url = "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06."
+@st.cache_data(ttl=600)  # Cache for 10 minutes
+def fetch_prakiraan_data():
+    gabungan_data = []
 
-# Variabel penampung semua data JSON
-gabungan_data = []
-response = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06.01.1001")
-response.raise_for_status()
-data1 = response.json()
-gabungan_data.append(data1)
+    # Ambil data untuk awal dan ID khusus
+    urls = [
+        "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06.01.1001",
+        "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06.17.1001",
+    ]
 
+    # Tambahkan semua suffix ke URL
+    suffixes2_16 = [f"{i:02d}.2001" for i in range(2, 17)]
+    suffixes18_23 = [f"{i:02d}.2001" for i in range(18, 24)]
+    base_url = "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06."
 
-# Loop untuk ambil data dari setiap URL
-for suffix in suffixes2_16:
-    url = base_url + suffix
-    response = requests.get(url)
-    response.raise_for_status()
-    data = response.json()
-    gabungan_data.append(data)
-        
-        
-response = requests.get("https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=61.06.17.1001")
-response.raise_for_status()
-data1 = response.json()
-gabungan_data.append(data1)
+    urls += [base_url + suffix for suffix in suffixes2_16]
+    urls += [base_url + suffix for suffix in suffixes18_23]
 
-# Loop untuk ambil data dari setiap URL
-for suffix in suffixes18_23:
-    url = base_url + suffix
-    response = requests.get(url)
-    response.raise_for_status()
-    data = response.json()
-    gabungan_data.append(data)
+    # Fetch data untuk semua URL
+    for url in urls:
+        response = requests.get(url)
+        response.raise_for_status()
+        gabungan_data.append(response.json())
 
-# Sekarang `gabungan_data` berisi semua JSON
-# Bisa langsung digunakan dalam kode
-df_kh = gabungan_data
+    return gabungan_data
 
+df_kh = fetch_prakiraan_data()
 
 # Clustering Data into Single Dataset
 list_kecamatan = []
