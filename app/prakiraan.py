@@ -843,7 +843,7 @@ with tab1:
         st.title("Prakiraan Cuaca Harian Kapuas Hulu")
         
         # Load GeoJSON
-        gdf = gpd.read_file("kapuas_hulu.geojson")
+        gdf = gpd.read_file("KH_kecamatan_fix.json")
         gdf["kecamatan"] = gdf["properties"].apply(lambda p: p["kecamatan"].lower())
         
         # Get BMKG data
