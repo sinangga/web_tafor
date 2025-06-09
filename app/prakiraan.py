@@ -836,6 +836,8 @@ with tab1:
         st.image(output_image_file)
 
     with tab7:
+        import matplotlib.cm as cm
+        import matplotlib.colors as colors
         from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
         
         # Title
