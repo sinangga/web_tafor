@@ -838,9 +838,9 @@ with tab1:
         gdf['kecamatan'] = gdf['kecamatan'].astype(str).str.strip().str.lower()
         
         # Get weather data
-        with st.spinner("Mengambil data dari BMKG..."):
-            bmkg_data = fetch_bmkg_data()
-            result_dicts, jammm, status_to_icon = process_bmkg_data(bmkg_data)
+        #with st.spinner("Mengambil data dari BMKG..."):
+            #bmkg_data = fetch_bmkg_data()
+            #result_dicts, jammm, status_to_icon = process_bmkg_data(bmkg_data)
         
         # Convert to DataFrame
         weather = pd.DataFrame(result_dicts)
