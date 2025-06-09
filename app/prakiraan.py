@@ -836,8 +836,10 @@ with tab1:
         st.image(output_image_file)
 
     with tab7:
+        from folium.features import GeoJsonTooltip, GeoJsonPopup
         import matplotlib.cm as cm
         import matplotlib.colors as colors
+        
         from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
         
         # Title
