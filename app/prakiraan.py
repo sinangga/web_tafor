@@ -909,7 +909,8 @@ with tab1:
             popup=folium.GeoJsonPopup(fields=["popup"], labels=False, max_width=400)
         ).add_to(m)
         
-        st_folium(m, width=700, height=500, return_clicks=False, return_lat_lng=False, key="static_map")
+        st_folium(m, width=700, height=500, key="static_map")
+
         
 
 
