@@ -908,8 +908,13 @@ with tab1:
             tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
             popup=folium.GeoJsonPopup(fields=["popup"], labels=False, max_width=400)
         ).add_to(m)
-        
-        st_folium(m, width=700, height=500, key="static_map")
+
+        @st.experimental_fragment
+        def show_map():
+            st_folium(m, width=700, height=500, key="static_map")
+
+        show_map()
+
 
         
 
