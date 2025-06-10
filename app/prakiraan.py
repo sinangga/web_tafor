@@ -826,128 +826,111 @@ with tab1:
     with tab7:
         from streamlit_folium import st_folium
         from folium.features import GeoJsonTooltip
-        from datetime import datetime
-        import matplotlib.cm as cm
-        import matplotlib.colors as mcolors
+        from matplotlib import colors, cm
+        
         from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
         
-        #st.set_page_config(layout="wide")
+        # 1. Must be first Streamlit command
+        #st.set_page_config(page_title="Peta Prakiraan Cuaca Kapuas Hulu", layout="wide")
         
-        # ------------------------------
-        # Caching data
-        # ------------------------------
+        # 2. Load GeoJSON
         @st.cache_data
         def load_geojson():
             gdf = gpd.read_file("KH_kecamatan_fix.json")
             gdf = gdf[gdf.is_valid & ~gdf.is_empty]
-            gdf['kecamatan'] = gdf['kecamatan'].astype(str).str.strip().str.lower()
+            gdf["kecamatan"] = gdf["kecamatan"].astype(str).str.strip().str.lower()
             return gdf
         
+        gdf = load_geojson()
+        
+        # 3. Load weather data
         @st.cache_data
-        def get_weather_data():
-            raw_data = fetch_bmkg_data()
-            result_dicts, jammm, status_to_icon = process_bmkg_data(raw_data)
+        def load_weather():
+            data = fetch_bmkg_data()
+            result_dicts, jammm, status_to_icon = process_bmkg_data(data)
             df = pd.DataFrame(result_dicts)
             df["kecamatan"] = df["KECAMATAN"].str.strip().str.lower()
-            return df, jammm, status_to_icon
+            return df, jammm
         
-        # Estimate rainfall from conditions
+        weather_df, jammm = load_weather()
+        
+        # 4. Calculate rainfall (based on status like "hujan")
         def estimate_rain(entry):
-            descriptions = "".join(str(entry[col]) for col in jammm[1:9])
-            if "hujan lebat" in descriptions.lower():
-                return 40
-            elif "hujan sedang" in descriptions.lower():
-                return 25
-            elif "hujan ringan" in descriptions.lower():
-                return 10
-            elif "hujan" in descriptions.lower():
+            texts = "".join(str(entry.get(hour, "")).lower() for hour in jammm[1:9])
+            if "hujan" in texts:
+                return 30
+            elif "berawan" in texts:
                 return 5
-            elif "berawan" in descriptions.lower():
-                return 2
-            return 0
+            else:
+                return 0
         
-        # ------------------------------
-        # Load data
-        # ------------------------------
-        gdf = load_geojson()
-        weather_df, jammm, status_to_icon = get_weather_data()
         weather_df["total_rainfall"] = weather_df.apply(estimate_rain, axis=1)
         
-        # Merge into GeoDataFrame
-        gdf = gdf.merge(weather_df[["kecamatan", "total_rainfall"]], on="kecamatan")
+        # 5. Merge into GeoDataFrame
+        gdf = gdf.merge(weather_df[["kecamatan", "total_rainfall"]], on="kecamatan", how="left")
         
-        # Color scale
+        # 6. Color mapping: white → blue
+        norm = colors.Normalize(vmin=0, vmax=50)
         cmap = cm.get_cmap("Blues")
-        norm = mcolors.Normalize(vmin=0, vmax=50)
-        def get_color(val):
-            rgba = cmap(norm(min(val, 50)))
-            return mcolors.to_hex(rgba)
         
-        # Rainfall dict
-        rain_dict = dict(zip(gdf["kecamatan"], gdf["total_rainfall"]))
+        def get_color(value):
+            rgba = cmap(norm(min(value or 0, 50)))
+            return colors.to_hex(rgba)
         
-        # HTML Table Dict
-        table_dict = {}
-        for row in weather_df.itertuples():
-            kec = row.KECAMATAN.strip().lower()
-            html = f"<b>{kec.title()}</b><br><table>"
-            row_dict = row._asdict()
-            time_cols = [col for col in weather_df.columns if col in jammm[1:9]]
-            for hour in time_cols:
-                html += f"<tr><td>{hour}:00</td><td>{row_dict.get(hour, '-')}</td></tr>"
-            html += "</table>"
-            table_dict[kec] = html
+        # 7. Precompute table per kecamatan
+        def create_table_dict(df):
+            tables = {}
+            for _, row in df.iterrows():
+                kec = row["kecamatan"]
+                html = f"<b>{kec.title()}</b><br><table>"
+                for hour in jammm[1:9]:
+                    val = row.get(hour, "-")
+                    html += f"<tr><td>{hour}:00</td><td>{val}</td></tr>"
+                html += "</table>"
+                tables[kec] = html
+            return tables
         
-        gdf["popup"] = gdf["kecamatan"].map(table_dict)
+        table_dict = create_table_dict(weather_df)
+        rain_dict = dict(zip(weather_df["kecamatan"], weather_df["total_rainfall"]))
         
-        # ------------------------------
-        # Streamlit layout
-        # ------------------------------
-        st.title("🌦️ Peta Prakiraan Cuaca Kapuas Hulu")
-        col1, col2 = st.columns([2, 1])
-        
-        with col1:
+        # 8. Build map
+        def build_map():
             m = folium.Map(location=[0.9, 112.9], zoom_start=8, tiles="cartodbpositron")
         
             def style_function(feature):
-                kec = feature["properties"].get("kecamatan", "").strip().lower()
+                kec = feature["properties"]["kecamatan"].strip().lower()
+                rain = rain_dict.get(kec, 0)
                 return {
-                    "fillColor": get_color(rain_dict.get(kec, 0)),
+                    "fillColor": get_color(rain),
                     "color": "black",
-                    "weight": 0.5,
-                    "fillOpacity": 0.6
+                    "weight": 0.8,
+                    "fillOpacity": 0.6,
                 }
         
-            gj = folium.GeoJson(
+            folium.GeoJson(
                 gdf,
                 name="Cuaca",
                 style_function=style_function,
                 tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
-                embed=False,
-                zoom_on_click=True,
-                control=False,
-                highlight_function=lambda x: {"weight": 2, "color": "blue"},
-                show=True,
-                feature_id="kecamatan",  # key to track clicked feature
+                feature_id="kecamatan",
             ).add_to(m)
         
+            return m
+        
+        # 9. Layout: Map on left, table on right
+        st.markdown("## 🌦️ Peta Prakiraan Cuaca Kapuas Hulu")
+        col1, col2 = st.columns([2, 1])
+        
+        with col1:
+            m = build_map()
             map_data = st_folium(m, width=700, height=500, key="map")
         
         with col2:
             st.subheader("Detail Prakiraan Cuaca")
+            selected = map_data.get("last_active_drawing", {}).get("properties", {}).get("kecamatan", "").lower()
         
-            clicked_kecamatan = None
-            if map_data and map_data.get("last_active_drawing"):
-                clicked_kecamatan = map_data["last_active_drawing"].get("properties", {}).get("kecamatan", "").strip().lower()
-        
-            if clicked_kecamatan and clicked_kecamatan in table_dict:
-                st.markdown(table_dict[clicked_kecamatan], unsafe_allow_html=True)
+            if selected and selected in table_dict:
+                st.markdown(f"**{selected.title()}**")
+                st.markdown(table_dict[selected], unsafe_allow_html=True)
             else:
                 st.info("Silakan klik wilayah di peta untuk melihat detail cuaca.")
-
-
-
-        
-
-
-    
