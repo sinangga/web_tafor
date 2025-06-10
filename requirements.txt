@@ -15,7 +15,7 @@ geopandas
 shapely
 branca
 folium
-streamlit_folium
+streamlit-folium>=0.11.0
 IPython
 altair
 xhtml2pdf
