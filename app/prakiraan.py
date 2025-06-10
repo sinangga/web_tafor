@@ -898,23 +898,24 @@ with tab1:
                 "fillOpacity": 0.6,
             }
             
-        @st.fragment
-        def show_map():
+        @st.experimental_fragment
+        def show_map(gdf, style_function):
+            m = folium.Map(location=[0.9, 112.9], zoom_start=8, tiles="cartodbpositron")
+        
+            folium.GeoJson(
+                gdf,
+                name="Cuaca",
+                style_function=style_function,
+                tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
+                popup=folium.GeoJsonPopup(fields=["popup"], labels=False, max_width=400)
+            ).add_to(m)
+        
             st_folium(m, width=700, height=500, key="static_map")
-
         
-        # Create and show map
-        m = folium.Map(location=[0.9, 112.9], zoom_start=8, tiles="cartodbpositron")
         
-        folium.GeoJson(
-            gdf,
-            name="Cuaca",
-            style_function=style_function,
-            tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
-            popup=folium.GeoJsonPopup(fields=["popup"], labels=False, max_width=400)
-        ).add_to(m)
+        # Usage
+        show_map(gdf, style_function)
 
-        show_map()
 
 
         
