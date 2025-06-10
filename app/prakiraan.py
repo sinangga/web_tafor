@@ -891,8 +891,9 @@ with tab1:
         for row in weather_df.itertuples():
             kec = row.KECAMATAN.strip().lower()
             html = f"<b>{kec.title()}</b><br><table>"
+            row_dict = row._asdict()
             for hour in jammm[1:9]:
-                html += f"<tr><td>{hour}:00</td><td>{getattr(row, hour)}</td></tr>"
+                html += f"<tr><td>{hour}:00</td><td>{row_dict[hour]}</td></tr>"
             html += "</table>"
             table_dict[kec] = html
         
