@@ -874,7 +874,7 @@ with tab1:
         forecast_lookup = {d["KECAMATAN"].strip().lower(): d for d in result_dicts}
         
         # --- Streamlit layout ---
-        st.set_page_config(layout="wide")
+        #st.set_page_config(layout="wide")
         st.title("Peta Prakiraan Cuaca Kapuas Hulu")
         
         col1, col2 = st.columns([3, 2])
