@@ -36,7 +36,7 @@ from streamlit_folium import st_folium
 
 @st.cache_data(ttl=600)  # Cache for 10 minutes
 def fetch_prakiraan_data():
-    print("🔁 Fetching data from API...")
+    print("🔁 Fetching data from BMKG")
     gabungan_data = []
 
     # Ambil data untuk awal dan ID khusus
@@ -828,8 +828,6 @@ with tab1:
         import matplotlib.cm as cm
         import matplotlib.colors as colors
         
-        #from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
-        
         # Title
         st.title("Peta Prakiraan Cuaca Harian - Kapuas Hulu")
         
@@ -837,12 +835,7 @@ with tab1:
         gdf = gpd.read_file("KH_kecamatan_fix.json")
         gdf = gdf[gdf.is_valid & ~gdf.is_empty]
         gdf['kecamatan'] = gdf['kecamatan'].astype(str).str.strip().str.lower()
-        
-        # Get weather data
-        #with st.spinner("Mengambil data dari BMKG..."):
-            #bmkg_data = fetch_bmkg_data()
-            #result_dicts, jammm, status_to_icon = process_bmkg_data(bmkg_data)
-        
+               
         # Convert to DataFrame
         weather = pd.DataFrame(result_dicts)
         weather["kecamatan"] = weather["KECAMATAN"].str.strip().str.lower()
@@ -898,7 +891,7 @@ with tab1:
                 "fillOpacity": 0.6,
             }
             
-        @st.experimental_fragment
+        @st.fragment
         def show_map(gdf, style_function):
             m = folium.Map(location=[0.9, 112.9], zoom_start=8, tiles="cartodbpositron")
         
