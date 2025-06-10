@@ -897,6 +897,11 @@ with tab1:
                 "weight": 0.8,
                 "fillOpacity": 0.6,
             }
+            
+        @st.fragment
+        def show_map():
+            st_folium(m, width=700, height=500, key="static_map")
+
         
         # Create and show map
         m = folium.Map(location=[0.9, 112.9], zoom_start=8, tiles="cartodbpositron")
@@ -908,10 +913,6 @@ with tab1:
             tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
             popup=folium.GeoJsonPopup(fields=["popup"], labels=False, max_width=400)
         ).add_to(m)
-
-        @st.experimental_fragment
-        def show_map():
-            st_folium(m, width=700, height=500, key="static_map")
 
         show_map()
 
