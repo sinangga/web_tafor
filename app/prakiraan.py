@@ -894,7 +894,8 @@ with tab1:
         rain_dict = dict(zip(weather_df["kecamatan"], weather_df["total_rainfall"]))
         
         # 8. Build map
-        def build_map():
+        #def build_map():
+        def build_map_with_zoom():
             m = folium.Map(location=[0.9, 112.9], zoom_start=8, tiles="cartodbpositron")
         
             def style_function(feature):
@@ -907,22 +908,34 @@ with tab1:
                     "fillOpacity": 0.6,
                 }
         
+            def highlight_function(feature):
+                return {
+                    "fillColor": "#ffff00",   # Yellow highlight on hover/click
+                    "color": "black",
+                    "weight": 2,
+                    "fillOpacity": 0.9,
+                }
+        
             folium.GeoJson(
                 gdf,
                 name="Cuaca",
                 style_function=style_function,
+                highlight_function=highlight_function,
                 tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
                 feature_id="kecamatan",
+                zoom_on_click=True  # 💡 This enables zooming
             ).add_to(m)
         
             return m
+
         
         # 9. Layout: Map on left, table on right
         st.markdown("## 🌦️ Peta Prakiraan Cuaca Kapuas Hulu")
         col1, col2 = st.columns([2, 1])
         
         with col1:
-            m = build_map()
+            #m = build_map()
+            m = build_map_with_zoom()
             map_data = st_folium(m, width=700, height=500, key="map")
         
         with col2:
