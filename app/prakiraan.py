@@ -824,31 +824,27 @@ with tab1:
         st.image(output_image_file)
 
     with tab7:
-        import streamlit as st
-        import geopandas as gpd
-        import pandas as pd
-        import folium
         from folium.features import GeoJsonTooltip
         from streamlit_folium import st_folium
         import matplotlib.cm as cm
         import matplotlib.colors as colors
         
-        from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
+        #from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
         
         # Load GeoJSON
         gdf = gpd.read_file("KH_kecamatan_fix.json")
         gdf = gdf[gdf.is_valid & ~gdf.is_empty]
         gdf['kecamatan'] = gdf['kecamatan'].astype(str).str.strip().str.lower()
         
-        # Get weather data
-        bmkg_data = fetch_bmkg_data()
-        result_dicts, jammm, status_to_icon = process_bmkg_data(bmkg_data)
+        # Get BMKG weather data
+        #bmkg_data = fetch_bmkg_data()
+        #result_dicts, jammm, status_to_icon = process_bmkg_data(bmkg_data)
         
-        # Convert to DataFrame
+        # Build weather DataFrame
         weather = pd.DataFrame(result_dicts)
         weather["kecamatan"] = weather["KECAMATAN"].str.strip().str.lower()
         
-        # Estimate rainfall from conditions
+        # Estimate rainfall
         def estimate_rain(entry):
             descriptions = "".join(str(entry[col]) for col in jammm[1:9])
             if "hujan" in descriptions.lower():
@@ -860,10 +856,10 @@ with tab1:
         
         weather["total_rainfall"] = weather.apply(estimate_rain, axis=1)
         
-        # Merge with geodata
+        # Merge with GeoDataFrame
         gdf = gdf.merge(weather[["kecamatan", "total_rainfall"]], on="kecamatan")
         
-        # Color mapping
+        # Color palette: white to blue
         norm = colors.Normalize(vmin=0, vmax=50)
         cmap = cm.get_cmap('Blues')
         
@@ -871,27 +867,21 @@ with tab1:
             rgba = cmap(norm(min(total, 50)))
             return colors.to_hex(rgba)
         
-        # Prepare forecast lookup
-        popup_tables = {}
-        for entry in result_dicts:
-            kec = entry['KECAMATAN'].strip().lower()
-            rows = "".join(f"<tr><td>{t}:00</td><td>{entry[t]}</td></tr>" for t in jammm[1:9])
-            table = f"""
-                <b>{kec.title()}</b><br>
-                <table style='font-size:12px'>
-                    <tr><th>Time</th><th>Condition</th></tr>
-                    {rows}
-                </table>
-            """
-            popup_tables[kec] = table
-        
-        gdf["popup"] = gdf["kecamatan"].map(popup_tables)
-        
+        # Prepare mapping of rainfall for style
         rain_dict = dict(zip(gdf["kecamatan"], gdf["total_rainfall"]))
         
-        # Map rendering in a fragment
-        @st.experimental_fragment
-        def show_map():
+        # Forecast lookup table
+        forecast_lookup = {d["KECAMATAN"].strip().lower(): d for d in result_dicts}
+        
+        # --- Streamlit layout ---
+        st.set_page_config(layout="wide")
+        st.title("Peta Prakiraan Cuaca Kapuas Hulu")
+        
+        col1, col2 = st.columns([3, 2])
+        
+        with col1:
+            st.subheader("Peta Interaktif")
+        
             m = folium.Map(location=[0.9, 112.9], zoom_start=8, tiles="cartodbpositron")
         
             folium.GeoJson(
@@ -904,29 +894,22 @@ with tab1:
                     "fillOpacity": 0.6,
                 },
                 tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
-                #name="weather-layer"
+                feature_id="kecamatan"  # Important: for tracking clicks
             ).add_to(m)
         
-            return st_folium(m, width=700, height=500, key="map_click")
-        
-        # Layout: Map on left, forecast on right
-        col1, col2 = st.columns([3, 2])
-        
-        with col1:
-            map_data = show_map()
+            map_data = st_folium(m, width=700, height=500, key="map", track_feature_id=True)
         
         with col2:
-            st.markdown("### Detail Prakiraan Cuaca")
+            st.subheader("Detail Prakiraan Cuaca")
         
-            selected_kec = None
-            if map_data and map_data.get("last_active_drawing"):
-                props = map_data["last_active_drawing"]["properties"]
-                selected_kec = props.get("kecamatan", "").strip().lower()
-        
+            selected_kec = map_data.get("last_active_feature_id", None)
             if selected_kec:
-                forecast = next((d for d in result_dicts if d["KECAMATAN"].strip().lower() == selected_kec), None)
+                selected_kec = selected_kec.strip().lower()
+                forecast = forecast_lookup.get(selected_kec)
+        
                 if forecast:
                     st.markdown(f"#### {selected_kec.title()}")
+        
                     rows = "".join(f"<tr><td>{t}:00</td><td>{forecast[t]}</td></tr>" for t in jammm[1:9])
                     st.markdown(
                         f"""
@@ -938,7 +921,7 @@ with tab1:
                         unsafe_allow_html=True
                     )
                 else:
-                    st.warning("Data tidak ditemukan.")
+                    st.warning("Data tidak ditemukan untuk wilayah ini.")
             else:
                 st.info("Silakan klik wilayah di peta untuk melihat detail cuaca.")
 
