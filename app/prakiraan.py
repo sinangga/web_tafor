@@ -904,7 +904,7 @@ with tab1:
                     "fillOpacity": 0.6,
                 },
                 tooltip=GeoJsonTooltip(fields=["kecamatan"], aliases=["Kecamatan"]),
-                name="weather-layer"
+                #name="weather-layer"
             ).add_to(m)
         
             return st_folium(m, width=700, height=500, key="map_click")
