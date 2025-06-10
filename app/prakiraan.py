@@ -892,8 +892,9 @@ with tab1:
             kec = row.KECAMATAN.strip().lower()
             html = f"<b>{kec.title()}</b><br><table>"
             row_dict = row._asdict()
-            for hour in jammm[1:9]:
-                html += f"<tr><td>{hour}:00</td><td>{row_dict[hour]}</td></tr>"
+            time_cols = [col for col in weather_df.columns if col in jammm[1:9]]
+            for hour in time_cols:
+                html += f"<tr><td>{hour}:00</td><td>{row_dict.get(hour, '-')}</td></tr>"
             html += "</table>"
             table_dict[kec] = html
         
