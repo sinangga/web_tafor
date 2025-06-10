@@ -909,10 +909,8 @@ with tab1:
             popup=folium.GeoJsonPopup(fields=["popup"], labels=False, max_width=400)
         ).add_to(m)
         
-        st_data = st_folium(m, width=700, height=500)
+        st_folium(m, width=700, height=500, return_clicks=False, return_lat_lng=False, key="static_map")
         
-        # Optional: Display forecast table
-        st.subheader("Data Tabel Prakiraan")
-        st.markdown(weather.to_html(escape=False, index=False), unsafe_allow_html=True)
+
 
     
