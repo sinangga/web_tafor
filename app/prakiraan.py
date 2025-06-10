@@ -829,7 +829,7 @@ with tab1:
         from datetime import datetime
         import matplotlib.cm as cm
         import matplotlib.colors as mcolors
-        #from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
+        from get_data_BMKG import fetch_bmkg_data, process_bmkg_data
         
         #st.set_page_config(layout="wide")
         
